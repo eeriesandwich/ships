@@ -4,4 +4,4 @@ __pycache__/
 .ipynb_checkpoints/
 *.pbix.bak
 Thumbs.db
-.DS_Store
+.DS_Storenotebooks/*_raw.txt
