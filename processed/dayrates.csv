@@ -1,0 +1,781 @@
+SourceFile,FilingDate,VesselClass,RateType,PeriodLabel,PeriodType,Quarter,Year,ValueUSDPerDay
+2015-02-13_d6370748_6-k.htm,2015-02-13,VLCC,Average TI Pool spot rate,Fourth quarter 2014,Quarter,4,2014,31650.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,VLCC,Average TI Pool spot rate,Fourth quarter 2013,Quarter,4,2013,24000.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,VLCC,Average TI Pool spot rate,Full year 2014,Annual,,2014,27625.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,VLCC,Average TI Pool spot rate,Full year 2013,Annual,,2013,18300.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average time-charter rate,Fourth quarter 2014,Quarter,4,2014,30513.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average time-charter rate,Fourth quarter 2013,Quarter,4,2013,23400.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average time-charter rate,Full year 2014,Annual,,2014,25930.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average time-charter rate,Full year 2013,Annual,,2013,22000.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average spot rate,Fourth quarter 2014,Quarter,4,2014,24248.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average spot rate,Fourth quarter 2013,Quarter,4,2013,14500.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average spot rate,Full year 2014,Annual,,2014,23382.0
+2015-02-13_d6370748_6-k.htm,2015-02-13,SUEZMAX,Average spot rate,Full year 2013,Annual,,2013,16600.0
+2015-05-05_d6539969_6-k.htm,2015-05-05,VLCC,Average spot rate (in TI Pool),,Unknown,,,50845.0
+2015-05-05_d6539969_6-k.htm,2015-05-05,VLCC,Average time-charter rate,,Unknown,,,44547.0
+2015-05-05_d6539969_6-k.htm,2015-05-05,Suezmax,Average spot rate,,Unknown,,,41944.0
+2015-05-05_d6539969_6-k.htm,2015-05-05,Suezmax,Average time-charter rate,,Unknown,,,41593.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average spot rate (in TI Pool),,Unknown,,,55570.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average spot rate (in TI Pool),,Unknown,,,21464.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average spot rate (in TI Pool),First Semester 2014,Quarter,1,2014,53370.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average time-charter rate,,Unknown,,,38148.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average time-charter rate,,Unknown,,,27655.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,VLCC,Average time-charter rate,First Semester 2014,Quarter,1,2014,41705.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average spot rate,,Unknown,,,41886.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average spot rate,,Unknown,,,18445.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average spot rate,First Semester 2014,Quarter,1,2014,42364.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average time-charter rate,,Unknown,,,35258.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average time-charter rate,,Unknown,,,19797.0
+2015-07-31_d6738851_6-k.htm,2015-07-31,Suezmax,Average time-charter rate,First Semester 2014,Quarter,1,2014,37954.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,VLCC,Average spot rate (in TI pool),Third quarter 2015,Quarter,3,2015,52368.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,VLCC,Average spot rate (in TI pool),Third quarter 2014,Quarter,3,2014,24661.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,VLCC,Average time charter rate,Third quarter 2015,Quarter,3,2015,43516.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,VLCC,Average time charter rate,Third quarter 2014,Quarter,3,2014,30189.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,Suezmax,Average spot rate,Third quarter 2015,Quarter,3,2015,40048.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,Suezmax,Average spot rate,Third quarter 2014,Quarter,3,2014,21737.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,Suezmax,Average time charter rate,Third quarter 2015,Quarter,3,2015,30944.0
+2015-10-30_d6877343_6-k.htm,2015-10-30,Suezmax,Average time charter rate,Third quarter 2014,Quarter,3,2014,21168.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average spot rate (in TI pool),Fourth quarter 2015,Quarter,4,2015,61482.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average spot rate (in TI pool),Fourth quarter 2014,Quarter,4,2014,31650.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average spot rate (in TI pool),Full year 2015,Annual,,2015,55055.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average spot rate (in TI pool),Full year 2014,Annual,,2014,27625.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average time charter rate,Fourth quarter 2015,Quarter,4,2015,41776.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average time charter rate,Fourth quarter 2014,Quarter,4,2014,29731.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average time charter rate,Full year 2015,Annual,,2015,41981.0
+2016-01-29_d7026577_6k.htm,2016-01-29,VLCC,Average time charter rate,Full year 2014,Annual,,2014,31086.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average spot rate,Fourth quarter 2015,Quarter,4,2015,41596.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average spot rate,Fourth quarter 2014,Quarter,4,2014,24248.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average spot rate,Full year 2015,Annual,,2015,41686.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average spot rate,Full year 2014,Annual,,2014,23382.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average time-charter rate,Fourth quarter 2015,Quarter,4,2015,36042.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average time-charter rate,Fourth quarter 2014,Quarter,4,2014,30513.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average time-charter rate,Full year 2015,Annual,,2015,35790.0
+2016-01-29_d7026577_6k.htm,2016-01-29,SUEZMAX,Average time-charter rate,Full year 2014,Annual,,2014,25930.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,VLCC,Average spot rate (in TI pool),First quarter 2016,Quarter,1,2016,60638.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,VLCC,Average spot rate (in TI pool),First quarter 2015,Quarter,1,2015,50845.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,VLCC,Average time charter rate,First quarter 2016,Quarter,1,2016,40847.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,VLCC,Average time charter rate,First quarter 2015,Quarter,1,2015,44547.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,SUEZMAX,Average spot rate,First quarter 2016,Quarter,1,2016,38386.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,SUEZMAX,Average spot rate,First quarter 2015,Quarter,1,2015,41944.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,SUEZMAX,Average time-charter rate,First quarter 2016,Quarter,1,2016,32251.0
+2016-04-28_d7135764_6-k.htm,2016-04-28,SUEZMAX,Average time-charter rate,First quarter 2015,Quarter,1,2015,41593.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average spot rate (in TI Pool),Second quarter 2016,Quarter,2,2016,47864.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average spot rate (in TI Pool),Second quarter 2015,Quarter,2,2015,55570.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average spot rate (in TI Pool),First Semester 2016,Quarter,1,2016,54156.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average spot rate (in TI Pool),First Semester 2015,Quarter,1,2015,53370.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average time-charter rate,Second quarter 2016,Quarter,2,2016,44382.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average time-charter rate,Second quarter 2015,Quarter,2,2015,38148.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average time-charter rate,First Semester 2016,Quarter,1,2016,42461.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,VLCC,Average time-charter rate,First Semester 2015,Quarter,1,2015,41705.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average spot rate,Second quarter 2016,Quarter,2,2016,33119.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average spot rate,Second quarter 2015,Quarter,2,2015,41886.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average spot rate,First Semester 2016,Quarter,1,2016,35729.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average spot rate,First Semester 2015,Quarter,1,2015,42364.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average time-charter rate,Second quarter 2016,Quarter,2,2016,26363.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average time-charter rate,Second quarter 2015,Quarter,2,2015,35258.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average time-charter rate,First Semester 2016,Quarter,1,2016,29307.0
+2016-07-29_d7220090_6-k.htm,2016-07-29,Suezmax,Average time-charter rate,First Semester 2015,Quarter,1,2015,37954.0
+2016-11-02_d7317285_6-k.htm,2016-11-02,VLCC,Average spot rate (in TI Pool),,Unknown,,,27100.0
+2016-11-02_d7317285_6-k.htm,2016-11-02,VLCC,Average time charter rate,,Unknown,,,41480.0
+2016-11-02_d7317285_6-k.htm,2016-11-02,Suezmax,Average spot rate,,Unknown,,,19045.0
+2016-11-02_d7317285_6-k.htm,2016-11-02,Suezmax,Average time charter rate,,Unknown,,,21576.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average spot rate (in TI pool),Fourth quarter 2016,Quarter,4,2016,33161.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average spot rate (in TI pool),Fourth quarter 2015,Quarter,4,2015,61482.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average spot rate (in TI pool),Full year 2016,Annual,,2016,41863.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average spot rate (in TI pool),Full year 2015,Annual,,2015,55055.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average time charter rate,Fourth quarter 2016,Quarter,4,2016,43833.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average time charter rate,Fourth quarter 2015,Quarter,4,2015,41776.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average time charter rate,Full year 2016,Annual,,2016,42618.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,VLCC,Average time charter rate,Full year 2015,Annual,,2015,41981.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average spot rate,Fourth quarter 2016,Quarter,4,2016,21243.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average spot rate,Fourth quarter 2015,Quarter,4,2015,41596.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average spot rate,Full year 2016,Annual,,2016,27498.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average spot rate,Full year 2015,Annual,,2015,41686.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average time charter rate,Fourth quarter 2016,Quarter,4,2016,24662.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average time charter rate,Fourth quarter 2015,Quarter,4,2015,36042.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average time charter rate,Full year 2016,Annual,,2016,26269.0
+2017-01-27_d7401006_6-k.htm,2017-01-27,SUEZMAX,Average time charter rate,Full year 2015,Annual,,2015,35790.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,VLCC,Average spot rate (in TI pool),First quarter 2017,Quarter,1,2017,40528.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,VLCC,Average spot rate (in TI pool),First quarter 2016,Quarter,1,2016,60638.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,VLCC,Average time charter rate,First quarter 2017,Quarter,1,2017,41147.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,VLCC,Average time charter rate,First quarter 2016,Quarter,1,2016,40847.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,SUEZMAX,Average spot rate,First quarter 2017,Quarter,1,2017,24000.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,SUEZMAX,Average spot rate,First quarter 2016,Quarter,1,2016,38386.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,SUEZMAX,Average time charter rate,First quarter 2017,Quarter,1,2017,23880.0
+2017-04-27_d7465711_6-k.htm,2017-04-27,SUEZMAX,Average time charter rate,First quarter 2016,Quarter,1,2016,32251.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average spot rate (in TI pool),Second quarter 2017,Quarter,2,2017,28351.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average spot rate (in TI pool),Second quarter 2016,Quarter,2,2016,47864.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average spot rate (in TI pool),First semester 2017,Quarter,1,2017,34843.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average spot rate (in TI pool),First semester 2016,Quarter,1,2016,54156.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average time charter rate,Second quarter 2017,Quarter,2,2017,41480.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average time charter rate,Second quarter 2016,Quarter,2,2016,44382.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average time charter rate,First semester 2017,Quarter,1,2017,41300.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,VLCC,Average time charter rate,First semester 2016,Quarter,1,2016,42461.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average spot rate,Second quarter 2017,Quarter,2,2017,17341.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average spot rate,Second quarter 2016,Quarter,2,2016,33119.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average spot rate,First semester 2017,Quarter,1,2017,20508.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average spot rate,First semester 2016,Quarter,1,2016,35729.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average time charter rate,Second quarter 2017,Quarter,2,2017,21651.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average time charter rate,Second quarter 2016,Quarter,2,2016,26363.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average time charter rate,First semester 2017,Quarter,1,2017,22830.0
+2017-08-11_d7583087_6-k.htm,2017-08-11,SUEZMAX,Average time charter rate,First semester 2016,Quarter,1,2016,29307.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,VLCC,Average spot rate (in TI pool),Third quarter 2017,Quarter,3,2017,18875.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,VLCC,Average spot rate (in TI pool),Third quarter 2016,Quarter,3,2016,27100.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,VLCC,Average time charter rate,Third quarter 2017,Quarter,3,2017,39875.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,VLCC,Average time charter rate,Third quarter 2016,Quarter,3,2016,41480.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,SUEZMAX,Average spot rate,Third quarter 2017,Quarter,3,2017,15670.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,SUEZMAX,Average spot rate,Third quarter 2016,Quarter,3,2016,19045.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,SUEZMAX,Average time charter rate,Third quarter 2017,Quarter,3,2017,21210.0
+2017-11-02_d7697671_6-k.htm,2017-11-02,SUEZMAX,Average time charter rate,Third quarter 2016,Quarter,3,2016,21575.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average spot rate (in TI pool),Fourth quarter 2017,Quarter,4,2017,25889.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average spot rate (in TI pool),Fourth quarter 2016,Quarter,4,2016,33161.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average spot rate (in TI pool),Full year 2017,Annual,,2017,28119.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average spot rate (in TI pool),Full year 2016,Annual,,2016,41863.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average time charter rate,Fourth quarter 2017,Quarter,4,2017,35399.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average time charter rate,Fourth quarter 2016,Quarter,4,2016,43833.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average time charter rate,Full year 2017,Annual,,2017,39629.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,VLCC,Average time charter rate,Full year 2016,Annual,,2016,42618.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average spot rate,Fourth quarter 2017,Quarter,4,2017,15891.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average spot rate,Fourth quarter 2016,Quarter,4,2016,21243.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average spot rate,Full year 2017,Annual,,2017,18085.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average spot rate,Full year 2016,Annual,,2016,27498.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average time charter rate,Fourth quarter 2017,Quarter,4,2017,21417.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average time charter rate,Fourth quarter 2016,Quarter,4,2016,24662.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average time charter rate,Full year 2017,Annual,,2017,22131.0
+2018-01-26_d7804218_6-k.htm,2018-01-26,SUEZMAX,Average time charter rate,Full year 2016,Annual,,2016,26269.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Carl Steen,Age,Unknown,,,67.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Daniel R. Bradshaw,Age,Unknown,,,71.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,William Thomson,Age,Unknown,,,70.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Anne-Hélène Monsellato,Age,Unknown,,,50.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Ludovic Saverys,Age,Unknown,,,34.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Grace Reksten Skaugen,Age,Unknown,,,64.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Patrick Rodgers,Age,Unknown,,,58.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Hugo De Stoop,Age,Unknown,,,45.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Alex Staring,Age,Unknown,,,52.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Egied Verbeeck,Age,Unknown,,,43.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,An Goris,Age,Unknown,,,40.0
+2018-02-14_tv485862_ex99-1.htm,2018-02-14,,Brian Gallagher,Age,Unknown,,,47.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,VLCC (includes ULCC) (1),,Unknown,,,27.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,VLCC (includes ULCC) (1),,Unknown,,,26.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,VLCC (includes ULCC) (1),"Carrying Value at December 31, 2016",Unknown,,2016,1737446.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Suezmax (2),,Unknown,,,19.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Suezmax (2),,Unknown,,,19.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Suezmax (2),"Carrying Value at December 31, 2016",Unknown,,2016,626557.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Total,,Unknown,,,46.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Total,,Unknown,,,45.0
+2018-02-14_tv485862_ex99-3.htm,2018-02-14,,Total,"Carrying Value at December 31, 2016",Unknown,,2016,2364003.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,VLCC,Average spot rate (in TI pool),First quarter 2018,Quarter,1,2018,18725.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,VLCC,Average spot rate (in TI pool),First quarter 2017,Quarter,1,2017,40525.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,VLCC,Average time charter rate,First quarter 2018,Quarter,1,2018,34000.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,VLCC,Average time charter rate,First quarter 2017,Quarter,1,2017,41150.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,SUEZMAX,Average spot rate,First quarter 2018,Quarter,1,2018,14000.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,SUEZMAX,Average spot rate,First quarter 2017,Quarter,1,2017,24000.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,SUEZMAX,Average time charter rate,First quarter 2018,Quarter,1,2018,23850.0
+2018-04-26_d7875850_6-k.htm,2018-04-26,SUEZMAX,Average time charter rate,First quarter 2017,Quarter,1,2017,23875.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average spot rate (in TI pool),Second quarter 2018,Quarter,2,2018,16751.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average spot rate (in TI pool),Second quarter 2017,Quarter,2,2017,28351.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average spot rate (in TI pool),First Semester 2018,Quarter,1,2018,17467.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average spot rate (in TI pool),First Semester 2017,Quarter,1,2017,34843.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average time charter rate,Second quarter 2018,Quarter,2,2018,34976.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average time charter rate,Second quarter 2017,Quarter,2,2017,41480.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average time charter rate,First Semester 2018,Quarter,1,2018,34410.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,VLCC,Average time charter rate,First Semester 2017,Quarter,1,2017,41300.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average spot rate,Second quarter 2018,Quarter,2,2018,12883.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average spot rate,Second quarter 2017,Quarter,2,2017,17341.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average spot rate,First Semester 2018,Quarter,1,2018,13334.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average spot rate,First Semester 2017,Quarter,1,2017,20508.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average time charter rate,Second quarter 2018,Quarter,2,2018,20882.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average time charter rate,Second quarter 2017,Quarter,2,2017,21651.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average time charter rate,First Semester 2018,Quarter,1,2018,23218.0
+2018-08-10_d7960527_6-k.htm,2018-08-10,SUEZMAX,Average time charter rate,First Semester 2017,Quarter,1,2017,22830.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,VLCC (includes ULCC) (1),"Numbers of Vessels at June 30, 2018",Unknown,,2018,41.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,VLCC (includes ULCC) (1),,Unknown,,,25.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,VLCC (includes ULCC) (1),"Carrying Value at December 31, 2017",Unknown,,2017,2717715.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Suezmax (2),"Numbers of Vessels at June 30, 2018",Unknown,,2018,24.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Suezmax (2),,Unknown,,,18.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Suezmax (2),"Carrying Value at December 31, 2017",Unknown,,2017,868084.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,LR1,"Numbers of Vessels at June 30, 2018",Unknown,,2018,2.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,LR1,"Carrying Value at December 31, 2017",Unknown,,2017,19812.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Vessels held for sale,"Numbers of Vessels at June 30, 2018",Unknown,,2018,1.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Vessels held for sale,"Carrying Value at December 31, 2017",Unknown,,2017,1319.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Total,"Numbers of Vessels at June 30, 2018",Unknown,,2018,68.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Total,,Unknown,,,43.0
+2018-10-09_ex2018q2-mda.htm,2018-10-09,,Total,"Carrying Value at December 31, 2017",Unknown,,2017,3606930.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,VLCC,Average spot rate (in TI pool),Third quarter 2018,Quarter,3,2018,17773.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,VLCC,Average spot rate (in TI pool),Third quarter 2017,Quarter,3,2017,18875.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,VLCC,Average time charter rate,Third quarter 2018,Quarter,3,2018,31374.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,VLCC,Average time charter rate,Third quarter 2017,Quarter,3,2017,39875.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,SUEZMAX,Average spot rate,Third quarter 2018,Quarter,3,2018,14919.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,SUEZMAX,Average spot rate,Third quarter 2017,Quarter,3,2017,15670.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,SUEZMAX,Average time charter rate,Third quarter 2018,Quarter,3,2018,29624.0
+2018-10-31_d8091466_6-k.htm,2018-10-31,SUEZMAX,Average time charter rate,Third quarter 2017,Quarter,3,2017,21210.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average spot rate (in TI pool),Fourth quarter 2018,Quarter,4,2018,34959.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average spot rate (in TI pool),Fourth quarter 2017,Quarter,4,2017,25889.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average spot rate (in TI pool),Full Year 2018,Annual,,2018,23035.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average spot rate (in TI pool),Full Year 2017,Annual,,2017,28119.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average time charter rate,Fourth quarter 2018,Quarter,4,2018,31797.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average time charter rate,Fourth quarter 2017,Quarter,4,2017,35399.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average time charter rate,Full Year 2018,Annual,,2018,33338.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,,Average time charter rate,Full Year 2017,Annual,,2017,39629.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average spot rate,Fourth quarter 2018,Quarter,4,2018,20553.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average spot rate,Fourth quarter 2017,Quarter,4,2017,15891.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average spot rate,Full Year 2018,Annual,,2018,15783.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average spot rate,Full Year 2017,Annual,,2017,18085.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average time charter rate,Fourth quarter 2018,Quarter,4,2018,40256.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average time charter rate,Fourth quarter 2017,Quarter,4,2017,21417.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average time charter rate,Full Year 2018,Annual,,2018,30481.0
+2019-01-25_d8123477_6-k.htm,2019-01-25,SUEZMAX,Average time charter rate,Full Year 2017,Annual,,2017,22131.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,VLCC,Average spot rate (in TI pool),First quarter 2019,Quarter,1,2019,35195.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,VLCC,Average spot rate (in TI pool),First quarter 2018,Quarter,1,2018,18725.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,VLCC,Average time charter rate,First quarter 2019,Quarter,1,2019,27630.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,VLCC,Average time charter rate,First quarter 2018,Quarter,1,2018,34000.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,SUEZMAX,Average spot rate,First quarter 2019,Quarter,1,2019,27380.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,SUEZMAX,Average spot rate,First quarter 2018,Quarter,1,2018,14000.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,SUEZMAX,Average time charter rate,First quarter 2019,Quarter,1,2019,32680.0
+2019-05-03_d8223832_6-k.htm,2019-05-03,SUEZMAX,Average time charter rate,First quarter 2018,Quarter,1,2018,23850.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average spot rate (in TI pool),Second quarter 2019,Quarter,2,2019,23218.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average spot rate (in TI pool),Second quarter 2018,Quarter,2,2018,16751.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average spot rate (in TI pool),First Semester 2019,Quarter,1,2019,29150.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average spot rate (in TI pool),First Semester 2018,Quarter,1,2018,17467.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average time charter rate,Second quarter 2019,Quarter,2,2019,27165.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average time charter rate,Second quarter 2018,Quarter,2,2018,34976.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average time charter rate,First Semester 2019,Quarter,1,2019,22534.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,VLCC,Average time charter rate,First Semester 2018,Quarter,1,2018,34410.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average spot rate,Second quarter 2019,Quarter,2,2019,17217.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average spot rate,Second quarter 2018,Quarter,2,2018,12883.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average spot rate,First Semester 2019,Quarter,1,2019,22220.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average spot rate,First Semester 2018,Quarter,1,2018,13334.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average time charter rate,Second quarter 2019,Quarter,2,2019,30375.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average time charter rate,Second quarter 2018,Quarter,2,2018,20882.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average time charter rate,First Semester 2019,Quarter,1,2019,31521.0
+2019-08-09_d8348709_6-k.htm,2019-08-09,SUEZMAX,Average time charter rate,First Semester 2018,Quarter,1,2018,23218.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,VLCC (includes ULCC) (1),"Numbers of Vessels at June 30, 2019",Unknown,,2019,40.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,VLCC (includes ULCC) (1),,Unknown,,,41.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,VLCC (includes ULCC) (1),"Carrying Value at December 31, 2018",Unknown,,2018,2486820.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Suezmax (2),"Numbers of Vessels at June 30, 2019",Unknown,,2019,25.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Suezmax (2),,Unknown,,,25.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Suezmax (2),"Carrying Value at December 31, 2018",Unknown,,2018,854017.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,LR1,,Unknown,,,1.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Vessels held for sale,"Numbers of Vessels at June 30, 2019",Unknown,,2019,1.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Vessels held for sale,,Unknown,,,1.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Vessels held for sale,"Carrying Value at December 31, 2018",Unknown,,2018,23212.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Total,"Numbers of Vessels at June 30, 2019",Unknown,,2019,66.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Total,,Unknown,,,68.0
+2019-10-02_ex99-22019q2xmda.htm,2019-10-02,,Total,"Carrying Value at December 31, 2018",Unknown,,2018,3364049.0
+2019-11-19_d8398961_6-k.htm,2019-11-19,VLCC,Average spot rate (in TI pool),,Unknown,,,25036.0
+2019-11-19_d8398961_6-k.htm,2019-11-19,VLCC,Average time charter rate,,Unknown,,,32790.0
+2019-11-19_d8398961_6-k.htm,2019-11-19,SUEZMAX,Average spot rate,,Unknown,,,17121.0
+2019-11-19_d8398961_6-k.htm,2019-11-19,SUEZMAX,Average time charter rate,,Unknown,,,29884.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,VLCC,Average spot rate (in TI pool),Q4 2019,Quarter,4,2019,61700.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,VLCC,Average spot rate (in TI pool),Full Year 2019,Annual,,2019,35900.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,VLCC,Average time charter rate,Q4 2019,Quarter,4,2019,35700.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,VLCC,Average time charter rate,Full Year 2019,Annual,,2019,32400.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,SUEZMAX,Average spot rate,Q4 2019,Quarter,4,2019,41800.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,SUEZMAX,Average spot rate,Full Year 2019,Annual,,2019,26000.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,SUEZMAX,Average time charter rate,Q4 2019,Quarter,4,2019,29300.0
+2020-01-31_d8451785_6-k.htm,2020-01-31,SUEZMAX,Average time charter rate,Full Year 2019,Annual,,2019,29400.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,VLCC,Average spot rate (in TI pool),First quarter 2020,Quarter,1,2020,72750.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,VLCC,Average spot rate (in TI pool),First quarter 2019,Quarter,1,2019,35195.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,VLCC,Average time charter rate,First quarter 2020,Quarter,1,2020,37000.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,VLCC,Average time charter rate,First quarter 2019,Quarter,1,2019,27630.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,SUEZMAX,Average spot rate,First quarter 2020,Quarter,1,2020,59250.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,SUEZMAX,Average spot rate,First quarter 2019,Quarter,1,2019,27380.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,SUEZMAX,Average time charter rate,First quarter 2020,Quarter,1,2020,30250.0
+2020-05-11_d8525874_6-k.htm,2020-05-11,SUEZMAX,Average time charter rate,First quarter 2019,Quarter,1,2019,32680.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average spot rate (in TI pool),Second Quarter 2020,Quarter,2,2020,81500.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average spot rate (in TI pool),Second Quarter 2019,Quarter,2,2019,23250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average spot rate (in TI pool),First Semester 2020,Quarter,1,2020,76000.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average spot rate (in TI pool),First Semester 2019,Quarter,1,2019,29250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average time charter rate,Second Quarter 2020,Quarter,2,2020,39250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average time charter rate,Second Quarter 2019,Quarter,2,2019,27250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average time charter rate,First Semester 2020,Quarter,1,2020,38250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,VLCC,Average time charter rate,First Semester 2019,Quarter,1,2019,22750.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average spot rate,Second Quarter 2020,Quarter,2,2020,60750.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average spot rate,Second Quarter 2019,Quarter,2,2019,17250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average spot rate,First Semester 2020,Quarter,1,2020,60000.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average spot rate,First Semester 2019,Quarter,1,2019,22250.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average time charter rate,Second Quarter 2020,Quarter,2,2020,29750.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average time charter rate,Second Quarter 2019,Quarter,2,2019,30500.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average time charter rate,First Semester 2020,Quarter,1,2020,30000.0
+2020-08-11_d8577313_6-k.htm,2020-08-11,SUEZMAX,Average time charter rate,First Semester 2019,Quarter,1,2019,31500.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,VLCC,Average spot rate (in TI pool),Third quarter 2020,Quarter,3,2020,42000.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,VLCC,Average spot rate (in TI pool),Third quarter 2019,Quarter,3,2019,25250.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,VLCC,Average time charter rate,Third quarter 2020,Quarter,3,2020,48750.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,VLCC,Average time charter rate,Third quarter 2019,Quarter,3,2019,33000.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,SUEZMAX,Average spot rate,Third quarter 2020,Quarter,3,2020,23500.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,SUEZMAX,Average spot rate,Third quarter 2019,Quarter,3,2019,17250.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,SUEZMAX,Average time charter rate,Third quarter 2020,Quarter,3,2020,29500.0
+2020-11-09_d8635694_6-k.htm,2020-11-09,SUEZMAX,Average time charter rate,Third quarter 2019,Quarter,3,2019,30000.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average spot rate (in TI pool),Fourth Quarter 2020,Quarter,4,2020,20500.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average spot rate (in TI pool),Fourth Quarter 2019,Quarter,4,2019,61700.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average spot rate (in TI pool),Full Year 2020,Annual,,2020,54600.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average spot rate (in TI pool),Full Year 2019,Annual,,2019,35900.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,44700.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average time charter rate,Fourth Quarter 2019,Quarter,4,2019,35700.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average time charter rate,Full Year 2020,Annual,,2020,42200.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,VLCC,Average time charter rate,Full Year 2019,Annual,,2019,32400.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average spot rate,Fourth Quarter 2020,Quarter,4,2020,12300.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average spot rate,Fourth Quarter 2019,Quarter,4,2019,41800.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average spot rate,Full Year 2020,Annual,,2020,39400.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average spot rate,Full Year 2019,Annual,,2019,26000.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,29300.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average time charter rate,Fourth Quarter 2019,Quarter,4,2019,29300.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average time charter rate,Full Year 2020,Annual,,2020,29600.0
+2021-02-08_d8729477_6-k.htm,2021-02-08,SUEZMAX,Average time charter rate,Full Year 2019,Annual,,2019,29400.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average spot rate (in TI pool),Fourth Quarter 2020,Quarter,4,2020,20500.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average spot rate (in TI pool),Fourth Quarter 2019,Quarter,4,2019,61700.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average spot rate (in TI pool),Full Year 2020,Annual,,2020,54600.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average spot rate (in TI pool),Full Year 2019,Annual,,2019,35900.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,44700.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average time charter rate,Fourth Quarter 2019,Quarter,4,2019,35700.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average time charter rate,Full Year 2020,Annual,,2020,39700.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,VLCC,Average time charter rate,Full Year 2019,Annual,,2019,32400.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average spot rate,Fourth Quarter 2020,Quarter,4,2020,12300.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average spot rate,Fourth Quarter 2019,Quarter,4,2019,41800.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average spot rate,Full Year 2020,Annual,,2020,39100.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average spot rate,Full Year 2019,Annual,,2019,26000.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,29300.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average time charter rate,Fourth Quarter 2019,Quarter,4,2019,29300.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average time charter rate,Full Year 2020,Annual,,2020,29600.0
+2021-04-01_d8825715_6-k.htm,2021-04-01,SUEZMAX,Average time charter rate,Full Year 2019,Annual,,2019,29400.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,VLCC,Average spot rate (in TI Pool),First quarter 2021,Quarter,1,2021,14000.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,VLCC,Average spot rate (in TI Pool),First quarter 2020,Quarter,1,2020,72750.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,VLCC,Average time charter rate,First quarter 2021,Quarter,1,2021,39500.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,VLCC,Average time charter rate,First quarter 2020,Quarter,1,2020,37000.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,SUEZMAX,Average spot rate,First quarter 2021,Quarter,1,2021,11500.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,SUEZMAX,Average spot rate,First quarter 2020,Quarter,1,2020,59250.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,SUEZMAX,Average time charter rate,First quarter 2021,Quarter,1,2021,29500.0
+2021-05-06_d8844402_6-k.htm,2021-05-06,SUEZMAX,Average time charter rate,First quarter 2020,Quarter,1,2020,30250.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average spot rate (in TI Pool),Second Quarter 2021,Quarter,2,2021,11250.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average spot rate (in TI Pool),Second Quarter 2020,Quarter,2,2020,81500.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average spot rate (in TI Pool),First Semester 2021,Quarter,1,2021,13000.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average spot rate (in TI Pool),First Semester 2020,Quarter,1,2020,76000.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average time charter rate,Second Quarter 2021,Quarter,2,2021,51250.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average time charter rate,Second Quarter 2020,Quarter,2,2020,39250.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average time charter rate,First Semester 2021,Quarter,1,2021,43750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,VLCC,Average time charter rate,First Semester 2020,Quarter,1,2020,38250.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average spot rate,Second Quarter 2021,Quarter,2,2021,10500.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average spot rate,Second Quarter 2020,Quarter,2,2020,60750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average spot rate,First Semester 2021,Quarter,1,2021,11750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average spot rate,First Semester 2020,Quarter,1,2020,60000.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average time charter rate,Second Quarter 2021,Quarter,2,2021,29750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average time charter rate,Second Quarter 2020,Quarter,2,2020,29750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average time charter rate,First Semester 2021,Quarter,1,2021,29750.0
+2021-08-13_d8903868_6-k.htm,2021-08-13,SUEZMAX,Average time charter rate,First Semester 2020,Quarter,1,2020,30000.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,VLCC,Average spot rate (in TI Pool),Third quarter 2021,Quarter,3,2021,9000.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,VLCC,Average spot rate (in TI Pool),Third quarter 2020,Quarter,3,2020,42000.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,VLCC,Average time charter rate,Third quarter 2021,Quarter,3,2021,50250.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,VLCC,Average time charter rate,Third quarter 2020,Quarter,3,2020,48750.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,SUEZMAX,Average spot rate,Third quarter 2021,Quarter,3,2021,10250.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,SUEZMAX,Average spot rate,Third quarter 2020,Quarter,3,2020,23500.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,SUEZMAX,Average time charter rate,Third quarter 2021,Quarter,3,2021,29500.0
+2021-11-05_d8898477_6-k.htm,2021-11-05,SUEZMAX,Average time charter rate,Third quarter 2020,Quarter,3,2020,29500.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average spot rate (in TI pool),Fourth Quarter 2021,Quarter,4,2021,12500.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average spot rate (in TI pool),Fourth Quarter 2020,Quarter,4,2020,20500.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average spot rate (in TI pool),Full Year 2021,Annual,,2021,11300.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average spot rate (in TI pool),Full Year 2020,Annual,,2020,54600.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average time charter rate,Fourth Quarter 2021,Quarter,4,2021,46900.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,44700.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average time charter rate,Full Year 2021,Annual,,2021,46500.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,VLCC,Average time charter rate,Full Year 2020,Annual,,2020,42200.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average spot rate,Fourth Quarter 2021,Quarter,4,2021,11300.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average spot rate,Fourth Quarter 2020,Quarter,4,2020,12300.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average spot rate,Full Year 2021,Annual,,2021,11100.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average spot rate,Full Year 2020,Annual,,2020,39400.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average time charter rate,Fourth Quarter 2021,Quarter,4,2021,30400.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,29300.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average time charter rate,Full Year 2021,Annual,,2021,29800.0
+2022-02-04_d9164703_6-k.htm,2022-02-04,SUEZMAX,Average time charter rate,Full Year 2020,Annual,,2020,29600.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average spot rate (in TI Pool),Fourth Quarter 2021,Quarter,4,2021,12500.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average spot rate (in TI Pool),Fourth Quarter 2020,Quarter,4,2020,20500.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average spot rate (in TI Pool),Full Year 2021,Annual,,2021,11300.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average spot rate (in TI Pool),Full Year 2020,Annual,,2020,54600.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average time charter rate,Fourth Quarter 2021,Quarter,4,2021,46900.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,44700.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average time charter rate,Full Year 2021,Annual,,2021,46500.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,VLCC,Average time charter rate,Full Year 2020,Annual,,2020,39700.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average spot rate,Fourth Quarter 2021,Quarter,4,2021,11300.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average spot rate,Fourth Quarter 2020,Quarter,4,2020,12300.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average spot rate,Full Year 2021,Annual,,2021,11100.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average spot rate,Full Year 2020,Annual,,2020,39100.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average time charter rate,Fourth Quarter 2021,Quarter,4,2021,30400.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average time charter rate,Fourth Quarter 2020,Quarter,4,2020,29300.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average time charter rate,Full Year 2021,Annual,,2021,29800.0
+2022-04-05_d9439011_6-k.htm,2022-04-05,SUEZMAX,Average time charter rate,Full Year 2020,Annual,,2020,29600.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,VLCC,Average spot rate (in TI Pool),First quarter 2022,Quarter,1,2022,13750.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,VLCC,Average spot rate (in TI Pool),First quarter 2021,Quarter,1,2021,14000.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,VLCC,Average time charter rate,First quarter 2022,Quarter,1,2022,48300.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,VLCC,Average time charter rate,First quarter 2021,Quarter,1,2021,39500.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,SUEZMAX,Average spot rate,First quarter 2022,Quarter,1,2022,15500.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,SUEZMAX,Average spot rate,First quarter 2021,Quarter,1,2021,11500.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,SUEZMAX,Average time charter rate,First quarter 2022,Quarter,1,2022,30500.0
+2022-05-12_d9505388_6-k.htm,2022-05-12,SUEZMAX,Average time charter rate,First quarter 2021,Quarter,1,2021,29500.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average spot rate (in TI Pool),,Unknown,,,17000.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average spot rate (in TI Pool),,Unknown,,,11250.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average spot rate (in TI Pool),First Semester 2021,Quarter,1,2021,15000.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average time charter rate,,Unknown,,,45500.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average time charter rate,,Unknown,,,51250.0
+2022-08-04_d365188dex991.htm,2022-08-04,VLCC,Average time charter rate,First Semester 2021,Quarter,1,2021,47000.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average spot rate,,Unknown,,,20000.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average spot rate,,Unknown,,,10500.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average spot rate,First Semester 2021,Quarter,1,2021,17750.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average time charter rate,,Unknown,,,30500.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average time charter rate,,Unknown,,,29750.0
+2022-08-04_d365188dex991.htm,2022-08-04,SUEZMAX,Average time charter rate,First Semester 2021,Quarter,1,2021,30500.0
+2022-11-04_d9814262_6k.htm,2022-11-04,VLCC,Average spot rate (in TI Pool),Third quarter 2022,Quarter,3,2022,22250.0
+2022-11-04_d9814262_6k.htm,2022-11-04,VLCC,Average spot rate (in TI Pool),Third quarter 2021,Quarter,3,2021,9000.0
+2022-11-04_d9814262_6k.htm,2022-11-04,VLCC,Average time charter rate,Third quarter 2022,Quarter,3,2022,47000.0
+2022-11-04_d9814262_6k.htm,2022-11-04,VLCC,Average time charter rate,Third quarter 2021,Quarter,3,2021,50250.0
+2022-11-04_d9814262_6k.htm,2022-11-04,SUEZMAX,Average spot rate,Third quarter 2022,Quarter,3,2022,34000.0
+2022-11-04_d9814262_6k.htm,2022-11-04,SUEZMAX,Average spot rate,Third quarter 2021,Quarter,3,2021,10250.0
+2022-11-04_d9814262_6k.htm,2022-11-04,SUEZMAX,Average time charter rate,Third quarter 2022,Quarter,3,2022,30500.0
+2022-11-04_d9814262_6k.htm,2022-11-04,SUEZMAX,Average time charter rate,Third quarter 2021,Quarter,3,2021,29500.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average spot rate (in TI Pool),Q4 2022,Quarter,4,2022,57400.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average spot rate (in TI Pool),Q4 2021,Quarter,4,2021,12500.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average spot rate (in TI Pool),Full Year 2022,Annual,,2022,27600.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average spot rate (in TI Pool),Full Year 2021,Annual,,2021,11300.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average time charter rate,Q4 2022,Quarter,4,2022,34400.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average time charter rate,Q4 2021,Quarter,4,2021,46900.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average time charter rate,Full Year 2022,Annual,,2022,42900.0
+2023-02-03_d453192dex991.htm,2023-02-03,VLCC,Average time charter rate,Full Year 2021,Annual,,2021,46500.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average spot rate,Q4 2022,Quarter,4,2022,57800.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average spot rate,Q4 2021,Quarter,4,2021,11300.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average spot rate,Full Year 2022,Annual,,2022,31200.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average spot rate,Full Year 2021,Annual,,2021,11100.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average time charter rate,Q4 2022,Quarter,4,2022,30400.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average time charter rate,Q4 2021,Quarter,4,2021,30400.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average time charter rate,Full Year 2022,Annual,,2022,30400.0
+2023-02-03_d453192dex991.htm,2023-02-03,SUEZMAX,Average time charter rate,Full Year 2021,Annual,,2021,30400.0
+2023-04-03_d471656dex991.htm,2023-04-03,,Average spot rate (in TI Pool),,Unknown,,,27600.0
+2023-04-03_d471656dex991.htm,2023-04-03,,Average time charter rate,,Unknown,,,42900.0
+2023-04-03_d471656dex991.htm,2023-04-03,,Average spot rate,,Unknown,,,31200.0
+2023-04-03_d471656dex991.htm,2023-04-03,,Average time charter rate,,Unknown,,,30300.0
+2023-05-11_d496297dex991.htm,2023-05-11,VLCC,Average spot rate (in TI Pool),Q1 2023,Quarter,1,2023,51400.0
+2023-05-11_d496297dex991.htm,2023-05-11,VLCC,Average spot rate (in TI Pool),Q1 2022,Quarter,1,2022,13750.0
+2023-05-11_d496297dex991.htm,2023-05-11,VLCC,Average time charter rate,Q1 2023,Quarter,1,2023,48500.0
+2023-05-11_d496297dex991.htm,2023-05-11,VLCC,Average time charter rate,Q1 2022,Quarter,1,2022,48300.0
+2023-05-11_d496297dex991.htm,2023-05-11,SUEZMAX,Average spot rate,Q1 2023,Quarter,1,2023,70600.0
+2023-05-11_d496297dex991.htm,2023-05-11,SUEZMAX,Average spot rate,Q1 2022,Quarter,1,2022,15500.0
+2023-05-11_d496297dex991.htm,2023-05-11,SUEZMAX,Average time charter rate,Q1 2023,Quarter,1,2023,31700.0
+2023-05-11_d496297dex991.htm,2023-05-11,SUEZMAX,Average time charter rate,Q1 2022,Quarter,1,2022,30500.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average spot rate (in TI Pool),Q2 2023,Quarter,2,2023,55000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average spot rate (in TI Pool),Q2 2022,Quarter,2,2022,17000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average spot rate (in TI Pool),First semester 2023,Quarter,1,2023,53100.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average spot rate (in TI Pool),First semester 2022,Quarter,1,2022,15000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average time charter rate,Q2 2023,Quarter,2,2023,50750.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average time charter rate,Q2 2022,Quarter,2,2022,45500.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average time charter rate,First semester 2023,Quarter,1,2023,49500.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,VLCC,Average time charter rate,First semester 2022,Quarter,1,2022,47000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average spot rate,Q2 2023,Quarter,2,2023,68000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average spot rate,Q2 2022,Quarter,2,2022,20000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average spot rate,First semester 2023,Quarter,1,2023,69700.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average spot rate,First semester 2022,Quarter,1,2022,17750.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average time charter rate,Q2 2023,Quarter,2,2023,30500.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average time charter rate,Q2 2022,Quarter,2,2022,30500.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average time charter rate,First semester 2023,Quarter,1,2023,31000.0
+2023-08-03_d10777712_6-k.htm,2023-08-03,SUEZMAX,Average time charter rate,First semester 2022,Quarter,1,2022,30500.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,VLCC,Average spot rate (in TI Pool),Third quarter 2023,Quarter,3,2023,42250.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,VLCC,Average spot rate (in TI Pool),Third quarter 2022,Quarter,3,2022,22250.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,VLCC,Average time charter rate,Third quarter 2023,Quarter,3,2023,48250.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,VLCC,Average time charter rate,Third quarter 2022,Quarter,3,2022,47000.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,SUEZMAX,Average spot rate,Third quarter 2023,Quarter,3,2023,42750.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,SUEZMAX,Average spot rate,Third quarter 2022,Quarter,3,2022,34000.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,SUEZMAX,Average time charter rate,Third quarter 2023,Quarter,3,2023,30250.0
+2023-11-02_d10861139_6-k.htm,2023-11-02,SUEZMAX,Average time charter rate,Third quarter 2022,Quarter,3,2022,30500.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average spot rate (in TI Pool),Fourth quarter 2023,Quarter,4,2023,41700.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average spot rate (in TI Pool),Fourth quarter 2022,Quarter,4,2022,57400.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average spot rate (in TI Pool),Full Year 2023,Annual,,2023,47600.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average spot rate (in TI Pool),Full Year 2022,Annual,,2022,27600.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average time charter rate,Fourth quarter 2023,Quarter,4,2023,47500.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average time charter rate,Fourth quarter 2022,Quarter,4,2022,34400.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average time charter rate,Full Year 2023,Annual,,2023,48500.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,VLCC,Average time charter rate,Full Year 2022,Annual,,2022,42900.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average spot rate,Fourth quarter 2023,Quarter,4,2023,42800.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average spot rate,Fourth quarter 2022,Quarter,4,2022,57800.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average spot rate,Full Year 2023,Annual,,2023,55700.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average spot rate,Full Year 2022,Annual,,2022,31200.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average time charter rate,Fourth quarter 2023,Quarter,4,2023,30700.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average time charter rate,Fourth quarter 2022,Quarter,4,2022,30400.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average time charter rate,Full Year 2023,Annual,,2023,30500.0
+2024-02-01_d10967045_6-k.htm,2024-02-01,SUEZMAX,Average time charter rate,Full Year 2022,Annual,,2022,30400.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average spot rate (in TI Pool),Full Year 2023,Annual,,2023,47600.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average spot rate (in TI Pool),Full Year 2022,Annual,,2022,27600.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average time charter rate,Full Year 2023,Annual,,2023,48500.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average time charter rate,Full Year 2022,Annual,,2022,42900.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average spot rate,Full Year 2023,Annual,,2023,55700.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average spot rate,Full Year 2022,Annual,,2022,31200.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average time charter rate,Full Year 2023,Annual,,2023,30500.0
+2024-04-04_d11022085_6k.htm,2024-04-04,,Average time charter rate,Full Year 2022,Annual,,2022,30400.0
+2024-05-08_d11047336_6k.htm,2024-05-08,VLCC,Average spot rate (in TI Pool),Q1 2024,Quarter,1,2024,41700.0
+2024-05-08_d11047336_6k.htm,2024-05-08,VLCC,Average spot rate (in TI Pool),Q1 2023,Quarter,1,2023,51400.0
+2024-05-08_d11047336_6k.htm,2024-05-08,VLCC,Average time charter rate,Q1 2024,Quarter,1,2024,46300.0
+2024-05-08_d11047336_6k.htm,2024-05-08,VLCC,Average time charter rate,Q1 2023,Quarter,1,2023,48500.0
+2024-05-08_d11047336_6k.htm,2024-05-08,SUEZMAX,Average spot rate,Q1 2024,Quarter,1,2024,58000.0
+2024-05-08_d11047336_6k.htm,2024-05-08,SUEZMAX,Average spot rate,Q1 2023,Quarter,1,2023,70600.0
+2024-05-08_d11047336_6k.htm,2024-05-08,SUEZMAX,Average time charter rate,Q1 2024,Quarter,1,2024,30700.0
+2024-05-08_d11047336_6k.htm,2024-05-08,SUEZMAX,Average time charter rate,Q1 2023,Quarter,1,2023,31700.0
+2024-05-08_d11047336_6k.htm,2024-05-08,DRY-BULK VESSELS,Average spot rate,Q1 2024,Quarter,1,2024,23924.0
+2024-05-08_d11047336_6k.htm,2024-05-08,CONTAINER VESSELS,Average time charter rate,Q1 2024,Quarter,1,2024,29378.0
+2024-05-08_d11047336_6k.htm,2024-05-08,CHEMICAL TANKERS,Average spot rate,Q1 2024,Quarter,1,2024,25545.0
+2024-05-08_d11047336_6k.htm,2024-05-08,OFF-SHORE WIND (CTV),Average time charter rate,Q1 2024,Quarter,1,2024,2889.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average spot rate (in TI Pool),Q2 2024,Quarter,2,2024,50500.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average spot rate (in TI Pool),Q2 2023,Quarter,2,2023,55000.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average spot rate (in TI Pool),First semester 2024,Quarter,1,2024,45600.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average spot rate (in TI Pool),First semester 2023,Quarter,1,2023,53100.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average time charter rate,Q2 2024,Quarter,2,2024,47000.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average time charter rate,Q2 2023,Quarter,2,2023,50750.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average time charter rate,First semester 2024,Quarter,1,2024,46700.0
+2024-08-08_d11440037_6k.htm,2024-08-08,VLCC,Average time charter rate,First semester 2023,Quarter,1,2023,49500.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average spot rate,Q2 2024,Quarter,2,2024,49500.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average spot rate,Q2 2023,Quarter,2,2023,68000.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average spot rate,First semester 2024,Quarter,1,2024,54600.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average spot rate,First semester 2023,Quarter,1,2023,69700.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average time charter rate,Q2 2024,Quarter,2,2024,30750.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average time charter rate,Q2 2023,Quarter,2,2023,30500.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average time charter rate,First semester 2024,Quarter,1,2024,30700.0
+2024-08-08_d11440037_6k.htm,2024-08-08,SUEZMAX,Average time charter rate,First semester 2023,Quarter,1,2023,31000.0
+2024-08-08_d11440037_6k.htm,2024-08-08,FSO,Average time charter rate,Q2 2024,Quarter,2,2024,88045.0
+2024-08-08_d11440037_6k.htm,2024-08-08,FSO,Average time charter rate,First semester 2024,Quarter,1,2024,87562.0
+2024-08-08_d11440037_6k.htm,2024-08-08,DRY-BULK VESSELS,Average spot rate,Q2 2024,Quarter,2,2024,36731.0
+2024-08-08_d11440037_6k.htm,2024-08-08,DRY-BULK VESSELS,Average spot rate,First semester 2024,Quarter,1,2024,31504.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CONTAINER VESSELS,Average time charter rate,Q2 2024,Quarter,2,2024,29378.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CONTAINER VESSELS,Average time charter rate,First semester 2024,Quarter,1,2024,29378.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CHEMICAL TANKERS,Average spot rate,Q2 2024,Quarter,2,2024,27307.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CHEMICAL TANKERS,Average spot rate,First semester 2024,Quarter,1,2024,26426.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CHEMICAL TANKERS,Average time charter,Q2 2024,Quarter,2,2024,19306.0
+2024-08-08_d11440037_6k.htm,2024-08-08,CHEMICAL TANKERS,Average time charter,First semester 2024,Quarter,1,2024,19306.0
+2024-08-08_d11440037_6k.htm,2024-08-08,OFF-SHORE WIND (CTV),Average time charter rate,Q2 2024,Quarter,2,2024,2759.0
+2024-08-08_d11440037_6k.htm,2024-08-08,OFF-SHORE WIND (CTV),Average time charter rate,First semester 2024,Quarter,1,2024,2824.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,VLCC,Average spot rate (in TI Pool),Q3 2024,Quarter,3,2024,39700.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,VLCC,Average spot rate (in TI Pool),Q3 2023,Quarter,3,2023,42250.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,VLCC,Average time charter rate,Q3 2024,Quarter,3,2024,46700.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,VLCC,Average time charter rate,Q3 2023,Quarter,3,2023,48250.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,SUEZMAX,Average spot rate,Q3 2024,Quarter,3,2024,37200.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,SUEZMAX,Average spot rate,Q3 2023,Quarter,3,2023,42750.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,SUEZMAX,Average time charter rate,Q3 2024,Quarter,3,2024,30750.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,SUEZMAX,Average time charter rate,Q3 2023,Quarter,3,2023,30250.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,DRY-BULK VESSELS,Average spot rate,Q3 2024,Quarter,3,2024,31271.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,CONTAINER VESSELS,Average time charter rate,Q3 2024,Quarter,3,2024,29378.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,CHEMICAL TANKERS,Average spot rate,Q3 2024,Quarter,3,2024,25489.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,CHEMICAL TANKERS,Average time charter rate,Q3 2024,Quarter,3,2024,19306.0
+2024-11-07_d11517912_ex99-1.htm,2024-11-07,OFF-SHORE WIND (CTV),Average time charter rate,Q3 2024,Quarter,3,2024,3075.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average spot rate (in TI Pool),Q4 2024,Quarter,4,2024,37400.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average spot rate (in TI Pool),Q4 2023,Quarter,4,2023,41700.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average spot rate (in TI Pool),Full year 2024,Annual,,2024,44600.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average spot rate (in TI Pool),Full year 2023,Annual,,2023,47600.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average time charter rate,Q4 2024,Quarter,4,2024,46300.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average time charter rate,Q4 2023,Quarter,4,2023,47500.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average time charter rate,Full year 2024,Annual,,2024,46600.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,VLCC,Average time charter rate,Full year 2023,Annual,,2023,48500.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average spot rate,Q4 2024,Quarter,4,2024,38300.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average spot rate,Q4 2023,Quarter,4,2023,42800.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average spot rate,Full year 2024,Annual,,2024,45600.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average spot rate,Full year 2023,Annual,,2023,55700.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average time charter rate,Q4 2024,Quarter,4,2024,31800.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average time charter rate,Q4 2023,Quarter,4,2023,30700.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average time charter rate,Full year 2024,Annual,,2024,31000.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,SUEZMAX,Average time charter rate,Full year 2023,Annual,,2023,30500.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,DRY-BULK VESSELS,Average spot rate,Q4 2024,Quarter,4,2024,29800.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,CONTAINER VESSELS,Average time charter rate,Q4 2024,Quarter,4,2024,29400.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,CHEMICAL TANKERS,Average spot rate,Q4 2024,Quarter,4,2024,24500.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,CHEMICAL TANKERS,Average time charter rate,Q4 2024,Quarter,4,2024,19300.0
+2025-02-27_d11617043_ex99-1.htm,2025-02-27,OFF-SHORE WIND (CTV),Average time charter rate,Q4 2024,Quarter,4,2024,2900.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,VLCC,Average spot rate (in TI Pool),Full year 2024,Annual,,2024,44600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,VLCC,Average spot rate (in TI Pool),Full year 2023,Annual,,2023,47600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,VLCC,Average time charter rate,Full year 2024,Annual,,2024,46600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,VLCC,Average time charter rate,Full year 2023,Annual,,2023,48500.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,SUEZMAX,Average spot rate,Full year 2024,Annual,,2024,45600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,SUEZMAX,Average spot rate,Full year 2023,Annual,,2023,55700.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,SUEZMAX,Average time charter rate,Full year 2024,Annual,,2024,31000.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,SUEZMAX,Average time charter rate,Full year 2023,Annual,,2023,30500.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,DRY-BULK VESSELS,Average spot rate,Full year 2024,Annual,,2024,30600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,CONTAINER VESSELS,Average time charter rate,Full year 2024,Annual,,2024,29400.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,CHEMICAL TANKERS,Average spot rate,Full year 2024,Annual,,2024,25600.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,CHEMICAL TANKERS,Average time charter rate,Full year 2024,Annual,,2024,19900.0
+2025-03-28_d11689938_ex99-1.htm,2025-03-28,OFFSHORE WIND (CTV),Average time charter rate,Full year 2024,Annual,,2024,2973.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,VLCC,Average spot rate (in TI Pool),Q1 2025,Quarter,1,2025,35101.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,VLCC,Average spot rate (in TI Pool),Q1 2024,Quarter,1,2024,41700.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,VLCC,Average time charter rate,Q1 2025,Quarter,1,2025,46135.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,VLCC,Average time charter rate,Q1 2024,Quarter,1,2024,46300.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,SUEZMAX,Average spot rate,Q1 2025,Quarter,1,2025,41391.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,SUEZMAX,Average spot rate,Q1 2024,Quarter,1,2024,58000.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,SUEZMAX,Average time charter rate,Q1 2025,Quarter,1,2025,31328.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,SUEZMAX,Average time charter rate,Q1 2024,Quarter,1,2024,30700.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,DRY-BULK VESSELS,Average spot rate,Q1 2025,Quarter,1,2025,18393.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,DRY-BULK VESSELS,Average spot rate,Q1 2024,Quarter,1,2024,23924.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CONTAINER VESSELS,Average time charter rate,Q1 2025,Quarter,1,2025,29378.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CONTAINER VESSELS,Average time charter rate,Q1 2024,Quarter,1,2024,29378.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CHEMICAL TANKERS,Average spot rate,Q1 2025,Quarter,1,2025,20521.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CHEMICAL TANKERS,Average spot rate,Q1 2024,Quarter,1,2024,25545.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CHEMICAL TANKERS,Average time charter rate,Q1 2025,Quarter,1,2025,19306.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,CHEMICAL TANKERS,Average time charter rate,Q1 2024,Quarter,1,2024,19306.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,OFF-SHORE WIND (CTV),Average time charter rate,Q1 2025,Quarter,1,2025,2376.0
+2025-05-21_d11808020_ex99-1.htm,2025-05-21,OFF-SHORE WIND (CTV),Average time charter rate,Q1 2024,Quarter,1,2024,2889.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average spot rate (in TI Pool),Q2 2025,Quarter,2,2025,44981.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average spot rate (in TI Pool),Q2 2024,Quarter,2,2024,50500.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average spot rate (in TI Pool),First semester 2025,Quarter,1,2025,39774.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average spot rate (in TI Pool),First semester 2024,Quarter,1,2024,45600.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average time charter rate,Q2 2025,Quarter,2,2025,46094.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average time charter rate,Q2 2024,Quarter,2,2024,47000.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average time charter rate,First semester 2025,Quarter,1,2025,46114.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,VLCC,Average time charter rate,First semester 2024,Quarter,1,2024,46700.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average spot rate,Q2 2025,Quarter,2,2025,40160.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average spot rate,Q2 2024,Quarter,2,2024,49500.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average spot rate,First semester 2025,Quarter,1,2025,40314.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average spot rate,First semester 2024,Quarter,1,2024,54600.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average time charter rate,Q2 2025,Quarter,2,2025,33023.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average time charter rate,Q2 2024,Quarter,2,2024,30750.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average time charter rate,First semester 2025,Quarter,1,2025,32845.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,SUEZMAX,Average time charter rate,First semester 2024,Quarter,1,2024,30700.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,DRY-BULK VESSELS,Average spot rate,Q2 2025,Quarter,2,2025,23081.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,DRY-BULK VESSELS,Average spot rate,Q2 2024,Quarter,2,2024,36731.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,DRY-BULK VESSELS,Average spot rate,First semester 2025,Quarter,1,2025,20.975
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,DRY-BULK VESSELS,Average spot rate,First semester 2024,Quarter,1,2024,31504.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CONTAINER VESSELS,Average time charter rate,Q2 2025,Quarter,2,2025,29378.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CONTAINER VESSELS,Average time charter rate,Q2 2024,Quarter,2,2024,29378.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CONTAINER VESSELS,Average time charter rate,First semester 2025,Quarter,1,2025,29378.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CONTAINER VESSELS,Average time charter rate,First semester 2024,Quarter,1,2024,29378.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average spot rate,Q2 2025,Quarter,2,2025,22411.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average spot rate,Q2 2024,Quarter,2,2024,27307.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average spot rate,First semester 2025,Quarter,1,2025,21.471
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average spot rate,First semester 2024,Quarter,1,2024,26426.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average time charter rate,Q2 2025,Quarter,2,2025,19306.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average time charter rate,Q2 2024,Quarter,2,2024,19306.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average time charter rate,First semester 2025,Quarter,1,2025,19306.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,CHEMICAL TANKERS,Average time charter rate,First semester 2024,Quarter,1,2024,19306.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,OFF-SHORE WIND (CTV),Average time charter rate,Q2 2025,Quarter,2,2025,3146.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,OFF-SHORE WIND (CTV),Average time charter rate,Q2 2024,Quarter,2,2024,2759.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,OFF-SHORE WIND (CTV),Average time charter rate,First semester 2025,Quarter,1,2025,2789.0
+2025-08-28_d11972542_ex99-1.htm,2025-08-28,OFF-SHORE WIND (CTV),Average time charter rate,First semester 2024,Quarter,1,2024,2824.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Newcastlemax Average rate (1)(2),Q3 2025,Quarter,3,2025,27872.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Newcastlemax Average rate (1)(2),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,30954.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Capesize Average rate (1)(2),Q3 2025,Quarter,3,2025,20577.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Capesize Average rate (1)(2),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,27084.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Panamax/Kamsarmax Average rate (1)(2),Q3 2025,Quarter,3,2025,13437.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,DRY BULK VESSELS,Panamax/Kamsarmax Average rate (1)(2),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,15814.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,VLCC Average spot rate (in TI Pool) (3),Q3 2025,Quarter,3,2025,28715.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,VLCC Average spot rate (in TI Pool) (3),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,54206.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,VLCC Average time charter rate (4),Q3 2025,Quarter,3,2025,45725.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,Suezmax Average spot rate (1) (4),Q3 2025,Quarter,3,2025,47104.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,Suezmax Average spot rate (1) (4),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,49249.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,TANKERS,Suezmax Average time charter rate,Q3 2025,Quarter,3,2025,33455.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,CONTAINER VESSELS,Average time charter rate,Q3 2025,Quarter,3,2025,29378.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,CHEMICAL TANKERS,Average spot rate,Q3 2025,Quarter,3,2025,20758.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,CHEMICAL TANKERS,Average time charter rate,Q3 2025,Quarter,3,2025,19306.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,OFFSHORE WIND,CSOV Average time charter rate,Q3 2025,Quarter,3,2025,27272.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,OFFSHORE WIND,CSOV Average time charter rate,Quarter-to-Date Q4 2025,QuarterToDate,4,2025,120331.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,OFFSHORE WIND,CTV Average time charter rate,Q3 2025,Quarter,3,2025,3470.0
+2025-10-20_d12023275_ex99-2.htm,2025-10-20,OFFSHORE WIND,CTV Average time charter rate,Quarter-to-Date Q4 2025,QuarterToDate,4,2025,2971.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q3 2025,Quarter,3,2025,29423.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q3 2024,Quarter,3,2024,31271.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,33685.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Newcastlemax average time charter rate,Q3 2025,Quarter,3,2025,21329.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Capesize average rate (1),Q3 2025,Quarter,3,2025,20537.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Capesize average rate (1),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,26284.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Q3 2025,Quarter,3,2025,13467.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,17042.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,DRY BULK VESSELS,Panamax/Kamsarmax average time charter rate,Q3 2025,Quarter,3,2025,13364.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,VLCC average spot rate (2),Q3 2025,Quarter,3,2025,30486.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,VLCC average spot rate (2),Q3 2024,Quarter,3,2024,39700.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,VLCC average spot rate (2),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,68048.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,VLCC average time charter rate (3),Q3 2025,Quarter,3,2025,45725.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,VLCC average time charter rate (3),Q3 2024,Quarter,3,2024,46700.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,Suezmax average spot rate (1) (3),Q3 2025,Quarter,3,2025,48210.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,Suezmax average spot rate (1) (3),Q3 2024,Quarter,3,2024,37200.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,Suezmax average spot rate (1) (3),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,59910.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,Suezmax average time charter rate,Q3 2025,Quarter,3,2025,33455.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,TANKERS,Suezmax average time charter rate,Q3 2024,Quarter,3,2024,30750.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CONTAINER VESSELS,Average time charter rate,Q3 2025,Quarter,3,2025,29378.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CONTAINER VESSELS,Average time charter rate,Q3 2024,Quarter,3,2024,29378.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CHEMICAL TANKERS,Average spot rate (1) (2),Q3 2025,Quarter,3,2025,20675.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CHEMICAL TANKERS,Average spot rate (1) (2),Q3 2024,Quarter,3,2024,25489.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CHEMICAL TANKERS,Average spot rate (1) (2),Quarter-to-Date Q4 2025,QuarterToDate,4,2025,22578.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CHEMICAL TANKERS,Average time charter rate,Q3 2025,Quarter,3,2025,19306.0
+2025-11-26_d12048211_ex99-1.htm,2025-11-26,CHEMICAL TANKERS,Average time charter rate,Q3 2024,Quarter,3,2024,19306.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q4 2025,Quarter,4,2025,34886.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q4 2024,Quarter,4,2024,29800.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Newcastlemax average spot rate (1),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,30673.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Newcastlemax average time charter rate,Q4 2025,Quarter,4,2025,21284.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Capesize average rate (1),Q4 2025,Quarter,4,2025,30137.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Capesize average rate (1),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,26725.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Q4 2025,Quarter,4,2025,17337.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,13279.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,DRY BULK VESSELS,Panamax/Kamsarmax average time charter rate,Q4 2025,Quarter,4,2025,13207.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,VLCC average spot rate (2),Q4 2025,Quarter,4,2025,74842.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,VLCC average spot rate (2),Q4 2024,Quarter,4,2024,37400.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,VLCC average spot rate (2),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,74465.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,VLCC average time charter rate (3),Q4 2025,Quarter,4,2025,45582.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,VLCC average time charter rate (3),Q4 2024,Quarter,4,2024,46300.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,Suezmax average spot rate (1) (3),Q4 2025,Quarter,4,2025,64543.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,Suezmax average spot rate (1) (3),Q4 2024,Quarter,4,2024,38300.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,Suezmax average spot rate (1) (3),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,61809.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,Suezmax average time charter rate,Q4 2025,Quarter,4,2025,33613.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,TANKERS,Suezmax average time charter rate,Q4 2024,Quarter,4,2024,31800.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CONTAINER VESSELS,Average time charter rate,Q4 2025,Quarter,4,2025,29378.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CONTAINER VESSELS,Average time charter rate,Q4 2024,Quarter,4,2024,29378.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CHEMICAL TANKERS,Average spot rate (1) (2),Q4 2025,Quarter,4,2025,20887.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CHEMICAL TANKERS,Average spot rate (1) (2),Q4 2024,Quarter,4,2024,24500.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CHEMICAL TANKERS,Average spot rate (1) (2),Quarter-to-Date Q1 2026,QuarterToDate,1,2026,17878.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CHEMICAL TANKERS,Average time charter rate,Q4 2025,Quarter,4,2025,19306.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,CHEMICAL TANKERS,Average time charter rate,Q4 2024,Quarter,4,2024,19306.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,OFFSHORE WIND,CSOV Average time charter rate,Q4 2025,Quarter,4,2025,108046.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,OFFSHORE WIND,CSOV Average time charter rate,Quarter-to-Date Q1 2026,QuarterToDate,1,2026,69900.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,OFFSHORE WIND,CTV Average time charter rate,Q4 2025,Quarter,4,2025,2883.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,OFFSHORE WIND,CTV Average time charter rate,Q4 2024,Quarter,4,2024,2900.0
+2026-02-26_d12108481_ex99-1.htm,2026-02-26,OFFSHORE WIND,CTV Average time charter rate,Quarter-to-Date Q1 2026,QuarterToDate,1,2026,2472.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Newcastlemax average spot rate (1),Full year 2025,Annual,,2025,27614.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Newcastlemax average spot rate (1),Full year 2024,Annual,,2024,30600.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Newcastlemax average time charter rate,Full year 2025,Annual,,2025,21457.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Capesize average spot rate (1),Full year 2025,Annual,,2025,22346.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Full year 2025,Annual,,2025,13000.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,DRY BULK VESSELS,Panamax/Kamsarmax average time charter rate,Full year 2025,Annual,,2025,13552.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,VLCC average spot rate (2),Full year 2025,Annual,,2025,45251.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,VLCC average spot rate (2),Full year 2024,Annual,,2024,44600.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,VLCC average time charter rate,Full year 2025,Annual,,2025,45912.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,VLCC average time charter rate,Full year 2024,Annual,,2024,45912.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,Suezmax average spot rate (1) (3),Full year 2025,Annual,,2025,46508.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,Suezmax average spot rate (1) (3),Full year 2024,Annual,,2024,45600.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,Suezmax average time charter rate,Full year 2025,Annual,,2025,34838.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,Suezmax average time charter rate,Full year 2024,Annual,,2024,31000.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,FSO Average time charter rate,Full year 2025,Annual,,2025,86689.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,TANKERS,FSO Average time charter rate,Full year 2024,Annual,,2024,87330.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CONTAINER VESSELS,Average time charter rate,Full year 2025,Annual,,2025,29378.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CONTAINER VESSELS,Average time charter rate,Full year 2024,Annual,,2024,29378.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CHEMICAL TANKERS,Average spot rate (2),Full year 2025,Annual,,2025,20675.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CHEMICAL TANKERS,Average spot rate (2),Full year 2024,Annual,,2024,25600.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CHEMICAL TANKERS,Average time charter rate,Full year 2025,Annual,,2025,19306.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,CHEMICAL TANKERS,Average time charter rate,Full year 2024,Annual,,2024,19306.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,OFFSHORE WIND (CTV),CSOV Average time charter rate,Full year 2025,Annual,,2025,81307.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,OFFSHORE WIND (CTV),CTV Average time charter rate,Full year 2025,Annual,,2025,3033.0
+2026-04-01_d12132922_ex99-1.htm,2026-04-01,OFFSHORE WIND (CTV),CTV Average time charter rate,Full year 2024,Annual,,2024,2973.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q1 2026,Quarter,1,2026,28120.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Newcastlemax average spot rate (1),Q1 2025,Quarter,1,2025,18393.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Newcastlemax average spot rate (1),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,44105.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Newcastlemax average time charter rate,Q1 2026,Quarter,1,2026,24114.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Capesize average spot rate (1),Q1 2026,Quarter,1,2026,26104.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Capesize average spot rate (1),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,37701.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Q1 2026,Quarter,1,2026,14578.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Panamax/Kamsarmax average spot rate (1),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,19402.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,DRY BULK VESSELS,Panamax/Kamsarmax average time charter rate,Q1 2026,Quarter,1,2026,13456.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,VLCC average spot rate (2),Q1 2026,Quarter,1,2026,70204.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,VLCC average spot rate (2),Q1 2025,Quarter,1,2025,35101.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,VLCC average spot rate (2),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,182731.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,VLCC average time charter rate (3),Q1 2026,Quarter,1,2026,55144.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,VLCC average time charter rate (3),Q1 2025,Quarter,1,2025,46135.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,Suezmax average spot rate (1) (3),Q1 2026,Quarter,1,2026,91849.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,Suezmax average spot rate (1) (3),Q1 2025,Quarter,1,2025,41391.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,Suezmax average spot rate (1) (3),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,122147.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,Suezmax average time charter rate,Q1 2026,Quarter,1,2026,33905.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,TANKERS,Suezmax average time charter rate,Q1 2025,Quarter,1,2025,31328.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CONTAINER VESSELS,Average time charter rate,Q1 2026,Quarter,1,2026,29378.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CONTAINER VESSELS,Average time charter rate,Q1 2025,Quarter,1,2025,29378.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CHEMICAL TANKERS,Average spot rate (1) (2),Q1 2026,Quarter,1,2026,21458.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CHEMICAL TANKERS,Average spot rate (1) (2),Q1 2025,Quarter,1,2025,20521.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CHEMICAL TANKERS,Average spot rate (1) (2),Quarter-to-Date Q2 2026,QuarterToDate,2,2026,21063.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CHEMICAL TANKERS,Average time charter rate,Q1 2026,Quarter,1,2026,19306.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,CHEMICAL TANKERS,Average time charter rate,Q1 2025,Quarter,1,2025,19306.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,OFFSHORE ENERGY,CSOV Average time charter rate,Q1 2026,Quarter,1,2026,64837.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,OFFSHORE ENERGY,CSOV Average time charter rate,Quarter-to-Date Q2 2026,QuarterToDate,2,2026,62301.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,OFFSHORE ENERGY,CTV Average time charter rate,Q1 2026,Quarter,1,2026,2609.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,OFFSHORE ENERGY,CTV Average time charter rate,Q1 2025,Quarter,1,2025,2376.0
+2026-05-19_d12164570_ex99-1.htm,2026-05-19,OFFSHORE ENERGY,CTV Average time charter rate,Quarter-to-Date Q2 2026,QuarterToDate,2,2026,3414.0
