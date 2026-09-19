@@ -1,0 +1,75 @@
+{
+  "BDI.csv": {
+    "symbol": "INDEX:BDI",
+    "name": "Baltic Dry Index",
+    "source": "TradingView chart widget (embedded on tradingeconomics.com), WebSocket capture",
+    "source_detail": "provider_id=ice, value_unit_id=POINT, update_mode=endofday, has_intraday=false",
+    "method": "scripts/parse_bdi.py over MessageEvent-hook capture at interval=1D",
+    "notes": "Replaces the earlier monthly capture (in git history). Range buttons override interval on this widget: 5Y serves weekly, ALL serves monthly. A spurious 1969-12-31 point was dropped.",
+    "rows": 10433,
+    "columns": [
+      "Date",
+      "Close"
+    ],
+    "first_date": "1985-01-04",
+    "last_date": "2026-09-17",
+    "median_gap_days": 1.0,
+    "grain": "daily",
+    "gaps_over_10_days": 14,
+    "min": 290.0,
+    "max": 11793.0,
+    "negative_values": 0,
+    "sha256": "6f0106950e21e76f10ccf802c04fe8cea2a935a8f3983a0df0399d14a51400f6",
+    "recorded_at_utc": "2026-09-18T08:46:25.464394+00:00"
+  },
+  "BCI.csv": {
+    "symbol": "BACI",
+    "name": "Baltic Capesize Index",
+    "source": "investing.com historical-data CSV export (2012-07-05 to 2025-03-31) merged with a Google Visualization chart payload carrying daily BACI values (2024-10-16 to 2026-09-17)",
+    "source_detail": "index points",
+    "method": "two sources merged on date; 103 overlapping days agree exactly, zero disagreements",
+    "notes": "Single published fix per day, so a lone Price column is equivalent to the four identical OHLC columns. Goes NEGATIVE on 44 days between 2020-01-31 and 2020-05-14, low -372 on 2020-03-09. Real: the Capesize timecharter average went below zero. Percentage returns undefined across the 4 sign crossings; use point changes. All 14 gaps over 7 days are Baltic year-end publication breaks.",
+    "rows": 3548,
+    "columns": [
+      "Date",
+      "Close"
+    ],
+    "first_date": "2012-07-05",
+    "last_date": "2026-09-17",
+    "median_gap_days": 1.0,
+    "grain": "daily",
+    "gaps_over_10_days": 7,
+    "min": -372.0,
+    "max": 10485.0,
+    "negative_values": 44,
+    "sha256": "e11a791983d313b48a6f740656b0bc1e27ba932f8ab866e33f94007463e793da",
+    "recorded_at_utc": "2026-09-18T09:09:37.584631+00:00"
+  },
+  "BDTI.csv": {
+    "symbol": "BDTI",
+    "name": "Baltic Dirty Tanker Index",
+    "source": "barchart.com (BDTI.BI), original manual pull plus two patch exports",
+    "source_detail": "index points",
+    "method": "merged on date across three pulls. The export caps at 640 rows anchored on the END date, so the 2011 hole was closed by setting the end date to mid-2011 rather than adjusting the start. Patch 1 (2011-05-11..2013-11-26) agreed on 604 overlapping days; patch 2 (2008-10-15..2011-05-12) agreed on 557. Zero disagreements across either overlap.",
+    "notes": "COMPLETE. No gap over 12 days anywhere in the series; all 24 long gaps are Baltic year-end publication breaks. Single published fix per day, so Date,Close only. The IsComplete flag specified in Phase 2 is no longer needed for 2011.",
+    "rows": 6418,
+    "columns": [
+      "Date",
+      "Open",
+      "High",
+      "Low",
+      "Close"
+    ],
+    "first_date": "2001-01-02",
+    "last_date": "2026-09-10",
+    "median_gap_days": 1.0,
+    "grain": "daily",
+    "gaps_over_10_days": 13,
+    "min": 403.0,
+    "max": 3737.0,
+    "negative_values": 0,
+    "sha256": "01f6d93a2d6bf602d2e5e70f5ba055133d9cb8b6baca3dd2dc05985e5e663b93",
+    "recorded_at_utc": "2026-09-18T16:26:41.319380+00:00",
+    "largest_gap_days": 11
+  }
+}
