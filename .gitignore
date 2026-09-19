@@ -7,3 +7,8 @@ Thumbs.db
 .DS_Store
 *_raw.txt
 raw/dayrates/*.htm
+
+# Vendor freight captures and exports.
+# Redistribution-restricted (TradingView, investing.com, barchart).
+# Provenance and SHA-256 for every derived series live in processed/freight/_manifest.json
+raw/freight_captures/
