@@ -11,7 +11,7 @@ from pathlib import Path
 
 USER_AGENT = "Joan Casaramona portfolio-project joancasaramonaa@gmail.com"  # EDIT THIS
 CIK = "1604481"  # Euronav NV / CMB.TECH NV
-OUT_DIR = Path("../raw/dayrates")
+OUT_DIR = Path("../vendor/sec_filings")
 SEARCH_TERM = "time charter equivalent"
 
 HEADERS = {"User-Agent": USER_AGENT}

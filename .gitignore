@@ -6,14 +6,12 @@ __pycache__/
 Thumbs.db
 .DS_Store
 *_raw.txt
-raw/dayrates/*.htm
 
-# Vendor freight captures and exports.
-# Redistribution-restricted (TradingView, investing.com, barchart).
-# Provenance and SHA-256 for every derived series live in processed/freight/_manifest.json
-raw/freight_captures/
-
-# Vendor equity exports feeding scripts/build_gogl.py.
-# Redistribution-restricted (investing.com). The derived, split- and
-# dividend-adjusted series and its SHA-256 live in raw/drybulk/_manifest.json
-raw/vendor_exports/
+# Everything under vendor/ is somebody else's data, held locally so the
+# series in data/ can be rebuilt, and never committed.
+#   vendor/equity_exports/    investing.com price and dividend history
+#   vendor/freight_captures/  TradingView, investing.com, barchart
+#   vendor/sec_filings/       SEC EDGAR 6-K exhibits
+# Provenance and a SHA-256 for every derived series live in the
+# _manifest.json beside it under data/.
+vendor/

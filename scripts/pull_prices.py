@@ -12,7 +12,7 @@ the reproducible artifact, not the pull command.
 Usage from the notebook:
     %run ../scripts/pull_prices.py
     pull_prices(TANKER_TICKERS, start="2005-01-03",
-                out_dir=Path("../raw/tanker"), lineage="Tanker")
+                out_dir=Path("../data/equity/tanker"), lineage="Tanker")
 """
 
 from __future__ import annotations

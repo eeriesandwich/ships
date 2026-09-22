@@ -11,7 +11,7 @@ figure is 1.973x. Each adjustment step comes out at 0.065% to 0.298% instead
 of the several percent a quarterly payer of this size produces.
 
 So the series is rebuilt here from two investing.com exports, which live in
-raw/vendor_exports/ and are gitignored for redistribution reasons:
+vendor/equity_exports/ and are gitignored for redistribution reasons:
   Golden_Ocean_Stock_Price_History.csv   daily OHLCV, NASDAQ, USD
   the dividend history                   transcribed into DIVIDENDS below
 
@@ -50,9 +50,9 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "raw" / "vendor_exports" / "Golden_Ocean_Stock_Price_History.csv"
-OUT = ROOT / "raw" / "drybulk" / "GOGL.csv"
-MANIFEST = ROOT / "raw" / "drybulk" / "_manifest.json"
+SRC = ROOT / "vendor" / "equity_exports" / "Golden_Ocean_Stock_Price_History.csv"
+OUT = ROOT / "data" / "equity" / "drybulk" / "GOGL.csv"
+MANIFEST = ROOT / "data" / "equity" / "drybulk" / "_manifest.json"
 
 SPLIT_DATE = pd.Timestamp("2016-07-19")
 SPLIT_RATIO = 5.0

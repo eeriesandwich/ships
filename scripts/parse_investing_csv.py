@@ -17,10 +17,10 @@ chunks and pass them all at once. Overlapping chunks are fine: rows are
 de-duplicated by date, keeping the last value seen.
 
 Usage:
-    python scripts/parse_investing_csv.py processed/freight/BDI.csv \
+    python scripts/parse_investing_csv.py data/freight/BDI.csv \
         --source-url https://www.investing.com/indices/baltic-dry-chart \
         --symbol "Baltic Dry Index" \
-        raw/freight_captures/bdi_*.csv
+        vendor/freight_captures/bdi_*.csv
 """
 
 from __future__ import annotations
@@ -95,7 +95,7 @@ def load_one(path: Path) -> pd.DataFrame:
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("output", help="e.g. processed/freight/BDI.csv")
+    p.add_argument("output", help="e.g. data/freight/BDI.csv")
     p.add_argument("inputs", nargs="+", help="downloaded CSV chunks")
     p.add_argument("--source-url", required=True)
     p.add_argument("--symbol", required=True, help="series name as the page shows it")
