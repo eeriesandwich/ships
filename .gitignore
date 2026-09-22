@@ -12,3 +12,8 @@ raw/dayrates/*.htm
 # Redistribution-restricted (TradingView, investing.com, barchart).
 # Provenance and SHA-256 for every derived series live in processed/freight/_manifest.json
 raw/freight_captures/
+
+# Vendor equity exports feeding scripts/build_gogl.py.
+# Redistribution-restricted (investing.com). The derived, split- and
+# dividend-adjusted series and its SHA-256 live in raw/drybulk/_manifest.json
+raw/vendor_exports/
