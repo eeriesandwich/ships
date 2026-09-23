@@ -149,7 +149,8 @@
     "lineage": "DryBulk",
     "status": "retired",
     "pulled_at_utc": "2026-09-22T09:21:40.477925+00:00",
-    "note": "Retired 2026-09-22. Stale from 2025-08-19, 38% zero-return days, and Adj Close is under-adjusted (see the GOGL entry). Kept for reference only; excluded from the basket."
+    "note": "Retired 2026-09-22, moved out of the load folder 2026-09-23. Stale from 2025-08-19, 38% zero-return days, and Adj Close applies USD dividends to SEK prices so the series is under-adjusted by about 1.84x (see the GOGL entry). Also predates the MultiIndex fix in pull_prices.py, so line 2 is a junk header row and there is no PullDate column. Kept as a documented data-quality finding; not loadable and not part of the basket.",
+    "file": "../_retired/GOGLO.ST.csv"
   },
   {
     "ticker": "HSHP",
