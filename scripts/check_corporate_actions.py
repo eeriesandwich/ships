@@ -487,16 +487,44 @@ def scan_online(root: Path) -> int:
 # Main
 # --------------------------------------------------------------------------
 
+def load_windows(path: Path) -> pd.DataFrame:
+    """series_windows.csv, or an empty frame if there is none."""
+    cols = ["Ticker", "ValidFrom", "ValidTo", "Reason"]
+    if not path.exists():
+        return pd.DataFrame(columns=cols)
+    w = pd.read_csv(path)
+    for c in ("ValidFrom", "ValidTo"):
+        w[c] = pd.to_datetime(w[c], errors="coerce")
+    return w
+
+
+def outside_window(windows: pd.DataFrame, ticker: str, date: str) -> str | None:
+    """Reason string if the event falls outside the ticker's validity window.
+    An event the model never reads cannot corrupt it, so it is out of scope
+    rather than a failure."""
+    d = pd.Timestamp(date)
+    for _, r in windows[windows["Ticker"] == ticker].iterrows():
+        if pd.notna(r["ValidTo"]) and d > r["ValidTo"]:
+            return f"after ValidTo {r['ValidTo']:%Y-%m-%d}: {r['Reason']}"
+        if pd.notna(r["ValidFrom"]) and d < r["ValidFrom"]:
+            return f"before ValidFrom {r['ValidFrom']:%Y-%m-%d}: {r['Reason']}"
+    return None
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--root", help="path to data/equity")
+    ap.add_argument("--windows", help="path to series_windows.csv "
+                    "(default: beside data/equity)")
     ap.add_argument("--online", action="store_true",
                     help="also cross-check against Yahoo's actions series")
     args = ap.parse_args()
 
     root = resolve_root(args.root)
     print(f"data root: {root}\n")
+    windows = load_windows(Path(args.windows) if args.windows
+                           else root.parent / "series_windows.csv")
 
     cache: dict[tuple[str, str], pd.DataFrame | None] = {}
     results = []
@@ -510,7 +538,10 @@ def main() -> int:
             cache[key] = load(root, a.ticker, a.folder)
         df = cache[key]
 
-        if df is None:
+        excluded = outside_window(windows, a.ticker, a.date)
+        if excluded:
+            verdict, detail = "EXCLUDED", excluded
+        elif df is None:
             verdict, detail = "NO FILE", f"no CSV for {a.ticker} in {a.folder}/"
         elif a.kind == "split":
             verdict, detail = test_split(df, a)

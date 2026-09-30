@@ -118,7 +118,7 @@ def build(root):
 
 def verdicts(stdout):
     """Pull 'VERDICT TICKER DATE' off the diagnostic's table."""
-    known = {"PASS", "FAIL", "WARN", "SKIP", "INCONCLUSIVE", "NO"}
+    known = {"PASS", "FAIL", "WARN", "SKIP", "INCONCLUSIVE", "EXCLUDED", "NO"}
     out = {}
     for line in stdout.splitlines():
         parts = line.split()
@@ -139,7 +139,8 @@ def main():
     try:
         build(root)
         proc = subprocess.run(
-            [sys.executable, str(CHECKER), "--root", str(root)],
+            [sys.executable, str(CHECKER), "--root", str(root),
+             "--windows", str(root / "no_such_windows.csv")],
             capture_output=True, text=True,
         )
         print(proc.stdout, end="")
@@ -162,6 +163,25 @@ def main():
         status_ok = proc.returncode == 1
         print(f"{'ok  ' if status_ok else 'BAD '} exit status           "
               f"expected 1        got {proc.returncode}")
+
+        # Windows: with 2020.OL valid only to 2026-04-01, its 2026-04-28
+        # special is out of scope. It must be EXCLUDED rather than FAIL, and
+        # the other three verdicts must not move.
+        wfile = root / "windows.csv"
+        wfile.write_text("Ticker,ValidFrom,ValidTo,Reason\n"
+                         "2020.OL,,2026-04-01,test window\n")
+        proc2 = subprocess.run(
+            [sys.executable, str(CHECKER), "--root", str(root),
+             "--windows", str(wfile)], capture_output=True, text=True)
+        got2 = verdicts(proc2.stdout)
+        for key, want in [("2020.OL 2026-04-28", "EXCLUDED"),
+                          ("STNG 2019-01-18", "FAIL"),
+                          ("DHT 2012-07-17", "PASS")]:
+            actual = got2.get(key, "MISSING")
+            good = actual == want
+            ok = ok and good
+            print(f"{'ok  ' if good else 'BAD '} windowed {key:22} "
+                  f"expected {want:8} got {actual}")
 
         print()
         if ok and status_ok:
