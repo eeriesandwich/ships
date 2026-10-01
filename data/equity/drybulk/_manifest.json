@@ -31,16 +31,17 @@
     "adjustment_checked": true,
     "adj_ratio_first": 0.811404,
     "adj_ratio_last": 1.0,
-    "cumulative_adjustment_factor": 2.2564,
+    "cumulative_adjustment_factor": 2.2581,
     "negative_adjustment_steps": 0,
     "zero_return_pct": 4.14,
     "median_volume": 95262,
     "zero_volume_days": 4,
     "adjustment_rebuilt": true,
     "adjustment_rebuilt_by": "scripts/rebuild_2020ol.py",
-    "adjustment_rebuilt_reason": "Vendor under-adjusted dividends by a roughly constant factor of about 9 on 72 of 73 payouts, consistent with USD amounts applied to NOK prices. Rebuilt from Close and the dividend series fetched through yfinance. Those amounts are in NOK but drift by about 0.1 percent between fetches, consistent with a live currency conversion, so a re-run reproduces the factor only approximately. Dividends after the series window and one vendor ex-date one session late are handled through data/series_windows.csv and data/overrides/.",
+    "adjustment_rebuilt_reason": "Vendor under-adjusted dividends by a roughly constant factor of about 9 on 72 of 73 payouts, consistent with USD amounts applied to NOK prices. Rebuilt from Close and a frozen snapshot of the vendor's dividend series in data/dividends/2020.OL.csv. Yahoo converts those NOK amounts at a live rate, so they drift about 0.1 percent between fetches; the snapshot makes re-runs exact. Dividends after the series window and one vendor ex-date one session late are handled through data/series_windows.csv and data/overrides/.",
     "dividends_applied": 66,
-    "cumulative_adjustment_factor_vendor": 1.2324
+    "cumulative_adjustment_factor_vendor": 1.2324,
+    "dividend_snapshot": "data/dividends/2020.OL.csv"
   },
   {
     "ticker": "DSX",
