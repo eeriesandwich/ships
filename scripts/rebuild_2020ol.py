@@ -49,6 +49,7 @@ TARGET = REPO / "data" / "equity" / "drybulk"
 MANIFEST = TARGET / "_manifest.json"
 WINDOWS = REPO / "data" / "series_windows.csv"
 OVERRIDES = REPO / "data" / "overrides" / "2020.OL_dividend_dates.csv"
+SNAPSHOT = REPO / "data" / "dividends" / "2020.OL.csv"
 
 # A dividend cannot exceed the price it is paid out of. Anything above this
 # share of the cum price is a data error rather than a large payout.
@@ -97,7 +98,7 @@ def apply_date_overrides(divs: pd.Series) -> pd.Series:
     return out.sort_index()
 
 
-def fetch_dividends() -> pd.Series:
+def fetch_live() -> pd.Series:
     try:
         import yfinance as yf
     except ImportError:
@@ -107,7 +108,39 @@ def fetch_dividends() -> pd.Series:
         sys.exit(f"the vendor reports no dividends for {TICKER}")
     divs = divs.copy()
     divs.index = pd.to_datetime(divs.index, utc=True).tz_localize(None).normalize()
-    divs = apply_date_overrides(divs[divs > 0].sort_index())
+    return divs[divs > 0].sort_index()
+
+
+def freeze(divs: pd.Series) -> None:
+    """Write the raw vendor series, as dated and as valued by the vendor.
+
+    Yahoo converts these amounts at a live exchange rate, so they move about
+    0.1 percent from one day to the next. Reading the snapshot makes every
+    later run reproduce the same adjustment. Date overrides and the validity
+    window are applied on read, not here, so the file stays the vendor's own
+    record and the overrides stay reviewable.
+    """
+    SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame({"Date": divs.index.strftime("%Y-%m-%d"),
+                  "Dividend": divs.to_numpy(), "Currency": "NOK",
+                  "FetchDate": pd.Timestamp.today().strftime("%Y-%m-%d")}
+                 ).to_csv(SNAPSHOT, index=False)
+    print(f"  froze {len(divs)} vendor dividends to {SNAPSHOT.relative_to(REPO)}")
+
+
+def fetch_dividends() -> pd.Series:
+    if "--refresh" in sys.argv or not SNAPSHOT.exists():
+        divs = fetch_live()
+        if "--dry-run" in sys.argv:
+            print("  dividends fetched live; --dry-run so no snapshot written")
+        else:
+            freeze(divs)
+    else:
+        snap = pd.read_csv(SNAPSHOT, parse_dates=["Date"])
+        divs = pd.Series(snap["Dividend"].to_numpy(), index=pd.DatetimeIndex(snap["Date"]))
+        print(f"  dividends from snapshot {SNAPSHOT.relative_to(REPO)} "
+              f"(fetched {snap['FetchDate'].iloc[0]}); --refresh to re-fetch")
+    divs = apply_date_overrides(divs)
     end = valid_through()
     if end is not None:
         dropped = int((divs.index > end).sum())
@@ -199,6 +232,12 @@ def main() -> int:
     px = px.dropna(subset=["Date"]).sort_values("Date").reset_index(drop=True)
 
     before = px["Adj Close"].iloc[0] / px["Close"].iloc[0]
+    # A file that has already been rebuilt no longer shows the vendor's factor.
+    # Once the manifest records it, that record is the vendor's figure.
+    if MANIFEST.exists():
+        for e in json.loads(MANIFEST.read_text(encoding="utf-8")):
+            if e.get("ticker") == TICKER and e.get("cumulative_adjustment_factor_vendor"):
+                before = 1 / e["cumulative_adjustment_factor_vendor"]
     divs = fetch_dividends()
     rebuilt, applied = back_adjust(px, divs)
 
@@ -278,15 +317,17 @@ def main() -> int:
                 e["adjustment_rebuilt"] = True
                 e["adjustment_rebuilt_by"] = "scripts/rebuild_2020ol.py"
                 e["adjustment_rebuilt_reason"] = (
-                    "Vendor under-adjusted dividends by a roughly constant factor"
-                    "of about 9 on 72 of 73 payouts, consistent with USD amounts"
-                    "applied to NOK prices. Rebuilt from Close and the dividend"
-                    "series fetched through yfinance. Those amounts are in NOK but"
-                    "drift by about 0.1 percent between fetches, consistent with a"
-                    "live currency conversion, so a re-run reproduces the factor"
-                    "only approximately. Dividends after the series window and one"
-                    "vendor ex-date one session late are handled through"
-                    "data/series_windows.csv and data/overrides/.")
+                    "Vendor under-adjusted dividends by a roughly constant factor "
+                    "of about 9 on 72 of 73 payouts, consistent with USD amounts "
+                    "applied to NOK prices. Rebuilt from Close and a frozen "
+                    "snapshot of the vendor's dividend series in "
+                    "data/dividends/2020.OL.csv. Yahoo converts those NOK amounts "
+                    "at a live rate, so they drift about 0.1 percent between "
+                    "fetches; the snapshot makes re-runs exact. Dividends after "
+                    "the series window and one vendor ex-date one session late "
+                    "are handled through data/series_windows.csv and "
+                    "data/overrides/.")
+                e["dividend_snapshot"] = str(SNAPSHOT.relative_to(REPO)).replace("\\", "/")
                 e["dividends_applied"] = len(applied)
                 e["cumulative_adjustment_factor_vendor"] = round(1 / before, 4)
                 e["cumulative_adjustment_factor"] = round(1 / after, 4)
