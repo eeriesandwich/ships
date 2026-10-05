@@ -81,6 +81,14 @@ ACTIONS = [
            note="1-for-5 reverse split, reconstructed series"),
 
     # Distributions. Detected on the Adj Close / Close ratio step.
+    #
+    # Known limit, both DSX spin-offs below: Yahoo can adjust a spin-off by
+    # scaling the whole earlier price history in Close AND Adj Close. The ratio
+    # then stays flat and no price fall appears, so the test reads "no
+    # adjustment" and returns INCONCLUSIVE. For 2021-11-30 this was shown to be
+    # the case (earlier closes are not 2-decimal quotes, later ones all are; the
+    # 2021-11-02 USD 0.10 dividend appears as 0.0876). Both stay INCONCLUSIVE
+    # here by design; see EV086 and EV100 in make_events.py.
     Action("DSX",     "drybulk", "2011-01-19", "distribution",
            expected_drop=None,
            note="Diana Containerships spin-off, 0.032542 per share"),
