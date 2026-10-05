@@ -1,0 +1,75 @@
+data root: C:\Users\Joan Casaramona\AppData\Local\Temp\ships-selftest-2ho7_j1p
+
+verdict        ticker    date         action                                   detail
+------------------------------------------------------------------------------------------------------------------------------------------------------
+PASS           DHT       2012-07-17   1-for-12 reverse split                   Close 18.1463 -> 18.0886, ratio 0.997, split factor 12. Ordinary move, so the split was applied.
+FAIL           STNG      2019-01-18   1-for-10 reverse split                   Close 2.2262 -> 22.3737, ratio 10.050, split factor 10. The split was NOT applied; multiply earlier prices by 10.  [window max |move| +905.0% on 2019-01-18]
+NO FILE        TNK       2019-11-25   1-for-8 reverse split                    no CSV for TNK in tanker/
+NO FILE        SBLK      2008-11-25   2.6 percent stock dividend               no CSV for SBLK in drybulk/
+NO FILE        SBLK      2012-10-15   1-for-15 reverse split                   no CSV for SBLK in drybulk/
+NO FILE        SBLK      2016-06-20   1-for-5 reverse split                    no CSV for SBLK in drybulk/
+NO FILE        GNK       2016-07-08   1-for-10 reverse split                   no CSV for GNK in drybulk/
+NO FILE        GOGL      2016-08-01   1-for-5 reverse split, reconstructed ser no CSV for GOGL in drybulk/
+FAIL           DSX       2011-01-19   Diana Containerships spin-off, 0.032542  over 2011-01-13 to 2011-01-24: Adj/Close 0.81000 -> 0.90000 (step +11.111%), Close move -90.74%. Distribution implied by the adjustment 10.0%, by the price fall 90.7%. The adjustment is off by a factor of 9.1, far beyond what market movement in the window could explain.  [window max |move| -90.3% on 2011-01-19]
+PASS           DSX       2021-11-29   OceanPal spin-off, 1 per 10 shares       over 2021-11-23 to 2021-12-02: Adj/Close 0.90000 -> 1.00000 (step +11.111%), Close move -6.40%, expected distribution about 10%. Distribution implied by the adjustment 10.0%, by the price fall 6.4%. The adjustment matches the price fall.
+FAIL           2020.OL   2026-04-28   NOK 129.5 special dividend after the fle over 2026-04-22 to 2026-05-01: Adj/Close 1.00000 -> 1.00000 (step +0.000%), Close move -78.87%. Payout 132.2431 on a 21.3959 close is 86.1% to 618.1% of it; the adjustment encodes 0.0%. No adjustment at all.  [window max |move| -80.1% on 2026-04-29]
+NO FILE        FRO       2016-02-03   1-for-5 reverse split                    no CSV for FRO in tanker/
+NO FILE        RIO       2010-04-30   4-for-1 forward split                    no CSV for RIO in factors/
+NO FILE        VALE      2004-09-07   3-for-1 forward split, before the file s no CSV for VALE in factors/
+NO FILE        VALE      2006-06-07   2-for-1 forward split                    no CSV for VALE in factors/
+NO FILE        VALE      2007-09-13   2-for-1 forward split                    no CSV for VALE in factors/
+NO FILE        EFA       2005-06-09   3-for-1 forward split, EFA is not a mode no CSV for EFA in factors/
+NO FILE        CMBT.BR   2009-04-28   14.1 percent payout                      no CSV for CMBT.BR in tanker/
+NO FILE        CMBT.BR   2024-05-21   21.0 percent payout                      no CSV for CMBT.BR in tanker/
+NO FILE        FRO       2005-02-03   11.9 percent payout                      no CSV for FRO in tanker/
+NO FILE        FRO       2007-03-06   15.4 percent payout                      no CSV for FRO in tanker/
+NO FILE        TNK       2008-12-01   13.3 percent payout                      no CSV for TNK in tanker/
+SKIP           DSX       2008-11-24   12.1 percent payout                      event falls on the first session, no prior session
+NO FILE        SB        2008-11-19   12.9 percent payout                      no CSV for SB in drybulk/
+SKIP           2020.OL   2024-04-15   11.3 percent payout                      event falls on the first session, no prior session
+NO FILE        RIO       2009-07-08   18.2 percent payout                      no CSV for RIO in factors/
+NO FILE        VALE      2021-09-23   10.5 percent payout                      no CSV for VALE in factors/
+
+Files found
+------------------------------------------------------------------------------------------------------------------------------------------------------
+  tanker     2 files: DHT.csv, STNG.csv
+  drybulk    2 files: 2020.OL.csv, DSX.csv
+
+Summary: FAIL 3, NO FILE 20, PASS 2, SKIP 2
+
+Action needed:
+  STNG 2019-01-18  1-for-10 reverse split
+  TNK 2019-11-25  1-for-8 reverse split
+  SBLK 2008-11-25  2.6 percent stock dividend
+  SBLK 2012-10-15  1-for-15 reverse split
+  SBLK 2016-06-20  1-for-5 reverse split
+  GNK 2016-07-08  1-for-10 reverse split
+  GOGL 2016-08-01  1-for-5 reverse split, reconstructed series
+  DSX 2011-01-19  Diana Containerships spin-off, 0.032542 per share
+  2020.OL 2026-04-28  NOK 129.5 special dividend after the fleet sale
+  FRO 2016-02-03  1-for-5 reverse split
+  RIO 2010-04-30  4-for-1 forward split
+  VALE 2004-09-07  3-for-1 forward split, before the file starts
+  VALE 2006-06-07  2-for-1 forward split
+  VALE 2007-09-13  2-for-1 forward split
+  EFA 2005-06-09  3-for-1 forward split, EFA is not a model control
+  CMBT.BR 2009-04-28  14.1 percent payout
+  CMBT.BR 2024-05-21  21.0 percent payout
+  FRO 2005-02-03  11.9 percent payout
+  FRO 2007-03-06  15.4 percent payout
+  TNK 2008-12-01  13.3 percent payout
+  SB 2008-11-19  12.9 percent payout
+  RIO 2009-07-08  18.2 percent payout
+  VALE 2021-09-23  10.5 percent payout
+==============================================================
+ok   DHT 2012-07-17         expected PASS     got PASS
+ok   STNG 2019-01-18        expected FAIL     got FAIL
+ok   DSX 2011-01-19         expected FAIL     got FAIL
+ok   DSX 2021-11-29         expected PASS     got PASS
+ok   2020.OL 2026-04-28     expected FAIL     got FAIL
+ok   exit status           expected 1        got 1
+ok   windowed 2020.OL 2026-04-28     expected EXCLUDED got EXCLUDED
+ok   windowed STNG 2019-01-18        expected FAIL     got FAIL
+ok   windowed DHT 2012-07-17         expected PASS     got PASS
+
+SELF-TEST PASSED

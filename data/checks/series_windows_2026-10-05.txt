@@ -1,0 +1,15 @@
+ticker    folder   last date   pulled        gap  verdict       why
+CMBT.BR   tanker   2026-09-21  2026-09-22     1d  RUNS TO PULL  1d before pull
+DHT       tanker   2026-09-21  2026-09-22     1d  RUNS TO PULL  1d before pull
+FRO       tanker   2026-09-21  2026-09-22     1d  RUNS TO PULL  1d before pull
+STNG      tanker   2026-09-21  2026-09-22     1d  RUNS TO PULL  1d before pull
+TNK       tanker   2026-09-21  2026-09-22     1d  RUNS TO PULL  1d before pull
+2020.OL   drybulk  2026-09-25  2026-09-28     3d  WINDOWED      ValidTo 2025-09-25, cuts 250 rows; Fleet sale announced 2025-09-26; every vessel sold
+DSX       drybulk  2026-09-25  2026-09-28     3d  RUNS TO PULL  3d before pull
+GNK       drybulk  2026-09-25  2026-09-28     3d  RUNS TO PULL  3d before pull
+GOGL      drybulk  2025-08-19  2026-09-22   399d  WINDOWED      ValidTo 2025-08-19, cuts 0 rows; Last trading day before the CMB.TECH merger took l
+HSHP      drybulk  2026-09-25  2026-09-28     3d  RUNS TO PULL  3d before pull
+SB        drybulk  2026-09-25  2026-09-28     3d  RUNS TO PULL  3d before pull
+SBLK      drybulk  2026-09-25  2026-09-28     3d  RUNS TO PULL  3d before pull
+
+12 tickers, 0 needing attention
