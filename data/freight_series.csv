@@ -1,0 +1,4 @@
+Series,Lineage,VesselClassScope,SortOrder
+BDTI,Tanker,Dirty tankers (crude and fuel oil),1
+BDI,DryBulk,"Composite of Capesize, Panamax and Supramax",2
+BCI,DryBulk,Capesize,3

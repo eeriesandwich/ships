@@ -1,0 +1,6 @@
+Ticker,FactorName,FactorKind,SectorLineage,Description
+ACWI,MSCI ACWI ETF,Market,,Global equity market factor for both lineages; chosen over URTH on liquidity
+BZ=F,Brent crude front month,Sector,Tanker,Tanker sector factor; tested as confounder or mediator by the BDTI-against-Brent test
+MCHI,MSCI China ETF,Sector,DryBulk,Dry bulk demand proxy
+VALE,Vale,Sector,DryBulk,"Iron ore producer, dry bulk supply-side proxy"
+RIO,Rio Tinto,Sector,DryBulk,"Iron ore producer, dry bulk supply-side proxy"

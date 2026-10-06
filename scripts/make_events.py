@@ -830,9 +830,11 @@ EVENTS = [
  "CMBT.BR;GOGL",
  [(T, "Neutral", "None",
    "95,952,934 new shares issued. The security becomes a combined tanker and dry "
-   "bulk operator, so it stops being a tanker constituent on business grounds.",
-   "Hard end of CMBT.BR as a tanker constituent. Tanker constituent count falls "
-   "from 5 to 4. Secondary Oslo listing under CMBTO from this date."),
+   "bulk operator with dry bulk the larger fleet. CMBT.BR had already left the "
+   "tanker basket at EV116, so no tanker constituent changes here.",
+   "No change to the tanker constituent count: CMBT.BR stopped being a tanker "
+   "constituent on 2024-02-08 (EV116). Secondary Oslo listing under CMBTO from "
+   "this date."),
   (D, "Neutral", "None",
    "Golden Ocean ceases to exist as a separate listed entity.",
    "Dry bulk constituent count falls from 7 to 6.")],

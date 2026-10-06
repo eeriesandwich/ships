@@ -1,3 +1,4 @@
-Ticker,ValidFrom,ValidTo,Reason
-2020.OL,,2025-09-25,"Fleet sale announced 2025-09-26; every vessel sold in Q1 2026 and the company became an offshore AHTS operator in Sept 2026. Later prices are a different business."
-GOGL,,2025-08-19,"Last trading day before the CMB.TECH merger took legal effect on 2025-08-20 (EGM 2025-08-19, exchange ratio 1:0.95). The file ends here because the listing ended."
+Ticker,ValidFrom,ValidTo,Reason,WindowType
+2020.OL,,2025-09-25,Fleet sale announced 2025-09-26; every vessel sold in Q1 2026 and the company became an offshore AHTS operator in Sept 2026. Later prices are a different business.,Load
+GOGL,,2025-08-19,"Last trading day before the CMB.TECH merger took legal effect on 2025-08-20 (EGM 2025-08-19, exchange ratio 1:0.95). The file ends here because the listing ended.",Load
+CMBT.BR,,2024-02-07,"Tanker lineage membership ends here. The CMB.TECH NV acquisition completed 2024-02-08 and crude fell to about 42 percent of the listed entity's vessels (EV116). Prices are kept; from 2024-02-08 they are not tanker prices. Membership windows must be single unbroken ranges, because the portfolio filters before computing returns.",Membership

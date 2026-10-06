@@ -1,0 +1,13 @@
+Ticker,CompanyName,ListingCurrency,FirstObsDate,FirstObsReason
+CMBT.BR,CMB.TECH (formerly Euronav),EUR,2005-01-03,"Start of the tanker price files, not a listing event. Euronav listed on Euronext Brussels in December 2004, outside the file (EV053)."
+FRO,Frontline,USD,2005-01-03,"Start of the tanker price files, not a listing event. Frontline had traded on NYSE since 2001 (EV053)."
+DHT,DHT Holdings,USD,2005-10-13,NYSE IPO priced 2005-10-13 as Double Hull Tankers (EV054).
+TNK,Teekay Tankers,USD,2007-12-13,First NYSE session after the IPO priced 2007-12-12 (EV055).
+STNG,Scorpio Tankers,USD,2010-03-31,NYSE IPO priced 2010-03-31. EV056 dates the first session 2010-04-01; the file starts a day earlier and is the authority.
+DSX,Diana Shipping,USD,2005-03-23,First session in the file. NYSE IPO priced 2005-03-17 (EV082).
+SBLK,Star Bulk Carriers,USD,2007-12-03,First Nasdaq session after Star Maritime Acquisition Corp merged into Star Bulk. The predecessor SPAC series is not spliced on (EV084).
+SB,Safe Bulkers,USD,2008-05-30,"First session in the file. NYSE IPO priced 2008-05-28, first trade inferred as 2008-05-29 (EV085)."
+GNK,Genco Shipping & Trading,USD,2014-07-15,"First session in the file after the Chapter 11 emergence of 2014-07-09, so earlier Genco equity is a different security (EV088). Traded OTC until the NYSE relisting of 2015-07-20 (EV091)."
+GOGL,Golden Ocean Group,USD,2015-04-14,Start of the investing.com reconstruction. Knightsbridge became Golden Ocean and traded as GOGL from 2015-04-01; earlier GOGL prices are Knightsbridge tanker history (EV090).
+2020.OL,2020 Bulkers,NOK,2019-07-12,Oslo Axess listing. Earlier OTC history exists but is not in the file (EV098).
+HSHP,Himalaya Shipping,USD,2023-03-31,First NYSE session. The earlier Oslo series covers a pre-operational shell and is not used (EV101).
