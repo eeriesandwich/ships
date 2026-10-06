@@ -15,3 +15,8 @@ Thumbs.db
 # Provenance and a SHA-256 for every derived series live in the
 # _manifest.json beside it under data/.
 vendor/
+
+# Power BI project: the local data cache and per-user settings are
+# rebuilt on open and never committed. The model definition (TMDL) is.
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
