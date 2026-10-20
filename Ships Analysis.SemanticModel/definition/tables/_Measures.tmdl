@@ -362,85 +362,94 @@ table _Measures
 
 	measure 'MT Mediated Share' =
 			
-			SELECTEDVALUE ( MediatorTest[mediated_share] )
-		formatString: 0.0%;-0.0%;0.0%
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[mediated_share] ), MediatorTest[events] = EvScope )
 		displayFolder: MediatorTest
 		lineageTag: e4dd9289-8a28-4701-83fb-809c8e7f86db
 
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	measure 'MT CI Lower' =
 			
-			SELECTEDVALUE ( MediatorTest[boot_lo] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[boot_lo] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: a875d7bc-f06c-4070-91bd-f712c334116d
 
 	measure 'MT CI Upper' =
 			
-			SELECTEDVALUE ( MediatorTest[boot_hi] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[boot_hi] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: d44f3bf4-8a6f-46c7-8d3c-97e5d97c9fd2
 
 	measure 'MT Decision' =
 			
-			SELECTEDVALUE ( MediatorTest[decision] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[decision] ), MediatorTest[events] = EvScope )
 		displayFolder: MediatorTest
 		lineageTag: 8815b71f-b949-4ed8-b281-37bf3075adaf
 
-	measure 'MT Raw Alpha' = ```
+	measure 'MT Raw Alpha' =
 			
-			SELECTEDVALUE ( MediatorTest[raw_alpha] )
-			
-			```
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[raw_alpha] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: 52cf645f-41a2-4450-bf11-f1bf21a74e43
 
-	measure 'MT Direct Alpha' = ```
+	measure 'MT Direct Alpha' =
 			
-			SELECTEDVALUE ( MediatorTest[direct_alpha] )
-			
-			```
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[direct_alpha] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: f06bd9d9-a2e3-42c9-ba60-c45c27906568
 
-	measure 'MT Beta' = ```
+	measure 'MT Beta' =
 			
-			SELECTEDVALUE ( MediatorTest[beta] )
-			
-			```
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[beta] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: 5c1784e5-76f5-4745-bdec-d82f88a54f57
 
 	measure 'MT Delta Focus' =
 			
-			SELECTEDVALUE ( MediatorTest[delta_focus] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[delta_focus] ), MediatorTest[events] = EvScope )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: MediatorTest
 		lineageTag: 5fd144eb-afb3-42b7-a6a2-3d7c7eda7e5a
 
 	measure 'MT Years' =
 			
-			SELECTEDVALUE ( MediatorTest[n_years] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[n_years] ), MediatorTest[events] = EvScope )
 		formatString: 0
 		displayFolder: MediatorTest
 		lineageTag: 833ca484-60e7-4d9b-8c81-5929c59c918c
 
 	measure 'MT Window' =
 			
-			SELECTEDVALUE ( MediatorTest[window] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[window] ), MediatorTest[events] = EvScope )
 		displayFolder: MediatorTest
 		lineageTag: 10e55014-fb5d-43fc-80df-9b6b466d4299
 
 	measure 'MT Note' =
 			
-			SELECTEDVALUE ( MediatorTest[note] )
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[note] ), MediatorTest[events] = EvScope )
 		displayFolder: MediatorTest
 		lineageTag: 5e11cde7-ca32-4733-ac34-46f23b60f04f
 
-	measure 'MT Mediated Component' = SELECTEDVALUE(MediatorTest[mediated_component])
+	measure 'MT Mediated Component' =
+			
+			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
+			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[mediated_component] ), MediatorTest[events] = EvScope )
 		displayFolder: MediatorTest
 		lineageTag: 63493e8d-4c27-46e7-a648-b54661a94136
 
@@ -537,10 +546,9 @@ table _Measures
 			    )
 			RETURN
 			    AVERAGEX ( Dev, [@dev] )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality
 		lineageTag: b2f9c4f4-b75b-4b6b-bd02-264a535b2960
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Years Used' =
 			
@@ -732,6 +740,382 @@ table _Measures
 		lineageTag: 096aac8e-1595-44c9-bdd2-670a4cdcd5ed
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Monthly Return' =
+			
+			VAR MinCov = [MinQuarterCoverage Value]
+			VAR USDays =
+			    CALCULATE ( COUNTROWS ( 'Date' ), NOT ISBLANK ( 'Date'[USSessionIndex] ) )
+			VAR GatedDays =
+			    FILTER (
+			        ADDCOLUMNS ( VALUES ( 'Date'[Date] ), "@r", [Portfolio Return] ),
+			        NOT ISBLANK ( [@r] )
+			    )
+			VAR NGated = COUNTROWS ( GatedDays )
+			RETURN
+			    IF (
+			        USDays > 0 && NGated >= MinCov * USDays,
+			        SUMX ( GatedDays, LN ( 1 + [@r] ) )
+			    )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality
+		lineageTag: a5d0ace8-1780-453c-9fe0-6d97157e6752
+
+	measure 'Monthly Deviation' =
+			
+			VAR M = SELECTEDVALUE ( 'Date'[MonthNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[MonthNumber] ),
+			                REMOVEFILTERS ( 'Date'[MonthNumber] )
+			            ),
+			            "@r", CALCULATE ( [Monthly Return] )
+			        ),
+			        NOT ISBLANK ( [@r] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 12
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            Panel,
+			            'Date'[MonthNumber] = M
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@r] - AVERAGEX ( FILTER ( Panel, 'Date'[Year] = y ), [@r] )
+			    )
+			RETURN
+			    AVERAGEX ( Dev, [@dev] )
+		displayFolder: Seasonality
+		lineageTag: 7acfdb3d-5801-4318-9afc-c0640ce0d882
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Monthly Years Used' =
+			
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[MonthNumber] ),
+			                REMOVEFILTERS ( 'Date'[MonthNumber] )
+			            ),
+			            "@r", CALCULATE ( [Monthly Return] )
+			        ),
+			        NOT ISBLANK ( [@r] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 12
+			    )
+			RETURN
+			    COUNTROWS ( FullYears )
+		formatString: 0
+		displayFolder: Seasonality
+		lineageTag: bfec3de1-a373-494c-8cf6-0430fff646b9
+
+	measure 'Freight Monthly Change' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR M        = SELECTEDVALUE ( 'Date'[MonthNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[MonthNumber] ),
+			            REMOVEFILTERS ( 'Date'[MonthNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY = 'Date'[Year]
+			            VAR curM = 'Date'[MonthNumber]
+			            VAR prevY = IF ( curM = 1, curY - 1, curY )
+			            VAR prevM = IF ( curM = 1, 12, curM - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[MonthNumber] = prevM ),
+			                    [@last]
+			                )
+			    )
+			VAR Complete =
+			    FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Complete, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Complete, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 12
+			    )
+			VAR CompleteM =
+			    FILTER (
+			        Complete,
+			        'Date'[MonthNumber] = M
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    SWITCH (
+			        Mode,
+			        "Points", AVERAGEX ( CompleteM, [@last] - [@prev] ),
+			        AVERAGEX ( CompleteM, DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) ) )
+			    )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Freight
+		lineageTag: 89dd16eb-4eaf-4c17-be8b-4e0a46e933d9
+
+	measure 'Freight Monthly Deviation' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR M        = SELECTEDVALUE ( 'Date'[MonthNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[MonthNumber] ),
+			            REMOVEFILTERS ( 'Date'[MonthNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY = 'Date'[Year]
+			            VAR curM = 'Date'[MonthNumber]
+			            VAR prevY = IF ( curM = 1, curY - 1, curY )
+			            VAR prevM = IF ( curM = 1, 12, curM - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[MonthNumber] = prevM ),
+			                    [@last]
+			                )
+			    )
+			VAR PanelWithChange =
+			    ADDCOLUMNS (
+			        FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) ),
+			        "@chg",
+			            SWITCH (
+			                Mode,
+			                "Points", [@last] - [@prev],
+			                DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) )
+			            )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( PanelWithChange, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( PanelWithChange, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 12
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            PanelWithChange,
+			            'Date'[MonthNumber] = M
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@chg] - AVERAGEX ( FILTER ( PanelWithChange, 'Date'[Year] = y ), [@chg] )
+			    )
+			RETURN
+			    AVERAGEX ( Dev, [@dev] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Freight
+		lineageTag: 2d8e18d2-53c6-4595-903d-16018d5f7330
+
+	measure 'Equity Contrast Tanker Panel' =
+			
+			VAR Years =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Year] ),
+			        REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			        Lineage[Lineage] = "Tanker"
+			    )
+			VAR WithContrast =
+			    ADDCOLUMNS (
+			        Years,
+			        "@c",
+			            VAR y = 'Date'[Year]
+			            VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			            VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			            VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			            VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			            RETURN
+			                IF (
+			                    NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
+			                    ( q4 + q1 - q2 - q3 ) / 2
+			                )
+			    )
+			RETURN
+			    FILTER ( WithContrast, NOT ISBLANK ( [@c] ) )
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: fafe0c1a-80e8-4159-a8f9-053572e3a814
+
+	measure 'Equity Contrast Tanker SD' =
+			
+			VAR Years =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Year] ),
+			        REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			        Lineage[Lineage] = "Tanker"
+			    )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            Years,
+			            "@c",
+			                VAR y = 'Date'[Year]
+			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                RETURN
+			                    IF (
+			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
+			                        ( q4 + q1 - q2 - q3 ) / 2
+			                    )
+			        ),
+			        NOT ISBLANK ( [@c] )
+			    )
+			RETURN
+			    STDEVX.S ( Panel, [@c] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: 9136786e-62a7-4db5-9c4f-7951639531f5
+
+	measure 'Equity Contrast Tanker Point' =
+			
+			VAR Years =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Year] ),
+			        REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			        Lineage[Lineage] = "Tanker"
+			    )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            Years,
+			            "@c",
+			                VAR y = 'Date'[Year]
+			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                RETURN
+			                    IF (
+			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
+			                        ( q4 + q1 - q2 - q3 ) / 2
+			                    )
+			        ),
+			        NOT ISBLANK ( [@c] )
+			    )
+			RETURN
+			    AVERAGEX ( Panel, [@c] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: a574cc62-46b4-4fd1-91de-7d67c83053f2
+
+	measure 'Equity Contrast Tanker N' =
+			
+			VAR Years =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Year] ),
+			        REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			        Lineage[Lineage] = "Tanker"
+			    )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            Years,
+			            "@c",
+			                VAR y = 'Date'[Year]
+			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                RETURN
+			                    IF (
+			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
+			                        ( q4 + q1 - q2 - q3 ) / 2
+			                    )
+			        ),
+			        NOT ISBLANK ( [@c] )
+			    )
+			RETURN
+			    COUNTROWS ( Panel )
+		formatString: 0
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: 7fec9516-80c2-4396-abd6-e29bcc9da0d2
+
+	measure 'Equity Contrast Tanker t' =
+			
+			VAR M  = [Equity Contrast Tanker Point]
+			VAR SD = [Equity Contrast Tanker SD]
+			VAR N  = [Equity Contrast Tanker N]
+			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: d9724c2a-484e-4219-8de0-5c696413f135
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Equity Contrast Tanker p one-sided' =
+			
+			VAR N = [Equity Contrast Tanker N]
+			VAR T = [Equity Contrast Tanker t]
+			RETURN IF ( N > 1, 1 - T.DIST ( T, N - 1, TRUE () ) )
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: 458597e4-fe90-4f05-967c-0efa7cce49c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Equity Contrast DryBulk Q1 t one-sided' =
+			
+			VAR M  = CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+			VAR SD = CALCULATE ( [Seasonal Deviation SD], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+			VAR N  = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: 2a2c0187-fd6c-4743-adb9-d32d732c6ace
+
+	measure 'Equity Contrast DryBulk Q1 p one-sided' =
+			
+			VAR N = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+			VAR T = [Equity Contrast DryBulk Q1 t one-sided]
+			RETURN IF ( N > 1, T.DIST ( T, N - 1, TRUE () ) )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: cfacc3eb-a534-4b46-8f9d-7ce21c8bdcaa
 
 	column Value
 		isHidden
