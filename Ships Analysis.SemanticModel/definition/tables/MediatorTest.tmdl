@@ -1,0 +1,201 @@
+table MediatorTest
+	lineageTag: f1e9ae99-32c8-4c8d-8c12-9c98b35f3900
+
+	column label
+		dataType: string
+		lineageTag: 56a1e08f-1cf8-4227-bbfb-8b3eed073388
+		summarizeBy: none
+		sourceColumn: label
+
+		annotation SummarizationSetBy = User
+
+	column focus_q
+		dataType: int64
+		formatString: 0
+		lineageTag: e555a2d8-1fd6-4ecf-bd18-a1666cb749ac
+		summarizeBy: none
+		sourceColumn: focus_q
+
+		annotation SummarizationSetBy = User
+
+	column window
+		dataType: string
+		lineageTag: fd9b4e88-47e5-4b4f-98f2-9c411186f652
+		summarizeBy: none
+		sourceColumn: window
+
+		annotation SummarizationSetBy = User
+
+	column n_years
+		dataType: int64
+		formatString: 0
+		lineageTag: 03124221-ebd7-43e6-85ec-e4e00fee8c3b
+		summarizeBy: none
+		sourceColumn: n_years
+
+		annotation SummarizationSetBy = User
+
+	column raw_alpha
+		dataType: double
+		lineageTag: 1cc01133-b721-4cc2-80c1-c0ff5a5718cb
+		summarizeBy: none
+		sourceColumn: raw_alpha
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column direct_alpha
+		dataType: double
+		lineageTag: e67d6536-41df-496d-ac7b-6a04909ecb36
+		summarizeBy: none
+		sourceColumn: direct_alpha
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column beta
+		dataType: double
+		lineageTag: 7b60ed2b-67eb-438b-8d20-7f682ebb8439
+		summarizeBy: none
+		sourceColumn: beta
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delta_focus
+		dataType: double
+		lineageTag: f82269ad-2443-4351-be3f-af8d1e363daa
+		summarizeBy: none
+		sourceColumn: delta_focus
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mediated_component
+		dataType: double
+		lineageTag: b3fc9c87-e5c1-4522-a619-4e3f20307734
+		summarizeBy: none
+		sourceColumn: mediated_component
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mediated_share
+		dataType: double
+		lineageTag: b2da7fde-5d43-49d2-aabe-5889a34f8647
+		summarizeBy: none
+		sourceColumn: mediated_share
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column boot_lo
+		dataType: double
+		lineageTag: 9c36c59d-7280-4554-b489-063d38863f5f
+		summarizeBy: none
+		sourceColumn: boot_lo
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column boot_hi
+		dataType: double
+		lineageTag: fadcc13f-5d2f-4f51-9907-007dfe6d9024
+		summarizeBy: none
+		sourceColumn: boot_hi
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column decision
+		dataType: string
+		lineageTag: acb58a23-60b9-4bf4-a114-7be9a1f50ea1
+		summarizeBy: none
+		sourceColumn: decision
+
+		annotation SummarizationSetBy = User
+
+	column note
+		dataType: string
+		lineageTag: 6288e2fc-a90f-49a5-8852-cf6524ee9c4d
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = User
+
+	column Combination
+		dataType: string
+		lineageTag: 36d8105d-48ff-403f-9306-ebc0c3c829ed
+		summarizeBy: none
+		sourceColumn: Combination
+		sortByColumn: SortOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column SortOrder
+		dataType: int64
+		formatString: 0
+		lineageTag: 7da23b3d-5279-44e1-897d-a9c12e490dde
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = User
+
+	partition MediatorTest = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\checks\mediator_test_2026-10-19.csv"),
+				        [Delimiter=",", Columns=null, Encoding=65001, QuoteStyle=QuoteStyle.Csv]
+				    ),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"label", type text},
+				        {"focus_q", Int64.Type},
+				        {"window", type text},
+				        {"n_years", Int64.Type},
+				        {"raw_alpha", type number},
+				        {"direct_alpha", type number},
+				        {"beta", type number},
+				        {"delta_focus", type number},
+				        {"mediated_component", type number},
+				        {"mediated_share", type number},
+				        {"boot_lo", type number},
+				        {"boot_hi", type number},
+				        {"decision", type text},
+				        {"note", type text}
+				    }),
+				    AddRowLabel = Table.AddColumn(Typed, "Combination",
+				        each [label] & " Q" & Text.From([focus_q]),
+				        type text
+				    ),
+				    AddSortOrder = Table.AddColumn(AddRowLabel, "SortOrder",
+				        each if Text.StartsWith([label], "BDTI vs Brent") then 10
+				             else if Text.StartsWith([label], "BDTI vs WTI") then 11
+				             else if Text.Contains([label], "Iron ore") and [focus_q] = 1 then 20
+				             else if Text.Contains([label], "Iron ore") and [focus_q] = 3 then 22
+				             else if Text.Contains([label], "China") and [focus_q] = 1 then 30
+				             else if Text.Contains([label], "China") and [focus_q] = 3 then 32
+				             else 99,
+				        Int64.Type
+				    )
+				in
+				    AddSortOrder
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

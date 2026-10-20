@@ -1,0 +1,7 @@
+label,focus_q,window,n_years,raw_alpha,direct_alpha,beta,delta_focus,mediated_component,mediated_share,boot_lo,boot_hi,decision,note
+BDTI vs Brent (BZ=F),4,2008 to 2025,18,0.2566,0.2611,0.0593,-0.0749,-0.0044,-0.0173,-0.3723,0.0611,sector_valid,headline; roll-yield caveat for BZ=F
+BDTI vs WTI (CL=F) [robustness],4,2006 to 2025,20,0.28,0.2821,0.0362,-0.0575,-0.0021,-0.0074,-0.3046,0.0517,sector_valid,robustness rerun for Brent
+BDI vs Iron ore miners (VALE+RIO),3,2006 to 2025,20,0.1027,0.1281,1.0592,-0.024,-0.0254,-0.2475,-6.8585,6.131,spans_threshold,"dry bulk supply channel, Q3"
+BDI vs Iron ore miners (VALE+RIO),1,2006 to 2025,20,-0.0477,-0.0871,1.0592,0.0373,0.0395,-0.8279,-8.1643,8.5862,spans_threshold,"dry bulk supply channel, Q1"
+BDI vs China (MCHI),3,2012 to 2025,14,0.1902,0.1889,0.338,0.0038,0.0013,0.0067,-0.2711,0.4941,spans_threshold,"dry bulk demand channel, Q3"
+BDI vs China (MCHI),1,2012 to 2025,14,-0.1182,-0.1232,0.338,0.0147,0.005,-0.0421,-0.8053,0.9827,spans_threshold,"dry bulk demand channel, Q1"

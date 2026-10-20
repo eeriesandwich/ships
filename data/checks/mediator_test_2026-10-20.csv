@@ -1,0 +1,13 @@
+label,focus_q,events,window,n_years,raw_alpha,direct_alpha,beta,delta_focus,mediated_component,mediated_share,boot_lo,boot_hi,decision,note
+BDTI vs Brent (BZ=F),4,Include,2008 to 2025,18,0.2566,0.2611,0.0593,-0.0749,-0.0044,-0.0173,-0.3723,0.0611,sector_valid,headline; roll-yield caveat for BZ=F
+BDTI vs WTI (CL=F) [robustness],4,Include,2006 to 2025,20,0.28,0.2821,0.0362,-0.0575,-0.0021,-0.0074,-0.3046,0.0517,sector_valid,robustness rerun for Brent
+BDI vs Iron ore miners (VALE+RIO),3,Include,2006 to 2025,20,0.1027,0.1281,1.0592,-0.024,-0.0254,-0.2475,-6.8585,6.131,spans_threshold,"dry bulk supply channel, Q3"
+BDI vs Iron ore miners (VALE+RIO),1,Include,2006 to 2025,20,-0.0477,-0.0871,1.0592,0.0373,0.0395,-0.8279,-8.1643,8.5862,spans_threshold,"dry bulk supply channel, Q1"
+BDI vs China (MCHI),3,Include,2012 to 2025,14,0.1902,0.1889,0.338,0.0038,0.0013,0.0067,-0.2711,0.4941,spans_threshold,"dry bulk demand channel, Q3"
+BDI vs China (MCHI),1,Include,2012 to 2025,14,-0.1182,-0.1232,0.338,0.0147,0.005,-0.0421,-0.8053,0.9827,spans_threshold,"dry bulk demand channel, Q1"
+BDTI vs Brent (BZ=F),4,Exclude,2008 to 2025,18,0.2518,0.2583,0.0948,-0.0681,-0.0065,-0.0256,-0.4073,0.0431,sector_valid,headline; roll-yield caveat for BZ=F
+BDTI vs WTI (CL=F) [robustness],4,Exclude,2006 to 2025,20,0.2757,0.2794,0.0703,-0.0517,-0.0036,-0.0132,-0.2836,0.0444,sector_valid,robustness rerun for Brent
+BDI vs Iron ore miners (VALE+RIO),3,Exclude,2006 to 2025,20,0.1027,0.1214,1.0726,-0.0174,-0.0187,-0.182,-5.5332,3.9729,spans_threshold,"dry bulk supply channel, Q3"
+BDI vs Iron ore miners (VALE+RIO),1,Exclude,2006 to 2025,20,-0.0402,-0.0852,1.0726,0.0419,0.0449,-1.1172,-8.4022,9.6151,spans_threshold,"dry bulk supply channel, Q1"
+BDI vs China (MCHI),3,Exclude,2012 to 2025,14,0.1894,0.1875,0.3656,0.0051,0.0019,0.0099,-0.23,0.384,spans_threshold,"dry bulk demand channel, Q3"
+BDI vs China (MCHI),1,Exclude,2012 to 2025,14,-0.1085,-0.115,0.3656,0.0176,0.0064,-0.0592,-1.048,0.8874,spans_threshold,"dry bulk demand channel, Q1"

@@ -1,0 +1,25 @@
+EVALUATE
+SUMMARIZECOLUMNS (
+    TankerDaily[Ticker], TankerDaily[MemberLineage],
+    "Rows", COUNTROWS ( TankerDaily ),
+    "From", MIN ( TankerDaily[Date] ),
+    "To",   MAX ( TankerDaily[Date] )
+)
+
+EVALUATE
+ROW (
+    "TankerDaily rows",  COUNTROWS ( TankerDaily ),
+    "DryBulkDaily rows", COUNTROWS ( DryBulkDaily ),
+    "Unclassified dry bulk rows",
+        COUNTROWS ( FILTER ( DryBulkDaily, DryBulkDaily[MemberLineage] <> "DryBulk" ) )
+)
+
+EVALUATE
+FILTER (
+    SELECTCOLUMNS ( LineagePortfolio,
+        "Lineage", LineagePortfolio[Lineage], "Date", LineagePortfolio[Date],
+        "Constituents", LineagePortfolio[Constituents],
+        "Traded", LineagePortfolio[ConstituentsTraded] ),
+    [Lineage] = "Tanker"
+        && [Date] >= DATE ( 2024, 2, 5 ) && [Date] <= DATE ( 2024, 2, 12 )
+)

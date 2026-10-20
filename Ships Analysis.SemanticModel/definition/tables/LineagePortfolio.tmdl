@@ -1,0 +1,254 @@
+table LineagePortfolio
+	lineageTag: dbae8397-31a2-42c1-8033-b8465716b254
+
+	column Lineage
+		dataType: string
+		lineageTag: 1f847e60-d3fd-4dbb-9ee4-1eda3d0683a4
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c5b8c84a-2fa6-4227-a86c-5b1b7241aa80
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PortfolioReturn
+		dataType: double
+		isHidden
+		lineageTag: 3d1e6b2a-f405-44d4-921d-b9890171fce0
+		summarizeBy: none
+		sourceColumn: PortfolioReturn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Constituents
+		dataType: int64
+		formatString: 0
+		lineageTag: 3066c902-3383-4b5b-a2b6-42f5ae59fceb
+		summarizeBy: none
+		sourceColumn: Constituents
+
+		annotation SummarizationSetBy = User
+
+	column ConstituentsTraded
+		dataType: int64
+		formatString: 0
+		lineageTag: d31887ae-9e90-4e49-92fd-5360fed4edad
+		summarizeBy: none
+		sourceColumn: ConstituentsTraded
+
+		annotation SummarizationSetBy = User
+
+	column USVenueOpen
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: de59b92f-a2ec-4abd-8b09-8719cc11db09
+		summarizeBy: none
+		sourceColumn: USVenueOpen
+
+		annotation SummarizationSetBy = User
+
+	column PortfolioReturnUS
+		dataType: double
+		isHidden
+		lineageTag: 10e8d3c8-da55-438b-918e-63b2c6ed64d5
+		summarizeBy: none
+		sourceColumn: PortfolioReturnUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ConstituentsTradedUS
+		dataType: int64
+		formatString: 0
+		lineageTag: 00f7ec61-4950-4330-9b40-89936d31cc0d
+		summarizeBy: none
+		sourceColumn: ConstituentsTradedUS
+
+		annotation SummarizationSetBy = User
+
+	column IsEventDay =
+			
+			VAR L = LineagePortfolio[Lineage]
+			VAR D = LineagePortfolio[Date]
+			RETURN
+			    NOT ISEMPTY (
+			        FILTER (
+			            EventDay,
+			            EventDay[Lineage] = L
+			                && EventDay[Date] = D
+			                && RELATED ( events[Scope] ) = "Sector"
+			                && RELATED ( events[Direction] ) <> "Neutral"
+			        )
+			    )
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dc040711-c57d-4fec-82bc-1c61c8531868
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column PortfolioPriceReturn
+		dataType: double
+		lineageTag: 326a838d-f4f2-4307-817a-c5fad5f002e9
+		summarizeBy: sum
+		sourceColumn: PortfolioPriceReturn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PortfolioLocalReturn
+		dataType: double
+		lineageTag: 9f7219a9-39df-4d39-8ba0-a5225cafe459
+		summarizeBy: sum
+		sourceColumn: PortfolioLocalReturn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition LineagePortfolio = m
+		mode: import
+		source =
+				let
+				    // ------------------------------------------------------------------
+				    // MakePortfolio: turns one lineage's per-ticker price table into a
+				    // single equal-weighted return series, one row per panel date.
+				    // Written once, called twice, so tanker and dry bulk cannot drift apart.
+				    //
+				    // Three return bases are built in parallel: total return in USD (the
+				    // headline), price return in USD (for the payout-effect decomposition),
+				    // and total return in local currency (for the FX-effect decomposition).
+				    // The `IsStale` nulling and gating rules are identical across the three.
+				    // ------------------------------------------------------------------
+				    MakePortfolio = (src as table, lineage as text) as table =>
+				        let
+				            Sel = Table.SelectColumns(src,
+				                    {"Date", "Ticker",
+				                     "ClosePriceAdjustedUSD",
+				                     "ClosePriceRawUSD",
+				                     "ClosePriceAdjusted",
+				                     "IsStale", "Venue"}),
+				
+				            Grouped = Table.Group(Sel, {"Ticker"}, {{"rows", each _, type table}}),
+				
+				            WithReturns = Table.AddColumn(Grouped, "withDailyReturns", each
+				                let
+				                    t  = Table.Buffer(Table.Sort([rows], {{"Date", Order.Ascending}})),
+				                    cT = t[ClosePriceAdjustedUSD],   // total return, USD
+				                    cP = t[ClosePriceRawUSD],        // price return, USD
+				                    cL = t[ClosePriceAdjusted],      // total return, local currency
+				                    s  = t[IsStale],
+				                    n  = List.Count(cT),
+				
+				                    // Row-to-row on the FILLED series. A carried row repeats
+				                    // the previous price, so its own return is exactly zero
+				                    // and the next real row's return spans the whole gap.
+				                    rT = List.Transform({0 .. n - 1},
+				                           (i) => if i = 0 then null else cT{i} / cT{i - 1} - 1),
+				                    rP = List.Transform({0 .. n - 1},
+				                           (i) => if i = 0 then null else cP{i} / cP{i - 1} - 1),
+				                    rL = List.Transform({0 .. n - 1},
+				                           (i) => if i = 0 then null else cL{i} / cL{i - 1} - 1),
+				
+				                    // A carried row's return is not zero, it is absent.
+				                    rrT = List.Transform({0 .. n - 1}, (i) => if s{i} then null else rT{i}),
+				                    rrP = List.Transform({0 .. n - 1}, (i) => if s{i} then null else rP{i}),
+				                    rrL = List.Transform({0 .. n - 1}, (i) => if s{i} then null else rL{i}),
+				
+				                    withCol = Table.FromColumns(
+				                                Table.ToColumns(t)   & {rT, rrT, rrP, rrL},
+				                                Table.ColumnNames(t) & {"Return",
+				                                                         "RealReturn",
+				                                                         "RealReturnPrice",
+				                                                         "RealReturnLocal"})
+				                in
+				                    withCol),
+				
+				            Stacked = Table.Combine(WithReturns[withDailyReturns]),
+				
+				            // Drops only each ticker's first panel row, which has no prior day.
+				            Valid = Table.SelectRows(Stacked, each [Return] <> null),
+				
+				            Port = Table.Group(Valid, {"Date"},
+				                     {{"PortfolioReturn", each
+				                         let x = List.RemoveNulls([RealReturn])
+				                         in if List.IsEmpty(x) then null else List.Average(x),
+				                         type number},
+				
+				                      {"PortfolioPriceReturn", each
+				                         let x = List.RemoveNulls([RealReturnPrice])
+				                         in if List.IsEmpty(x) then null else List.Average(x),
+				                         type number},
+				
+				                      {"PortfolioLocalReturn", each
+				                         let x = List.RemoveNulls([RealReturnLocal])
+				                         in if List.IsEmpty(x) then null else List.Average(x),
+				                         type number},
+				
+				                      {"Constituents", each Table.RowCount(_), Int64.Type},
+				
+				                      {"ConstituentsTraded",
+				                         each List.Count(List.RemoveNulls([RealReturn])), Int64.Type},
+				
+				                      // True when at least one US-venue constituent actually
+				                      // traded. This is the floor rule, expressed as a fact
+				                      // rather than a threshold.
+				                      {"USVenueOpen",
+				                         each Table.RowCount(
+				                                Table.SelectRows(_, (row) => row[Venue] = "US"
+				                                                         and row[IsStale] = false)) > 0,
+				                         type logical},
+				
+				                      // US-listed constituents only. Brussels and Oslo close six
+				                      // to eight hours before New York, so the freight-to-equity
+				                      // lag measure reads this series rather than the full basket.
+				                      {"PortfolioReturnUS", each
+				                         let x = List.RemoveNulls(
+				                                   Table.SelectRows(_, (row) => row[Venue] = "US")[RealReturn])
+				                         in if List.IsEmpty(x) then null else List.Average(x),
+				                         type number},
+				
+				                      {"ConstituentsTradedUS", each
+				                         List.Count(List.RemoveNulls(
+				                           Table.SelectRows(_, (row) => row[Venue] = "US")[RealReturn])),
+				                         Int64.Type}}),
+				
+				            Tagged = Table.AddColumn(Port, "Lineage", each lineage, type text)
+				        in
+				            Tagged,
+				
+				    // ------------------------------------------------------------------
+				    // The two calls.
+				    // ------------------------------------------------------------------
+				
+				    TankerSrc  = Table.SelectRows(TankerDaily,  each [MemberLineage] = "Tanker"),
+				    DryBulkSrc = Table.SelectRows(DryBulkDaily, each [MemberLineage] = "DryBulk"),
+				
+				    Both = Table.Combine({ MakePortfolio(TankerSrc,  "Tanker"),
+				                           MakePortfolio(DryBulkSrc, "DryBulk") }),
+				
+				    Sorted = Table.Sort(Both, {{"Lineage", Order.Ascending}, {"Date", Order.Ascending}}),
+				    Typed  = Table.TransformColumnTypes(Sorted, {{"Date", type date}})
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

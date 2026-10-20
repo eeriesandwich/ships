@@ -1,0 +1,99 @@
+table EventDay
+	lineageTag: bb0ce6a5-c4e4-4e59-85ca-a71a856cf953
+
+	column EventKey
+		dataType: string
+		isHidden
+		lineageTag: ede71a9a-e050-468f-ab3b-38dc9742460c
+		summarizeBy: none
+		sourceColumn: EventKey
+
+		annotation SummarizationSetBy = User
+
+	column EventID
+		dataType: string
+		lineageTag: dfec727b-76dd-4828-947f-3f15b4daef9e
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		dataType: string
+		lineageTag: ecc9ee84-33da-49dd-8a3b-e27bc6ce1834
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column Horizon
+		dataType: string
+		lineageTag: 3b90cbfd-2354-4985-bd75-79b840b9843a
+		summarizeBy: none
+		sourceColumn: Horizon
+
+		annotation SummarizationSetBy = User
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6d588968-15eb-4c62-88be-26c0259ac197
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SessionOffset
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f653d7cf-6e5d-4b26-ab2a-03fe99768aa2
+		summarizeBy: none
+		sourceColumn: SessionOffset
+
+		annotation SummarizationSetBy = User
+
+	partition EventDay = m
+		mode: import
+		source =
+				let
+				    // Only bounded horizons get an event window. Regime and None rows are
+				    // annotations, not event studies.
+				    WindowLength = [Day = 1, Week = 5, Month = 21, Quarter = 63],
+				    Bounded = Table.SelectRows(events,
+				                each List.Contains(Record.FieldNames(WindowLength), [Horizon])),
+				
+				    Sess = List.Buffer(List.Sort(Sessions[Date])),
+				    N    = List.Count(Sess),
+				
+				    // The window opens on the first session on or after EventDate, so an event
+				    // dated on a weekend or holiday lands on the next session. It runs for the
+				    // horizon's length in sessions, or to EventEndDate if that is later.
+				    WithDays = Table.AddColumn(Bounded, "days", each
+				        let
+				            len       = Record.Field(WindowLength, [Horizon]),
+				            startIx   = List.PositionOf(List.Transform(Sess, (d) => d >= [EventDate]), true),
+				            endBySess = startIx + len - 1,
+				            endByDate = if [EventEndDate] = null then -1
+				                        else List.Count(List.Select(Sess, (d) => d <= [EventEndDate])) - 1,
+				            endIx     = List.Min({ List.Max({ endBySess, endByDate }), N - 1 }),
+				            ix        = if startIx < 0 then {} else { startIx .. endIx }
+				        in
+				            Table.FromRecords(
+				                List.Transform(ix, (i) => [Date = Sess{i}, SessionOffset = i - startIx]),
+				                type table [Date = date, SessionOffset = Int64.Type]),
+				        type table [Date = date, SessionOffset = Int64.Type]),
+				
+				    Kept  = Table.SelectColumns(WithDays, {"EventKey", "EventID", "Lineage", "Horizon", "days"}),
+				    Rows  = Table.ExpandTableColumn(Kept, "days", {"Date", "SessionOffset"}),
+				    Typed = Table.TransformColumnTypes(Rows,
+				              {{"Date", type date}, {"SessionOffset", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

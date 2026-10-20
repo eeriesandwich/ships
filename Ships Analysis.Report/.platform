@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ships Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "777acf83-33b2-4ed3-825d-1d38ee0d7508"
+  }
+}

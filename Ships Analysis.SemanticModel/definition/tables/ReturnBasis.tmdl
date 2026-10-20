@@ -1,0 +1,36 @@
+table ReturnBasis
+	lineageTag: ecefaf78-9935-4066-8d69-0754e1dbf440
+
+	column Basis
+		lineageTag: 3935427e-b535-4627-89d4-368d03b0ae3c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Basis]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		formatString: 0
+		lineageTag: 44273e98-515f-4117-ae79-b5e786dab1e7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [SortOrder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ReturnBasis = calculated
+		mode: import
+		source =
+				
+				DATATABLE (
+				    "Basis",     STRING,
+				    "SortOrder", INTEGER,
+				    {
+				        { "Total", 1 },
+				        { "Price", 2 },
+				        { "Local", 3 }
+				    }
+				)
+
+	annotation PBI_Id = ade0ec3a2307454da202f4a0a021ce8e
+

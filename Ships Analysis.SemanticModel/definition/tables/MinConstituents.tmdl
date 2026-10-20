@@ -1,0 +1,26 @@
+table MinConstituents
+	lineageTag: 3b793346-9235-4454-9db6-d37da43f6c76
+
+	measure 'MinConstituents Value' = SELECTEDVALUE('MinConstituents'[MinConstituents], 3)
+		formatString: 0
+		lineageTag: b45a996c-cc1b-48ab-af63-c1223b402aa8
+
+	column MinConstituents
+		formatString: 0
+		lineageTag: 11cad641-f2e7-4f51-a5c2-f5773480d351
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition MinConstituents = calculated
+		mode: import
+		source = GENERATESERIES(1, 7, 1)
+
+	annotation PBI_Id = c0a1dfd9fccf4bfebb2ee094c8375408
+

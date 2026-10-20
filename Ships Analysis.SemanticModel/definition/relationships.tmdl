@@ -1,0 +1,68 @@
+relationship 97936766-2968-d492-0c35-f74e575420a4
+	fromColumn: TankerDaily.Date
+	toColumn: Date.Date
+
+relationship 4c900ef0-d628-f54d-46d5-aecda0706ce4
+	fromColumn: DryBulkDaily.Date
+	toColumn: Date.Date
+
+relationship 1346ea49-f552-c7a6-0f20-a121f1b657e6
+	fromColumn: LineagePortfolio.Date
+	toColumn: Date.Date
+
+relationship f8e70f06-44b9-28f0-4cce-5754b4bc9361
+	fromColumn: freight.Date
+	toColumn: Date.Date
+
+relationship bfb2048b-6122-fae0-8bee-9a4415b8fdd1
+	fromColumn: ControlFactors.Date
+	toColumn: Date.Date
+
+relationship 57d5930b-a577-49eb-2ad5-07238f10979e
+	fromColumn: FXDaily.Date
+	toColumn: Date.Date
+
+relationship 39efe594-5bbf-a397-0405-71a462e10933
+	fromColumn: EventDay.Date
+	toColumn: Date.Date
+
+relationship f0d161cd-b4aa-16c9-9b46-c8300881e4f0
+	fromColumn: TankerDaily.MemberLineage
+	toColumn: Lineage.Lineage
+
+relationship 68217226-144d-e6dd-0373-10f12a698ee8
+	fromColumn: LineagePortfolio.Lineage
+	toColumn: Lineage.Lineage
+
+relationship b7d9e0c6-1e0f-4a83-740a-c48fc58a4002
+	fromColumn: events.Lineage
+	toColumn: Lineage.Lineage
+
+relationship 2204b226-b906-7750-715a-3c407866d868
+	fromColumn: EventDay.EventKey
+	toColumn: events.EventKey
+
+relationship a8c8abae-2f32-8c5a-bf01-534558125c12
+	fromColumn: freight.Series
+	toColumn: FreightSeries.Series
+
+relationship 20d605d6-d86c-ec28-a56f-661fcdd6dd52
+	fromColumn: FreightSeries.Lineage
+	toColumn: Lineage.Lineage
+
+relationship c2777cb3-8b9e-50ad-ba0b-80a82743cbb8
+	fromColumn: ControlFactors.Ticker
+	toColumn: Factor.Ticker
+
+relationship 41eece10-f849-4efa-a50f-4e7400b896a8
+	fromColumn: TankerDaily.Ticker
+	toColumn: Company.Ticker
+
+relationship c3387094-078c-b596-8fca-93300b656d8d
+	fromColumn: DryBulkDaily.Ticker
+	toColumn: Company.Ticker
+
+relationship ca9fc1df-052d-4e17-b73a-899f50097eb6
+	fromColumn: DryBulkDaily.MemberLineage
+	toColumn: Lineage.Lineage
+

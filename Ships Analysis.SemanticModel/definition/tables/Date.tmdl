@@ -1,0 +1,223 @@
+table Date
+	lineageTag: 6cbb3b0f-4f5c-46f9-8c0b-5a20140a5866
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: 752d0993-81c7-4356-87f8-64766bd9f6a8
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: f56dc133-4fca-46ff-9be4-a6b87e560850
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column QuarterNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: f7141436-155a-4853-be0e-344ccf981d40
+		summarizeBy: none
+		sourceColumn: QuarterNumber
+
+		annotation SummarizationSetBy = User
+
+	column Quarter
+		dataType: string
+		lineageTag: 8bfc03ee-ffbf-4fa5-9193-1a869bcb658c
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = User
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b4b3816-572a-41a3-af00-b668a5225402
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = User
+
+	column MonthName
+		dataType: string
+		lineageTag: a3c3d89e-1ef9-43ff-8ad7-e18a379b53d9
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column YearMonth
+		dataType: string
+		lineageTag: cb32b00b-9701-42ec-a517-71a685b700e0
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: YearMonthSort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column YearMonthSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ee4e08d3-e223-49f0-861a-e154ecd94415
+		summarizeBy: none
+		sourceColumn: YearMonthSort
+
+		annotation SummarizationSetBy = User
+
+	column YearQuarter
+		dataType: string
+		lineageTag: 33c020e8-0918-424e-ac01-2bebcac062b2
+		summarizeBy: none
+		sourceColumn: YearQuarter
+		sortByColumn: YearQuarterSort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column YearQuarterSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 07837979-6cb0-4371-b579-4ea23054d5aa
+		summarizeBy: none
+		sourceColumn: YearQuarterSort
+
+		annotation SummarizationSetBy = User
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: 156f06a4-0858-485e-a180-7604f4e0d53b
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+		sortByColumn: DayOfWeekNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column DayOfWeekNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 81594083-a4bf-433a-a1af-dfe68750d5e5
+		summarizeBy: none
+		sourceColumn: DayOfWeekNumber
+
+		annotation SummarizationSetBy = User
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d03f589e-b8db-45a3-8c9f-aa92c7325caf
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = User
+
+	column SessionIndex = LOOKUPVALUE ( Sessions[SessionIndex], Sessions[Date], 'Date'[Date] )
+		formatString: 0
+		lineageTag: e6dd1785-b83f-4cbc-be03-41f6e39658b3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column IsTradingDay = NOT ISBLANK ( 'Date'[SessionIndex] )
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05e37573-059c-4809-8bc7-e82d3ff572e4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column ISOYear
+		dataType: int64
+		formatString: 0
+		lineageTag: d99c7d59-330a-439f-9a13-11e556b25b48
+		summarizeBy: none
+		sourceColumn: ISOYear
+
+		annotation SummarizationSetBy = User
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 37417602-d65d-4e5c-936d-ed10f4021100
+		summarizeBy: none
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = User
+
+	column USSessionIndex = LOOKUPVALUE ( Sessions[USSessionIndex], Sessions[Date], 'Date'[Date] )
+		formatString: 0
+		lineageTag: eb58b79a-d1b1-4ce6-a4ee-bc006e9f22ee
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column IsInDataRange =
+			
+			'Date'[Date] >= MIN ( LineagePortfolio[Date] )
+			    && 'Date'[Date] <= MAX ( LineagePortfolio[Date] )
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 23653324-5108-4045-887a-ea9917319237
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    // Span every fact table, so no fact row loses its relationship.
+				    // BDI reaches back to 1985, which sets the floor.
+				    MinDate = #date(1985, 1, 1),
+				    MaxDate = #date(2035, 12, 31),
+				
+				    Days  = List.Dates(MinDate, Duration.Days(MaxDate - MinDate) + 1, #duration(1,0,0,0)),
+				    Base  = Table.TransformColumnTypes(
+				              Table.FromList(Days, Splitter.SplitByNothing(), {"Date"}),
+				              {{"Date", type date}}),
+				
+				    Cols = Table.AddColumn(Base, "Year",            each Date.Year([Date]), Int64.Type),
+				    C2   = Table.AddColumn(Cols, "QuarterNumber",   each Date.QuarterOfYear([Date]), Int64.Type),
+				    C3   = Table.AddColumn(C2,   "Quarter",         each "Q" & Text.From(Date.QuarterOfYear([Date])), type text),
+				    C4   = Table.AddColumn(C3,   "MonthNumber",     each Date.Month([Date]), Int64.Type),
+				    C5   = Table.AddColumn(C4,   "MonthName",       each Date.MonthName([Date], "en-GB"), type text),
+				    C6   = Table.AddColumn(C5,   "YearMonth",       each Date.ToText([Date], "yyyy-MM"), type text),
+				    C7   = Table.AddColumn(C6,   "YearMonthSort",   each Date.Year([Date]) * 100 + Date.Month([Date]), Int64.Type),
+				    C8   = Table.AddColumn(C7,   "YearQuarter",     each Text.From(Date.Year([Date])) & " Q" & Text.From(Date.QuarterOfYear([Date])), type text),
+				    C9   = Table.AddColumn(C8,   "YearQuarterSort", each Date.Year([Date]) * 10 + Date.QuarterOfYear([Date]), Int64.Type),
+				    C10  = Table.AddColumn(C9,   "DayOfWeekName",   each Date.DayOfWeekName([Date], "en-GB"), type text),
+				    C11  = Table.AddColumn(C10,  "DayOfWeekNumber", each Date.DayOfWeek([Date], Day.Monday), Int64.Type),
+				    C12  = Table.AddColumn(C11, "DateKey",
+				             each Date.Year([Date]) * 10000 + Date.Month([Date]) * 100 + Date.Day([Date]), Int64.Type),
+				    // ISO 8601: a week belongs to the year that contains its Thursday.
+				    C13  = Table.AddColumn(C12, "ISOYear",
+				             each Date.Year(Date.AddDays([Date], 3 - Date.DayOfWeek([Date], Day.Monday))), Int64.Type),
+				    C14  = Table.AddColumn(C13, "ISOWeek",
+				             each let th = Date.AddDays([Date], 3 - Date.DayOfWeek([Date], Day.Monday))
+				                  in Number.IntegerDivide(Date.DayOfYear(th) - 1, 7) + 1, Int64.Type)
+				in
+				    C14
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

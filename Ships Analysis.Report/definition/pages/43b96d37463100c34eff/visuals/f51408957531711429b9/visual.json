@@ -1,0 +1,277 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f51408957531711429b9",
+  "position": {
+    "x": 0,
+    "y": 142,
+    "z": 0,
+    "height": 938,
+    "width": 1920,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "EventDate"
+                }
+              },
+              "queryRef": "events.EventDate",
+              "nativeQueryRef": "EventDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "EventName"
+                }
+              },
+              "queryRef": "events.EventName",
+              "nativeQueryRef": "EventName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "Lineage"
+                }
+              },
+              "queryRef": "events.Lineage",
+              "nativeQueryRef": "Lineage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "events.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "Direction"
+                }
+              },
+              "queryRef": "events.Direction",
+              "nativeQueryRef": "Direction"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "Horizon"
+                }
+              },
+              "queryRef": "events.Horizon",
+              "nativeQueryRef": "Horizon"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "events"
+                    }
+                  },
+                  "Property": "Rationale"
+                }
+              },
+              "queryRef": "events.Rationale",
+              "nativeQueryRef": "Rationale"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "events"
+                  }
+                },
+                "Property": "EventDate"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "410D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "events.EventName"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "751fcc6ef5ceb12e358c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "EventDate"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "66da1a56585150842c4f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "EventName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e38291b4964d4cf24520",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "Lineage"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "daeccc6c1ba6d84d5ece",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "daa315b19462fde9c2c9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "Direction"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "12b8744d1b4605bb9f78",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "Horizon"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f4cdee02d325f23e617f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "events"
+              }
+            },
+            "Property": "Rationale"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

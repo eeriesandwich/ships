@@ -1,0 +1,318 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1704,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1704,
+            "y": 62
+          },
+          "nodeIndex": "freight",
+          "nodeLineageTag": "bd50ab89-2206-4835-a935-126e1e151c43",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1153.4503844727362,
+            "y": 0
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "6cbb3b0f-4f5c-46f9-8c0b-5a20140a5866",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 0
+          },
+          "nodeIndex": "ControlFactors",
+          "nodeLineageTag": "974368ff-6890-4eac-a93e-369b9d414c5c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 74
+          },
+          "nodeIndex": "FXDaily",
+          "nodeLineageTag": "4cfe51ae-051f-44a9-aed3-47e2f923b85b",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 86
+          },
+          "nodeIndex": "LineagePortfolio",
+          "nodeLineageTag": "dbae8397-31a2-42c1-8033-b8465716b254",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 3124,
+            "y": 0
+          },
+          "nodeIndex": "events",
+          "nodeLineageTag": "c185b8b7-f321-417b-a49e-392c86af968d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 3408,
+            "y": 0
+          },
+          "nodeIndex": "DryBulkDaily",
+          "nodeLineageTag": "54abd158-1336-40ec-9b6d-ed04b36cbc8c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3692,
+            "y": 98
+          },
+          "nodeIndex": "Sessions",
+          "nodeLineageTag": "6cec34bd-47fd-417c-b09f-40e3a745518a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 3976,
+            "y": 0
+          },
+          "nodeIndex": "TankerDaily",
+          "nodeLineageTag": "642753cc-03cc-4d54-8b38-c1ade5bd8e68",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 4260,
+            "y": 50
+          },
+          "nodeIndex": "Factor",
+          "nodeLineageTag": "b1887546-4bfe-47cf-be3c-94795bd63852",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 4544,
+            "y": 50
+          },
+          "nodeIndex": "Company",
+          "nodeLineageTag": "aaab4b14-5b9f-45a6-9986-7abc2a117746",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 4828,
+            "y": 62
+          },
+          "nodeIndex": "FreightSeries",
+          "nodeLineageTag": "d58b5b26-de34-45f3-9d1e-f7570d480e75",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 5112,
+            "y": 86
+          },
+          "nodeIndex": "Lineage",
+          "nodeLineageTag": "ea160292-d627-467a-8862-bb8db16ade36",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 5396,
+            "y": 38
+          },
+          "nodeIndex": "EventDay",
+          "nodeLineageTag": "bb0ce6a5-c4e4-4e59-85ca-a71a856cf953",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 5680,
+            "y": 74
+          },
+          "nodeIndex": "Resample",
+          "nodeLineageTag": "d422c4b7-c701-4bd2-b38f-7e9581366f99",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 5359.0435046471657,
+            "y": 505.73389316580136
+          },
+          "nodeIndex": "Specification",
+          "nodeLineageTag": "995b4a58-dc35-499c-a964-b1e98f708896",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 6245.9834783488232,
+            "y": 338.36259611818406
+          },
+          "nodeIndex": "LagDays",
+          "nodeLineageTag": "fd1a6101-beb5-4265-811b-598081cf5c0e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 5614.4826487148694,
+            "y": 679.25388507400373
+          },
+          "nodeIndex": "MinConstituents",
+          "nodeLineageTag": "3b793346-9235-4454-9db6-d37da43f6c76",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 6004.0137843548,
+            "y": 610.59301902695915
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "53520548-515a-48d3-ad3c-af4ea6964bdf",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 5762.3741354914646,
+            "y": 346.42868272288854
+          },
+          "nodeIndex": "ReturnBasis",
+          "nodeLineageTag": "ecefaf78-9935-4066-8d69-0754e1dbf440",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 5376.5330938760872,
+            "y": 301.62694253700187
+          },
+          "nodeIndex": "MediatorTest",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6230.549615527264,
+            "y": 38
+          },
+          "nodeIndex": "MinQuarterCoverage",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5376.5330938760872,
+            "y": 351.62694253700187
+          },
+          "nodeIndex": "IncludeEvents",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 49.590342827053796,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

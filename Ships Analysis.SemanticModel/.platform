@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Ships Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f126f557-1056-45c3-a9bd-ae5ff6fb99b2"
+  }
+}

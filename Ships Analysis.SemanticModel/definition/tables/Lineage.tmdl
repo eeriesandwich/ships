@@ -1,0 +1,41 @@
+table Lineage
+	lineageTag: ea160292-d627-467a-8862-bb8db16ade36
+
+	column Lineage
+		dataType: string
+		lineageTag: ec89d955-4fce-4558-8cbf-05ef7da62515
+		summarizeBy: none
+		sourceColumn: Lineage
+		sortByColumn: SortOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column SortOrder
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 097c0444-d5c5-4477-9d0f-8bf6004c1a00
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = User
+
+	partition Lineage = m
+		mode: import
+		source =
+				let
+				    Source   = Csv.Document(
+				                 File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\lineages.csv"),
+				                 [Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed    = Table.TransformColumnTypes(Promoted,
+				                 {{"Lineage", type text}, {"SortOrder", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

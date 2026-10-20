@@ -1,0 +1,140 @@
+table events
+	lineageTag: c185b8b7-f321-417b-a49e-392c86af968d
+
+	column EventID
+		dataType: string
+		lineageTag: a0af13e8-d802-45d3-8bc3-31ab41f67356
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = User
+
+	column EventDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c56b52f4-00f1-440e-ad9d-8d5b2f759018
+		summarizeBy: none
+		sourceColumn: EventDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EventEndDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 00e8a62a-ab53-4a00-ae19-a973e8c78fe3
+		summarizeBy: none
+		sourceColumn: EventEndDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EventName
+		dataType: string
+		lineageTag: cee4e88b-e166-489d-ba3e-d7fc0f5459f9
+		summarizeBy: none
+		sourceColumn: EventName
+
+		annotation SummarizationSetBy = User
+
+	column Category
+		dataType: string
+		lineageTag: be93a5e5-c7ab-4494-8171-a6620d52f05d
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = User
+
+	column Scope
+		dataType: string
+		lineageTag: ce40d980-5202-4d11-9d54-6df702a905e0
+		summarizeBy: none
+		sourceColumn: Scope
+
+		annotation SummarizationSetBy = User
+
+	column AffectedTickers
+		dataType: string
+		lineageTag: bc6c2d80-b5cf-439e-ac4d-9ae797c49af4
+		summarizeBy: none
+		sourceColumn: AffectedTickers
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		dataType: string
+		lineageTag: c6123df7-3c33-43c6-8e28-a059bc93094d
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column Direction
+		dataType: string
+		lineageTag: 9ee4ab87-7e62-4da7-afa2-54d6ef69d384
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = User
+
+	column Horizon
+		dataType: string
+		lineageTag: 88a7d905-1be5-4a96-9958-d26e5635091b
+		summarizeBy: none
+		sourceColumn: Horizon
+
+		annotation SummarizationSetBy = User
+
+	column Rationale
+		dataType: string
+		lineageTag: 387a1b28-8ddf-45a5-8b37-cdb316c78768
+		summarizeBy: none
+		sourceColumn: Rationale
+
+		annotation SummarizationSetBy = User
+
+	column DataQualityFlag
+		dataType: string
+		lineageTag: 70e6944e-7cec-44f8-863d-59210f114080
+		summarizeBy: none
+		sourceColumn: DataQualityFlag
+
+		annotation SummarizationSetBy = User
+
+	column Source
+		dataType: string
+		lineageTag: 5b98df46-7d3d-4679-9d9c-df3356331238
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = User
+
+	column EventKey
+		dataType: string
+		isHidden
+		lineageTag: 49211d40-d68c-4b0b-8184-13100427b7ac
+		summarizeBy: none
+		sourceColumn: EventKey
+
+		annotation SummarizationSetBy = User
+
+	partition events = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\events.csv"),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EventID", type text}, {"EventDate", type date}, {"EventEndDate", type date}, {"EventName", type text}, {"Category", type text}, {"Scope", type text}, {"AffectedTickers", type text}, {"Lineage", type text}, {"Direction", type text}, {"Horizon", type text}, {"Rationale", type text}, {"DataQualityFlag", type text}, {"Source", type text}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Custom", each [EventID] & "|" & [Lineage]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Custom", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Custom", "EventKey"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

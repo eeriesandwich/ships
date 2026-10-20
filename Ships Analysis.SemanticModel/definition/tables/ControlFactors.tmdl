@@ -1,0 +1,144 @@
+table ControlFactors
+	lineageTag: 974368ff-6890-4eac-a93e-369b9d414c5c
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8d2f2eb1-fe41-45de-b356-c190966f438d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Adj Close'
+		dataType: double
+		lineageTag: ca2e6919-90a9-4640-b4f2-661c26fd6e27
+		summarizeBy: none
+		sourceColumn: Adj Close
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Close
+		dataType: double
+		lineageTag: 9bd52a84-a08d-4292-866c-fb1831af7dd8
+		summarizeBy: none
+		sourceColumn: Close
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Open
+		dataType: double
+		lineageTag: 5dd3e288-9465-4ecf-a6ad-9911677fcfeb
+		summarizeBy: none
+		sourceColumn: Open
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column High
+		dataType: double
+		lineageTag: 28b331d5-6a92-4b17-baa7-0abf470f9c8f
+		summarizeBy: none
+		sourceColumn: High
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Low
+		dataType: double
+		lineageTag: 80a94168-e385-4244-b5ee-ca62afd2b1bc
+		summarizeBy: none
+		sourceColumn: Low
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Volume
+		dataType: int64
+		formatString: 0
+		lineageTag: 14cfb031-b702-41fa-98df-c227888468b6
+		summarizeBy: none
+		sourceColumn: Volume
+
+		annotation SummarizationSetBy = User
+
+	column Ticker
+		dataType: string
+		lineageTag: 11e8a359-32e4-4040-95bb-11f4ea715ca3
+		summarizeBy: none
+		sourceColumn: Ticker
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		dataType: string
+		lineageTag: 47bd38d5-cf4d-44c5-bc51-83f251db6997
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column PullDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ad9f2896-b0eb-4717-8a9c-544eb7383b7d
+		summarizeBy: none
+		sourceColumn: PullDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FactorReturn
+		dataType: double
+		formatString: 0.0000%;-0.0000%;0.0000%
+		lineageTag: 4ae11420-6365-44a0-8065-aabe9c533584
+		summarizeBy: none
+		sourceColumn: FactorReturn
+
+		annotation SummarizationSetBy = User
+
+	partition ControlFactors = m
+		mode: import
+		source =
+				let
+				    // The factor list comes from factors.csv through the Factor query,
+				    // so no ticker is named here and FactorRole lives on the Factor table.
+				    Source  = FactorPrices,
+				
+				    Grouped = Table.Group(Source, {"Ticker"}, {{"rows", each _, type table}}),
+				
+				    // Same per-ticker isolation as the equity portfolios, so no return is ever
+				    // computed across two stacked series.
+				    WithReturns = Table.AddColumn(Grouped, "withReturn", each
+				        let
+				            t = Table.Buffer(Table.Sort([rows], {{"Date", Order.Ascending}})),
+				            c = List.Buffer(t[Adj Close]),
+				            n = List.Count(c),
+				            r = List.Transform({0 .. n - 1}, (i) =>
+				                  if i = 0 or c{i} = null or c{i - 1} = null then null
+				                  else c{i} / c{i - 1} - 1),
+				            // Passing the table type keeps every column typed; without it
+				            // Table.FromColumns returns all columns as Any.
+				            outType = Value.Type(Table.AddColumn(t, "FactorReturn", each null, type number))
+				        in
+				            Table.FromColumns(Table.ToColumns(t) & {r}, outType)),
+				
+				    Combined = Table.Combine(WithReturns[withReturn]),
+				    Sorted   = Table.Sort(Combined, {{"Ticker", Order.Ascending}, {"Date", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

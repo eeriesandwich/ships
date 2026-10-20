@@ -1,0 +1,72 @@
+table Factor
+	lineageTag: b1887546-4bfe-47cf-be3c-94795bd63852
+
+	column Ticker
+		dataType: string
+		lineageTag: cbaa58c6-e792-4a90-8cd7-d600163ecd5c
+		summarizeBy: none
+		sourceColumn: Ticker
+
+		annotation SummarizationSetBy = User
+
+	column FactorName
+		dataType: string
+		lineageTag: 49571088-506e-4e81-b301-60cb0994ccc0
+		summarizeBy: none
+		sourceColumn: FactorName
+
+		annotation SummarizationSetBy = User
+
+	column FactorKind
+		dataType: string
+		lineageTag: 97581625-507a-465d-a334-3512905d67fc
+		summarizeBy: none
+		sourceColumn: FactorKind
+
+		annotation SummarizationSetBy = User
+
+	column SectorLineage
+		dataType: string
+		lineageTag: 993971e0-12c0-4b68-9570-c06a60fad5f3
+		summarizeBy: none
+		sourceColumn: SectorLineage
+
+		annotation SummarizationSetBy = User
+
+	column Description
+		dataType: string
+		lineageTag: bd20fce9-c3b0-4066-95d6-e864d3903669
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = User
+
+	column SectorGroup
+		dataType: string
+		lineageTag: 79dcc566-de58-471b-9359-083de9a94fa6
+		summarizeBy: none
+		sourceColumn: SectorGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Factor = m
+		mode: import
+		source =
+				let
+				    Source   = Csv.Document(
+				                 File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\factors.csv"),
+				                 [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed    = Table.TransformColumnTypes(Promoted,
+				                 {{"Ticker", type text}, {"FactorName", type text}, {"FactorKind", type text},
+				                  {"SectorLineage", type text}, {"SectorGroup", type text}, {"Description", type text}}),
+				    // ACWI has no sector lineage; a blank becomes null rather than an empty string.
+				    // Same for ACWI's SectorGroup, which is a market factor and not grouped.
+				    Nulled   = Table.ReplaceValue(Typed, "", null, Replacer.ReplaceValue, {"SectorLineage", "SectorGroup"})
+				in
+				    Nulled
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

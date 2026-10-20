@@ -1,0 +1,66 @@
+table Company
+	lineageTag: aaab4b14-5b9f-45a6-9986-7abc2a117746
+
+	column Ticker
+		dataType: string
+		lineageTag: 1dc350f4-f6d7-43c9-a751-011053ef8e94
+		summarizeBy: none
+		sourceColumn: Ticker
+
+		annotation SummarizationSetBy = User
+
+	column CompanyName
+		dataType: string
+		lineageTag: d78541fd-d854-4e7f-8d6f-c43aaa063fe0
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		annotation SummarizationSetBy = User
+
+	column ListingCurrency
+		dataType: string
+		lineageTag: 759e1d1d-4dc7-46f7-af56-d9667e66c07a
+		summarizeBy: none
+		sourceColumn: ListingCurrency
+
+		annotation SummarizationSetBy = User
+
+	column FirstObsDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a0f60293-f9d1-4467-81f7-8235ad86e93a
+		summarizeBy: none
+		sourceColumn: FirstObsDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FirstObsReason
+		dataType: string
+		lineageTag: 27c90277-f45c-4634-9f6a-619e02eaaf9f
+		summarizeBy: none
+		sourceColumn: FirstObsReason
+
+		annotation SummarizationSetBy = User
+
+	partition Company = m
+		mode: import
+		source =
+				let
+				    Source   = Csv.Document(
+				                 File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\companies.csv"),
+				                 [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed    = Table.TransformColumnTypes(Promoted,
+				                 {{"Ticker", type text}, {"CompanyName", type text},
+				                  {"ListingCurrency", type text}, {"FirstObsDate", type date},
+				                  {"FirstObsReason", type text}}, "en-GB")
+				
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

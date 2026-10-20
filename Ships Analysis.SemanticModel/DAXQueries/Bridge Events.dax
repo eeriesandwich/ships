@@ -1,0 +1,6 @@
+EVALUATE ROW (
+    "Bridge events",   DISTINCTCOUNT ( EventDay[EventKey] ),
+    "Bridge rows",     COUNTROWS ( EventDay ),
+    "Tanker event days",  COUNTROWS ( FILTER ( LineagePortfolio, LineagePortfolio[Lineage] = "Tanker"  && LineagePortfolio[IsEventDay] ) ),
+    "DryBulk event days", COUNTROWS ( FILTER ( LineagePortfolio, LineagePortfolio[Lineage] = "DryBulk" && LineagePortfolio[IsEventDay] ) )
+)

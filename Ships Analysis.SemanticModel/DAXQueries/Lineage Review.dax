@@ -1,0 +1,7 @@
+EVALUATE ROW (
+    "Lineage", COUNTROWS ( Lineage ),
+    "FreightSeries", COUNTROWS ( FreightSeries ),
+    "Factor", COUNTROWS ( Factor ),
+    "Company", COUNTROWS ( Company ),
+    "Blank FirstObsDate", COUNTBLANK ( Company[FirstObsDate] )
+)

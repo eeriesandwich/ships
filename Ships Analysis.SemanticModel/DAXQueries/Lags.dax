@@ -1,0 +1,7 @@
+EVALUATE ROW (
+    "Lags",            COUNTROWS ( LagDays ),
+    "Threshold rows",  COUNTROWS ( 'MinConstituents' ),
+    "Default",         [MinConstituents Value],
+    "US sessions in Date", COUNTROWS ( FILTER ( 'Date', NOT ISBLANK ( 'Date'[USSessionIndex] ) ) ),
+    "Days in data range",  COUNTROWS ( FILTER ( 'Date', 'Date'[IsInDataRange] ) )
+)

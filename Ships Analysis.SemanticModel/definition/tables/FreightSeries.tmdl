@@ -1,0 +1,70 @@
+table FreightSeries
+	lineageTag: d58b5b26-de34-45f3-9d1e-f7570d480e75
+
+	column Series
+		dataType: string
+		lineageTag: 082c0168-650d-4326-bdea-4ba1f3aea3e6
+		summarizeBy: none
+		sourceColumn: Series
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		dataType: string
+		lineageTag: 9c1d7686-86de-4913-875f-bad7c9a55419
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column VesselClassScope
+		dataType: string
+		lineageTag: de9a8c81-53f6-4136-850e-077e8b0e17e0
+		summarizeBy: none
+		sourceColumn: VesselClassScope
+		sortByColumn: SortOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column SortOrder
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6e249d23-cf24-4e1b-a12a-a191a8cea1cd
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column ChangeMode =
+			
+			VAR S = FreightSeries[Series]
+			VAR MinClose = CALCULATE ( MIN ( freight[Close] ), freight[Series] = S )
+			RETURN IF ( MinClose < 0, "Points", "Percent" )
+		lineageTag: c8b85496-8256-422c-b0a1-6516ffa6edc2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FreightSeries = m
+		mode: import
+		source =
+				let
+				    Source   = Csv.Document(
+				                 File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\freight_series.csv"),
+				                 [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed    = Table.TransformColumnTypes(Promoted,
+				                 {{"Series", type text}, {"Lineage", type text},
+				                  {"VesselClassScope", type text}, {"SortOrder", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,28 @@
+table MinQuarterCoverage
+	lineageTag: c143f952-d8d1-4f95-8bcd-32838f45a5eb
+
+	measure 'MinQuarterCoverage Value' = SELECTEDVALUE('MinQuarterCoverage'[MinQuarterCoverage], 0.95)
+		lineageTag: e1ebc522-37ef-49b0-97b3-5f1073fafa60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MinQuarterCoverage
+		lineageTag: 8ef18b3d-0526-45cd-b7c2-caa92a996856
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MinQuarterCoverage = calculated
+		mode: import
+		source = GENERATESERIES(0.8, 1, 0.05)
+
+	annotation PBI_Id = d2fd3d9655c2489d831dce0385c6d3e9
+

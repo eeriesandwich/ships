@@ -1,0 +1,89 @@
+table Specification
+	lineageTag: 995b4a58-dc35-499c-a964-b1e98f708896
+
+	column Specification
+		lineageTag: 64f69a76-1d9f-4ae0-99f2-709db8380fe4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Specification]
+		sortByColumn: SortOrder
+
+		annotation SummarizationSetBy = User
+
+	column SortOrder
+		isHidden
+		formatString: 0
+		lineageTag: 2a0d58b6-d2b5-446e-b521-2dc7e6b6400a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SortOrder]
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		lineageTag: b575a355-fbef-4c32-ba1d-4277e7b74e89
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Lineage]
+
+		annotation SummarizationSetBy = User
+
+	column FactorKinds
+		lineageTag: 12c5811d-1fd7-47fa-8363-51a8e4d88b75
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FactorKinds]
+
+		annotation SummarizationSetBy = User
+
+	column FactorsFrom
+		formatString: General Date
+		lineageTag: 8dda61df-2340-4f6b-abf1-60b3502d333c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FactorsFrom]
+
+		annotation SummarizationSetBy = User
+
+	partition Specification = calculated
+		mode: import
+		source =
+				
+				VAR Base =
+				    DATATABLE (
+				        "Specification", STRING, "SortOrder", INTEGER, "Lineage", STRING, "FactorKinds", STRING,
+				        {
+				            { "Raw",                         1, "Tanker",  "None" },
+				            { "Market-adjusted",             2, "Tanker",  "Market" },
+				            { "Market and sector adjusted",  3, "Tanker",  "Market and Sector" },
+				            { "Raw",                         1, "DryBulk", "None" },
+				            { "Market-adjusted",             2, "DryBulk", "Market" },
+				            { "Market and sector adjusted",  3, "DryBulk", "Market and Sector" }
+				        }
+				    )
+				RETURN
+				    ADDCOLUMNS (
+				        Base,
+				        "FactorsFrom",
+				            VAR L = [Lineage]
+				            VAR K = [FactorKinds]
+				            // First date of each factor the specification needs, read from the data.
+				            VAR MarketFrom =
+				                MINX (
+				                    FILTER ( ControlFactors,
+				                        ControlFactors[Ticker] IN CALCULATETABLE ( VALUES ( Factor[Ticker] ), Factor[FactorKind] = "Market" ) ),
+				                    ControlFactors[Date] )
+				            VAR SectorFrom =
+				                MAXX (
+				                    FILTER ( Factor, Factor[FactorKind] = "Sector" && Factor[SectorLineage] = L ),
+				                    VAR T = Factor[Ticker]
+				                    RETURN MINX ( FILTER ( ControlFactors, ControlFactors[Ticker] = T ), ControlFactors[Date] ) )
+				            RETURN
+				                SWITCH ( K,
+				                    "None",   BLANK (),
+				                    "Market", MarketFrom,
+				                    MAX ( MarketFrom, SectorFrom ) )
+				    )
+
+	annotation PBI_Id = d8dfa9ff073e4cf7bc65a24c004de60a
+

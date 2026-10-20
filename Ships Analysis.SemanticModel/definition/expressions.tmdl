@@ -1,0 +1,460 @@
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 39c2e70b-98cc-4e0c-90c3-d08bbeea8659
+	queryGroup: 'TANKER Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression Parameter2 = #"Sample File (2)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (2)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 871b92ae-b911-4ef6-9b79-e5d5d26b785a
+	queryGroup: 'DRYBULK Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File' =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\equity\tanker"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".csv")),
+		    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
+		    Navigation1 = #"Removed Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: d3deba7f-4f66-47c4-91f3-86d8e64ef4e3
+	queryGroup: 'TANKER Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date},{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB")
+		in
+		    #"Changed Type with Locale1"
+	lineageTag: 6fb28e15-7c6f-41bd-a48b-e69c63475920
+	queryGroup: 'TANKER Transform'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date},{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB")
+		in
+		    #"Changed Type with Locale1"
+		in
+		    Source
+	lineageTag: b6bdbb36-c903-430f-8495-4e614f522add
+	queryGroup: 'TANKER Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression 'Sample File (2)' =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\equity\drybulk"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".csv")),
+		    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
+		    Navigation1 = #"Removed Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 418dfbb3-ce49-4614-ad76-8c74358b4cf8
+	queryGroup: 'DRYBULK Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File (2)' =
+		let
+		    Source = Csv.Document(Parameter2,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date},{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB")
+		in
+		    #"Changed Type with Locale1"
+	lineageTag: f8e266ad-e1ee-45f5-86cf-36c7578cc38d
+	queryGroup: 'DRYBULK Transform'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File (2)' =
+		let
+		    Source = (Parameter2 as binary) => let
+		    Source = Csv.Document(Parameter2,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date},{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB")
+		in
+		    #"Changed Type with Locale1"
+		in
+		    Source
+	lineageTag: 89bb293c-6da8-4e8b-833c-e09b60a890c0
+	queryGroup: 'DRYBULK Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Parameter3 = #"Sample File (3)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (3)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 3226a8d2-e9a3-4ffe-a187-fcd018273057
+	queryGroup: 'FREIGHT Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File (3)' =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\freight"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Name", "Content"}),
+		    Navigation1 = #"Removed Other Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 7ee71584-0231-4a30-9263-4abd5c9c30ea
+	queryGroup: 'FREIGHT Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File (3)' =
+		let
+		    Source = Csv.Document(Parameter3,[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Close", Int64.Type}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type with Locale",{{"Close", type number}}),
+		    #"Sorted Rows" = Table.Sort(#"Changed Type1",{{"Date", Order.Ascending}}),
+		    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+		    #"Buffer Table" = Table.Buffer(#"Added Index")
+		in
+		    #"Buffer Table"
+	lineageTag: 02746d3d-ea53-4cef-8670-1c59afa01fcb
+	queryGroup: 'FREIGHT Transform'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File (3)' =
+		let
+		    Source = (Parameter3 as binary) => let
+		    Source = Csv.Document(Parameter3,[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Close", Int64.Type}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type with Locale",{{"Close", type number}}),
+		    #"Sorted Rows" = Table.Sort(#"Changed Type1",{{"Date", Order.Ascending}}),
+		    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+		    #"Buffer Table" = Table.Buffer(#"Added Index")
+		in
+		    #"Buffer Table"
+		in
+		    Source
+	lineageTag: 1b5b7033-5505-49f8-892a-cd4cde547c91
+	queryGroup: 'FREIGHT Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Parameter4 = #"Sample File (4)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (4)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 0a186ab9-a9b8-46b8-8249-09a664859719
+	queryGroup: 'FX Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression Parameter5 = #"Sample File (5)" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File (5)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: e7bb1ee4-3b83-4fbf-bbc0-0cc36b2268e9
+	queryGroup: 'FACTORS Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File (4)' =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\fx"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Name", "Content"}),
+		    Navigation1 = #"Removed Other Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: a2de7916-a8a8-40c3-9941-275da5030711
+	queryGroup: 'FX Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform File (4)' =
+		let
+		    Source = (Parameter4 as binary) => let
+		    Source = Csv.Document(Parameter4,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}, {"PullDate", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale"
+		in
+		    Source
+	lineageTag: 55e1f14b-31de-4665-b457-deeaa98d8b7b
+	queryGroup: 'FX Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression 'Transform Sample File (4)' =
+		let
+		    Source = Csv.Document(Parameter4,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}, {"PullDate", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale"
+	lineageTag: bdd32300-c24d-4cff-86f8-71c3365a3263
+	queryGroup: 'FX Transform'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Sample File (5)' =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\factors"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Content", "Name"}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Removed Other Columns",{"Name", "Content"}),
+		    Navigation1 = #"Reordered Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: feaa203c-495a-4f1d-9770-7d7be0cfa147
+	queryGroup: 'FACTORS Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File (5)' =
+		let
+		    Source = Csv.Document(Parameter5,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}, {"PullDate", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale"
+	lineageTag: 08b15fba-165b-4878-ba4e-0aa0d0fdc606
+	queryGroup: 'FACTORS Transform'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File (5)' =
+		let
+		    Source = (Parameter5 as binary) => let
+		    Source = Csv.Document(Parameter5,[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}, {"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}, {"PullDate", type date}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"Date", type date}, {"PullDate", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale"
+		in
+		    Source
+	lineageTag: 2f013edd-cc78-4a3c-a987-7b8ca327e3b1
+	queryGroup: 'FACTORS Transform\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression FactorPrices =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\factors"),
+		    #"Filtered Rows1" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1",{"Content", "Name"}),
+		        #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns",
+		                         each List.Contains(List.Transform(Factor[Ticker], each _ & ".csv"), [Name])),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Filtered Rows",{"Name", "Content"}),
+		    #"Filtered Hidden Files1" = Table.SelectRows(#"Reordered Columns", each [Attributes]?[Hidden]? <> true),
+		    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (5)", each #"Transform File (5)"([Content])),
+		    #"Removed Other Columns1" = Table.SelectColumns(#"Invoke Custom Function1", {"Transform File (5)"}),
+		    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (5)", Table.ColumnNames(#"Transform File (5)"(#"Sample File (5)"))),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Expanded Table Column1", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Adj Close", type number}, {"Close", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type with Locale1",{{"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}}),
+		    #"Changed Type with Locale2" = Table.TransformColumnTypes(#"Changed Type", {{"PullDate", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale2"
+	lineageTag: 4dc9edfd-4935-4a3f-8519-74ec192e35f8
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression tanker =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\equity\tanker"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".csv")),
+		    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
+		    #"Filtered Hidden Files1" = Table.SelectRows(#"Removed Columns", each [Attributes]?[Hidden]? <> true),
+		    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+		    #"Removed Other Columns1" = Table.SelectColumns(#"Invoke Custom Function1", {"Transform File"}),
+		    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+		    #"Renamed Columns" = Table.RenameColumns(#"Expanded Table Column1",{{"Adj Close", "ClosePriceAdjusted"}, {"Close", "ClosePriceRaw"}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"ClosePriceAdjusted", type number}, {"ClosePriceRaw", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type with Locale1",{{"Volume", Int64.Type}, {"Ticker", type text}, {"Lineage", type text}}),
+		    #"Changed Type with Locale2" = Table.TransformColumnTypes(#"Changed Type", {{"PullDate", type date}}, "en-GB"),
+		    #"Merged Queries" = Table.NestedJoin(#"Changed Type with Locale2", {"Date"}, FXDaily, {"Date"}, "FXDaily", JoinKind.LeftOuter),
+		    #"Expanded FXDaily" = Table.ExpandTableColumn(#"Merged Queries", "FXDaily", {"EURUSD", "NOKUSD"}, {"FXDaily.EURUSD", "FXDaily.NOKUSD"}),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Expanded FXDaily",{{"FXDaily.EURUSD", "EURUSD"}, {"FXDaily.NOKUSD", "NOKUSD"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns1", "Custom", each if [Ticker] = "CMBT.BR" then [ClosePriceAdjusted] * [EURUSD] else [ClosePriceAdjusted]),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added Custom",{{"Custom", "ClosePriceAdjustedUSD"}}),
+		    #"Added Raw USD" = Table.AddColumn(#"Renamed Columns2", "ClosePriceRawUSD", each if [Ticker] = "CMBT.BR" then [ClosePriceRaw] * [EURUSD] else [ClosePriceRaw], type number),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Added Raw USD",{{"ClosePriceAdjustedUSD", type number}}),
+		    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"EURUSD", "NOKUSD"}),
+		
+		    // Load windows remove rows from the model, as in drybulk. Membership rows
+		    // are ignored here and resolved after the fill-forward in TankerDaily.
+		    #"Merged Windows" = Table.NestedJoin(#"Removed Columns1", {"Ticker"},
+		                          Table.SelectRows(SeriesWindows, each [WindowType] = "Load"),
+		                          {"Ticker"}, "win", JoinKind.LeftOuter),
+		    #"Expanded Windows" = Table.ExpandTableColumn(#"Merged Windows", "win", {"ValidFrom", "ValidTo"}),
+		    #"Applied Windows" = Table.SelectRows(#"Expanded Windows", each
+		                          ([ValidFrom] = null or [Date] >= [ValidFrom])
+		                      and ([ValidTo]   = null or [Date] <= [ValidTo])),
+		    #"Dropped Windows" = Table.RemoveColumns(#"Applied Windows", {"ValidFrom", "ValidTo"}),
+		    #"Typed Date" = Table.TransformColumnTypes(#"Dropped Windows", {{"Date", type date}}, "en-GB")
+		in
+		    #"Typed Date"
+	lineageTag: d51b430d-f778-49b6-b556-ac54c3ca1695
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression drybulk =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\equity\drybulk"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".csv")),
+		    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
+		    #"Filtered Hidden Files1" = Table.SelectRows(#"Removed Columns", each [Attributes]?[Hidden]? <> true),
+		    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (2)", each #"Transform File (2)"([Content])),
+		    #"Removed Other Columns1" = Table.SelectColumns(#"Invoke Custom Function1", {"Transform File (2)"}),
+		    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (2)", Table.ColumnNames(#"Transform File (2)"(#"Sample File (2)"))),
+		    #"Renamed Columns" = Table.RenameColumns(#"Expanded Table Column1",{{"Adj Close", "ClosePriceAdjusted"}, {"Close", "ClosePriceRaw"}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"ClosePriceRaw", type number}, {"Open", type number}, {"High", type number}, {"Low", type number}}, "en-GB"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type with Locale1",{{"Lineage", type text}, {"Ticker", type text}}),
+		    #"Changed Type with Locale2" = Table.TransformColumnTypes(#"Changed Type", {{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type with Locale2",{{"ClosePriceAdjusted", type number}}),
+		    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Date"}, FXDaily, {"Date"}, "FXDaily", JoinKind.LeftOuter),
+		    #"Expanded FXDaily" = Table.ExpandTableColumn(#"Merged Queries", "FXDaily", {"EURUSD", "NOKUSD"}, {"FXDaily.EURUSD", "FXDaily.NOKUSD"}),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Expanded FXDaily",{{"FXDaily.EURUSD", "EURUSD"}, {"FXDaily.NOKUSD", "NOKUSD"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns1", "Custom", each if [Ticker] = "2020.OL" then [ClosePriceAdjusted] * [NOKUSD] else [ClosePriceAdjusted]),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added Custom",{{"Custom", "ClosePriceAdjustedUSD"}}),
+		    #"Added Raw USD" = Table.AddColumn(#"Renamed Columns2", "ClosePriceRawUSD", each if [Ticker] = "2020.OL" then [ClosePriceRaw] * [NOKUSD] else [ClosePriceRaw], type number),
+		    #"Changed Type2" = Table.TransformColumnTypes(#"Added Raw USD",{{"ClosePriceAdjustedUSD", type number}}),
+		    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type2",{"EURUSD", "NOKUSD"}),
+		    #"Merged Windows" = Table.NestedJoin(#"Removed Columns1", {"Ticker"},
+		                          Table.SelectRows(SeriesWindows, each [WindowType] = "Load"),
+		                          {"Ticker"}, "win", JoinKind.LeftOuter),
+		    #"Expanded Windows" = Table.ExpandTableColumn(#"Merged Windows", "win",
+		                          {"ValidFrom", "ValidTo"}),
+		    #"Applied Windows" = Table.SelectRows(#"Expanded Windows", each
+		                          ([ValidFrom] = null or [Date] >= [ValidFrom])
+		                      and ([ValidTo]   = null or [Date] <= [ValidTo])),
+		    #"Dropped Windows" = Table.RemoveColumns(#"Applied Windows",
+		                          {"ValidFrom", "ValidTo"}),
+		    #"Changed Type with Locale3" = Table.TransformColumnTypes(#"Dropped Windows", {{"Date", type date}}, "en-GB"),
+		    #"Changed Type3" = Table.TransformColumnTypes(#"Changed Type with Locale3",{{"Volume", Int64.Type}})
+		in
+		    #"Changed Type3"
+	lineageTag: 66be46ec-a7e7-4b7d-9b07-4c944ffff29c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression fx =
+		let
+		    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\fx"),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Name", "Content"}),
+		    #"Filtered Hidden Files1" = Table.SelectRows(#"Removed Other Columns", each [Attributes]?[Hidden]? <> true),
+		    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (4)", each #"Transform File (4)"([Content])),
+		    #"Removed Other Columns1" = Table.SelectColumns(#"Invoke Custom Function1", {"Transform File (4)"}),
+		    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (4)", Table.ColumnNames(#"Transform File (4)"(#"Sample File (4)"))),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Lineage", type text}, {"Ticker", type text}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"PullDate", type date}}, "en-GB"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type with Locale",{{"Volume", Int64.Type}, {"Low", type number}, {"High", type number}, {"Open", type number}, {"Close", type number}, {"Adj Close", type number}}),
+		    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type1", {{"Date", type date}}, "en-GB")
+		in
+		    #"Changed Type with Locale1"
+	lineageTag: fe11fd6a-6d76-4091-88f2-b2b6dc8d57cf
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression fleet =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\fleet\cmb-tech-fleet-export-2026-09-11_084938.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Change Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Change Type", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Division", type text}, {"Name", type text}, {"Type", type text}, {"Flag", type text}, {"Built", Int64.Type}, {"Owned", type text}, {"Interest", Int64.Type}, {"Spot TC", type text}, {"Draft (m)", type number}, {"Length (m)", type number}, {"Imo", type text}, {"Shipyard", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: e3fc8250-61ea-41d3-8814-dc55cfb309e7
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SeriesWindows =
+		let
+		    Source   = Csv.Document(
+		                 File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\series_windows.csv"),
+		                 [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    Typed    = Table.TransformColumnTypes(Promoted,
+		                 {{"Ticker", type text}, {"ValidFrom", type date}, {"ValidTo", type date},
+		                  {"Reason", type text}, {"WindowType", type text}}, "en-GB")
+		in
+		    Typed
+	lineageTag: 62af90f8-a2b9-4474-bf20-0e5547a96202
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

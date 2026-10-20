@@ -1,0 +1,18 @@
+table LagDays
+	lineageTag: fd1a6101-beb5-4265-811b-598081cf5c0e
+
+	column Lag
+		formatString: 0
+		lineageTag: 53bc8265-0b35-47af-921c-f8c097d86507
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Lag]
+
+		annotation SummarizationSetBy = User
+
+	partition LagDays = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( -20, 20, 1 ), "Lag", [Value] )
+
+	annotation PBI_Id = ca1d9a0a36ee4cc0843ad6bff00b1307
+

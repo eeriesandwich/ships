@@ -1,0 +1,81 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'TANKER Transform'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'DRYBULK Transform'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'FREIGHT Transform'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'TANKER Transform\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'DRYBULK Transform\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'FREIGHT Transform\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'FX Transform'
+
+	annotation PBI_QueryGroupOrder = 6
+
+queryGroup 'FX Transform\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'FACTORS Transform'
+
+	annotation PBI_QueryGroupOrder = 8
+
+queryGroup 'FACTORS Transform\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["tanker","Sample File","Parameter1","Transform Sample File","Transform File","drybulk","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","freight","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","fx","Sample File (4)","Parameter4","Transform File (4)","Transform Sample File (4)","FactorPrices","Sample File (5)","Parameter5","Transform Sample File (5)","Transform File (5)","fleet","Date","FXDaily","LineagePortfolio","ControlFactors","SeriesWindows","events","Sessions","TankerDaily","DryBulkDaily","Factor","Lineage","FreightSeries","Company","EventDay","Resample","MediatorTest"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table freight
+ref table Date
+ref table FXDaily
+ref table LineagePortfolio
+ref table ControlFactors
+ref table events
+ref table Sessions
+ref table TankerDaily
+ref table DryBulkDaily
+ref table Factor
+ref table Lineage
+ref table FreightSeries
+ref table Company
+ref table EventDay
+ref table Resample
+ref table Specification
+ref table LagDays
+ref table MinConstituents
+ref table _Measures
+ref table ReturnBasis
+ref table MinQuarterCoverage
+ref table MediatorTest
+ref table IncludeEvents
+
+ref cultureInfo en-US
+

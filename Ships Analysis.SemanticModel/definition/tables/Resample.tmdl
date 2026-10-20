@@ -1,0 +1,57 @@
+table Resample
+	isHidden
+	lineageTag: d422c4b7-c701-4bd2-b38f-7e9581366f99
+
+	column Iteration
+		dataType: int64
+		formatString: 0
+		lineageTag: 3323d21c-0465-4c52-afec-0b3d455914a5
+		summarizeBy: none
+		sourceColumn: Iteration
+
+		annotation SummarizationSetBy = User
+
+	column DrawNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: bc15a13e-010a-416e-b8bf-3975168db61d
+		summarizeBy: none
+		sourceColumn: DrawNumber
+
+		annotation SummarizationSetBy = User
+
+	column U
+		dataType: double
+		lineageTag: 59b03766-fcdb-4ff7-b28f-0f1bd10fd804
+		summarizeBy: none
+		sourceColumn: U
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Resample = m
+		mode: import
+		source =
+				let
+				    // Year-block bootstrap draws for the quarterly confidence intervals.
+				    // A fixed seed makes the draws identical on every refresh, so the
+				    // intervals do not move when the report is reopened.
+				    Iterations = 1000,
+				    MaxDraws   = 25,          // at least the longest year set (tanker, 2005 to 2026)
+				    Seed       = 20261006,
+				
+				    U    = List.Buffer(List.Random(Iterations * MaxDraws, Seed)),
+				    Rows = List.Transform({0 .. Iterations * MaxDraws - 1}, (k) =>
+				             { Number.IntegerDivide(k, MaxDraws) + 1,
+				               Number.Mod(k, MaxDraws) + 1,
+				               U{k} }),
+				    T    = Table.FromRows(Rows,
+				             type table [Iteration = Int64.Type, DrawNumber = Int64.Type, U = number])
+				in
+				    T
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

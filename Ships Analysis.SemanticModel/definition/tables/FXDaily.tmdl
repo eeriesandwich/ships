@@ -1,0 +1,59 @@
+table FXDaily
+	lineageTag: 4cfe51ae-051f-44a9-aed3-47e2f923b85b
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 18f4455b-9b51-48ce-b9a6-03ed5c696198
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EURUSD
+		dataType: double
+		lineageTag: c70d1ea8-6263-4b1a-916c-402e5833e479
+		summarizeBy: none
+		sourceColumn: EURUSD
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NOKUSD
+		dataType: double
+		lineageTag: e62676a0-c4ff-42ba-ab7f-4ef90982d90e
+		summarizeBy: none
+		sourceColumn: NOKUSD
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FXDaily = m
+		mode: import
+		source =
+				let
+				    Base = Table.SelectColumns(#"Date", {"Date"}),
+				    EUR  = Table.SelectColumns(Table.SelectRows(fx, each [Ticker] = "EURUSD=X"), {"Date", "Adj Close"}),
+				    NOK  = Table.SelectColumns(Table.SelectRows(fx, each [Ticker] = "NOKUSD=X"), {"Date", "Adj Close"}),
+				
+				    J1 = Table.NestedJoin(Base, {"Date"}, EUR, {"Date"}, "e", JoinKind.LeftOuter),
+				    E1 = Table.ExpandTableColumn(J1, "e", {"Adj Close"}, {"EURUSD"}),
+				    J2 = Table.NestedJoin(E1, {"Date"}, NOK, {"Date"}, "n", JoinKind.LeftOuter),
+				    E2 = Table.ExpandTableColumn(J2, "n", {"Adj Close"}, {"NOKUSD"}),
+				
+				    Sorted = Table.Sort(E2, {{"Date", Order.Ascending}}),
+				    Filled = Table.FillDown(Sorted, {"EURUSD", "NOKUSD"}),
+				    Typed  = Table.TransformColumnTypes(Filled,
+				               {{"Date", type date}, {"EURUSD", type number}, {"NOKUSD", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(Typed, each ([EURUSD] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

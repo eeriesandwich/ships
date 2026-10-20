@@ -1,0 +1,8 @@
+EVALUATE
+SUMMARIZECOLUMNS (
+    ControlFactors[Ticker],
+    "Rows", COUNTROWS ( ControlFactors ),
+    "From", MIN ( ControlFactors[Date] ),
+    "Returns", COUNT ( ControlFactors[FactorReturn] ),
+    "Mean daily", AVERAGE ( ControlFactors[FactorReturn] )
+)

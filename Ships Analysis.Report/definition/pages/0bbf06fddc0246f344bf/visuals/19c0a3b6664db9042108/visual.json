@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "19c0a3b6664db9042108",
+  "position": {
+    "x": 10,
+    "y": 648,
+    "z": 1000,
+    "height": 432,
+    "width": 1812,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "What this chart shows",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Checked whether seasonal patterns in BDTI (tanker rates) and BDI (dry bulk rates) move with their most plausible macro drivers: Brent crude for tankers, with WTI as a robustness rerun, and iron ore miners (VALE+RIO) and China equities (MCHI) for dry bulk.",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Controlling for Brent, iron ore or China does not take the seasonal pattern away from either freight series, which is the finding we care about. The ratio-based verdict only commits for tanker because tanker has a strong enough raw effect to make the ratio stable; it stays undecided for dry bulk for mechanical reasons, not substantive ones.",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Raw alpha",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": ": seasonal coefficient from a regression of quarterly freight change on quarter dummies.",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": "Direct alpha",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": ": same coefficient after also controlling for the factor’s own quarterly change.",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": "Mediated component",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": ": the piece attributed to the factor, computed as β × δ, where β is the factor’s coefficient and δ is its own seasonal offset.",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

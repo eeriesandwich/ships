@@ -1,0 +1,75 @@
+table Sessions
+	isHidden
+	lineageTag: 6cec34bd-47fd-417c-b09f-40e3a745518a
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6537a8c8-3a0c-4375-9ee4-f2ce50824ff0
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SessionIndex
+		dataType: int64
+		formatString: 0
+		lineageTag: be75da42-ca0a-4ef9-837d-f86947d25e10
+		summarizeBy: none
+		sourceColumn: SessionIndex
+
+		annotation SummarizationSetBy = User
+
+	column IsUSSession
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9f57cc3c-e654-4ae6-9c30-769f50e6d662
+		summarizeBy: none
+		sourceColumn: IsUSSession
+
+		annotation SummarizationSetBy = User
+
+	column USSessionIndex
+		dataType: int64
+		formatString: 0
+		lineageTag: c7c2ef23-b49a-4759-8d82-67e97d219001
+		summarizeBy: none
+		sourceColumn: USSessionIndex
+
+		annotation SummarizationSetBy = User
+
+	partition Sessions = m
+		mode: import
+		source =
+				let
+				    Both = Table.Combine({
+				             Table.SelectColumns(tanker,  {"Date", "Ticker"}),
+				             Table.SelectColumns(drybulk, {"Date", "Ticker"}) }),
+				
+				    // One row per equity session. A session is a US session when at least one
+				    // ticker without an exchange suffix traded that day.
+				    Grouped = Table.Group(Both, {"Date"},
+				                {{"IsUSSession",
+				                  each List.AnyTrue(List.Transform([Ticker], each not Text.Contains(_, "."))),
+				                  type logical}}),
+				    Sorted  = Table.Sort(Grouped, {{"Date", Order.Ascending}}),
+				    Typed   = Table.TransformColumnTypes(Sorted, {{"Date", type date}}),
+				
+				    // Dense index over all equity sessions (US, Brussels, Oslo), from 1.
+				    Indexed = Table.AddIndexColumn(Typed, "SessionIndex", 1, 1, Int64.Type),
+				
+				    // Dense index over US sessions only, for measures on the US-only series.
+				    USOnly  = Table.AddIndexColumn(
+				                Table.SelectColumns(Table.SelectRows(Indexed, each [IsUSSession]), {"Date"}),
+				                "USSessionIndex", 1, 1, Int64.Type),
+				    Joined  = Table.NestedJoin(Indexed, {"Date"}, USOnly, {"Date"}, "us", JoinKind.LeftOuter),
+				    Result  = Table.ExpandTableColumn(Joined, "us", {"USSessionIndex"})
+				in
+				    Result
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

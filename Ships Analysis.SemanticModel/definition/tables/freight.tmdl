@@ -1,0 +1,113 @@
+table freight
+	lineageTag: bd50ab89-2206-4835-a935-126e1e151c43
+
+	column Series
+		dataType: string
+		lineageTag: 5c92f5c1-ab17-4e9f-b745-1a6844220960
+		summarizeBy: none
+		sourceColumn: Series
+
+		annotation SummarizationSetBy = User
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 20e67c9d-c3b3-4885-b696-3ff649366817
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Close
+		dataType: double
+		formatString: 0
+		lineageTag: f34a4147-d7f6-4363-b4ec-e7b8475c78c4
+		summarizeBy: none
+		sourceColumn: Close
+
+		annotation SummarizationSetBy = User
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: f15b9014-ec0b-4ae0-9aab-22295f3576cd
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = User
+
+	column PrevClose
+		dataType: double
+		lineageTag: 7ecc960a-d8ad-4d02-83c8-5e4492ede105
+		summarizeBy: sum
+		sourceColumn: PrevClose
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsEventDay =
+			
+			VAR L = RELATED ( FreightSeries[Lineage] )
+			VAR D = freight[Date]
+			RETURN
+			    NOT ISEMPTY (
+			        FILTER (
+			            EventDay,
+			            EventDay[Lineage] = L
+			                && EventDay[Date] = D
+			                && RELATED ( events[Scope] ) = "Sector"
+			                && RELATED ( events[Direction] ) <> "Neutral"
+			        )
+			    )
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9d6c08a3-ce43-4d0f-803f-e5eee58085c2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition freight = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Joan Casaramona\Documents\Ships\data\freight"),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] <> "_manifest.json")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Name", "Content"}),
+				    #"Filtered Hidden Files1" = Table.SelectRows(#"Removed Other Columns", each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File (3)", each #"Transform File (3)"([Content])),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Invoke Custom Function1",{"Name", "Transform File (3)"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File (3)", Table.ColumnNames(#"Transform File (3)"(#"Sample File (3)"))),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded Table Column1",".csv","",Replacer.ReplaceText,{"Name"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value",{{"Name", "Series"}}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type date}}, "en-GB"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type with Locale",{{"Close", type number}, {"Index", Int64.Type}}),
+				
+				    // PrevClose per series: group, sort inside the group, buffer, then
+				    // shift. A grouped per-series sort is the only reliable pattern
+				    // because a plain join does not preserve row order and a global sort
+				    // could straddle series on tied dates.
+				    #"Grouped PrevClose" = Table.Group(#"Changed Type", {"Series"},
+				        {{"rows", each
+				            let
+				                t      = Table.Buffer(Table.Sort(_, {{"Date", Order.Ascending}})),
+				                closes = t[Close],
+				                n      = List.Count(closes),
+				                prev   = List.Transform({0 .. n - 1},
+				                           (i) => if i = 0 then null else closes{i - 1}),
+				                withPrev = Table.FromColumns(
+				                             Table.ToColumns(t) & {prev},
+				                             Table.ColumnNames(t) & {"PrevClose"})
+				            in
+				                withPrev,
+				          type table}}),
+				    Combined = Table.Combine(#"Grouped PrevClose"[rows]),
+				    #"Typed PrevClose" = Table.TransformColumnTypes(Combined, {{"PrevClose", type number}})
+				in
+				    #"Typed PrevClose"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

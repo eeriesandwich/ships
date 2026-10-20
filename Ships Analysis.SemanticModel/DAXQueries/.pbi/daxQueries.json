@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "tabOrder": [
+    "TankerDry Bulk Lineages",
+    "Control factors",
+    "Lineage Review",
+    "Sessions",
+    "Bridge Events",
+    "RNG",
+    "Lags",
+    "Query 1"
+  ],
+  "defaultTab": "Query 1"
+}

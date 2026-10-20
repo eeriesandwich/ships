@@ -1,0 +1,35 @@
+table IncludeEvents
+	lineageTag: 719e3448-5e2c-4cc1-914b-e0636288510f
+
+	column Option
+		lineageTag: 3a4ec755-d317-4142-a2f4-6c0093202f15
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Option]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		formatString: 0
+		lineageTag: e74b9c40-806f-4973-8a26-7cbf821234e8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [SortOrder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition IncludeEvents = calculated
+		mode: import
+		source =
+				
+				DATATABLE (
+				    "Option", STRING,
+				    "SortOrder", INTEGER,
+				    {
+				        { "Include", 1 },
+				        { "Exclude", 2 }
+				    }
+				)
+
+	annotation PBI_Id = 53d708c6501d42a8a56aacf87495bfcf
+

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "85abad1e82ae55f8ce5f",
+  "position": {
+    "x": 66,
+    "y": 828,
+    "z": 2002,
+    "height": 252,
+    "width": 1854,
+    "tabOrder": 2002
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "This page tracks the within-year cumulative seasonal path of three freight indices. Each line averages per-year within-year deviations across the sample, cumulated by quarter end. Lines return to zero at Q4 by construction, so the arc between quarters carries the physical seasonality.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "BDTI runs sharply negative through Q1 to Q3 before recovering to zero in Q4, which reflects winter crude demand lifting tanker rates. BDI drifts with mild Q1 weakness and no sharp peak. BCI shows a mid-year peak tied to the Brazilian iron-ore shipping season.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The Events toggle filters sector-wide directional events out of the sample, such as OPEC decisions, benchmark iron-ore rounds, Suez closures and OFAC designations. Freight shapes barely shift under the toggle, which indicates the within-year pattern is driven by the underlying cargo cycle rather than by one-off shocks. In the forest-plot companion visual on this page, BDTI Q4 excludes zero on its confidence interval under both toggle states, which anchors the structural reading.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

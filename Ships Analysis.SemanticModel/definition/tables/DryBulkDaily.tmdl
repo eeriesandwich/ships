@@ -1,0 +1,237 @@
+table DryBulkDaily
+	lineageTag: 54abd158-1336-40ec-9b6d-ed04b36cbc8c
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b2472b33-6a59-41c4-861a-5d48d83af3d5
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ClosePriceAdjusted
+		dataType: double
+		lineageTag: 1d1002bc-0b09-40d4-a193-f76de5122c40
+		summarizeBy: none
+		sourceColumn: ClosePriceAdjusted
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ClosePriceRaw
+		dataType: double
+		lineageTag: db5d2732-6341-4f71-8e72-e65e285f1946
+		summarizeBy: none
+		sourceColumn: ClosePriceRaw
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Open
+		dataType: double
+		lineageTag: b21dfa40-4011-4c9a-b33a-62b8aa518f82
+		summarizeBy: none
+		sourceColumn: Open
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column High
+		dataType: double
+		lineageTag: 7944dce7-6a77-47d7-9d4c-588aca1920e0
+		summarizeBy: none
+		sourceColumn: High
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Low
+		dataType: double
+		lineageTag: 60a57c46-1baf-4d64-a46b-431107a7ba0b
+		summarizeBy: none
+		sourceColumn: Low
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Volume
+		dataType: int64
+		formatString: 0
+		lineageTag: 67e8501b-819d-4012-9772-edf42ebde29a
+		summarizeBy: none
+		sourceColumn: Volume
+
+		annotation SummarizationSetBy = User
+
+	column Ticker
+		dataType: string
+		lineageTag: 609d3330-826b-47ad-952b-8a0ad7853d76
+		summarizeBy: none
+		sourceColumn: Ticker
+
+		annotation SummarizationSetBy = User
+
+	column Lineage
+		dataType: string
+		lineageTag: 888819cf-f578-4571-a2eb-849b789938aa
+		summarizeBy: none
+		sourceColumn: Lineage
+
+		annotation SummarizationSetBy = User
+
+	column PullDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f346815c-98a1-4629-9b6c-45c9a1ad52ba
+		summarizeBy: none
+		sourceColumn: PullDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ClosePriceAdjustedUSD
+		dataType: double
+		lineageTag: c671605a-c140-4a43-993a-88bb6ce51d91
+		summarizeBy: none
+		sourceColumn: ClosePriceAdjustedUSD
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsStale
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 16793305-a48d-49b7-a211-2214ff8f29b5
+		summarizeBy: none
+		sourceColumn: IsStale
+
+		annotation SummarizationSetBy = User
+
+	column PrevObsDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: be1fcfa2-b4bd-4168-9343-1da092fec93a
+		summarizeBy: none
+		sourceColumn: PrevObsDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Venue
+		dataType: string
+		lineageTag: 39d81603-56c4-4d86-af6f-19d80e4cd7a4
+		summarizeBy: none
+		sourceColumn: Venue
+
+		annotation SummarizationSetBy = User
+
+	column MemberLineage
+		dataType: string
+		isHidden
+		lineageTag: 5648276b-7c04-48fd-8f45-fe5140b843a4
+		summarizeBy: none
+		sourceColumn: MemberLineage
+
+		annotation SummarizationSetBy = User
+
+	column ClosePriceRawUSD
+		dataType: double
+		lineageTag: d6935370-3a1d-4e7e-8abe-6b75898ecb81
+		summarizeBy: sum
+		sourceColumn: ClosePriceRawUSD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DryBulkDaily = m
+		mode: import
+		source =
+				let
+				    Src   = drybulk,
+				    Spine = List.Buffer(List.Sort(Table.Column(Sessions, "Date"))),
+				
+				    Grouped = Table.Group(Src, {"Ticker"}, {{"rows", each _, type table}}),
+				
+				    Filled = Table.AddColumn(Grouped, "daily", each
+				        let
+				            t        = Table.Sort([rows], {{"Date", Order.Ascending}}),
+				            cols     = List.RemoveItems(Table.ColumnNames(t), {"Date"}),
+				            first    = List.Min(t[Date]),
+				            last     = List.Max(t[Date]),
+				            span     = List.Select(Spine, (d) => d >= first and d <= last),
+				            scaffold = Table.TransformColumnTypes(
+				                         Table.FromList(span, (d) => {d}, {"Date"}),
+				                         {{"Date", type date}}),
+				            joined   = Table.NestedJoin(scaffold, {"Date"}, t, {"Date"},
+				                         "px", JoinKind.LeftOuter),
+				                        // A join does not keep row order, and fill-down and the previous-
+				            // observation index both depend on it. Restore date order and pin it.
+				            expanded = Table.Buffer(Table.Sort(
+				                         Table.ExpandTableColumn(joined, "px", cols),
+				                         {{"Date", Order.Ascending}})),
+				            marked   = Table.AddColumn(expanded, "IsStale",
+				                         each [Ticker] = null, type logical),
+				            down     = Table.FillDown(marked, cols),
+				            seeded   = Table.SelectRows(down, each [Ticker] <> null),
+				
+				            real     = Table.SelectRows(seeded, each [IsStale] = false),
+				            obsDates = List.Buffer(real[Date]),
+				            realIx   = Table.AddIndexColumn(real, "ix", 0, 1, Int64.Type),
+				            realPrev = Table.AddColumn(realIx, "PrevObsDate",
+				                         each if [ix] = 0 then null else obsDates{[ix] - 1},
+				                         type date),
+				            backJoin = Table.NestedJoin(seeded, {"Date"},
+				                         Table.SelectColumns(realPrev, {"Date", "PrevObsDate"}),
+				                         {"Date"}, "p", JoinKind.LeftOuter),
+				            withPrev = Table.ExpandTableColumn(backJoin, "p", {"PrevObsDate"})
+				        in
+				            withPrev),
+				
+				    Combined = Table.Combine(Filled[daily]),
+				
+				    #"Added Venue" = Table.AddColumn(Combined, "Venue", each
+				        let i = Text.PositionOf([Ticker], ".", Occurrence.Last)
+				        in if i < 0 then "US" else Text.Upper(Text.Range([Ticker], i + 1)),
+				        type text),
+				
+				    #"Sorted" = Table.Sort(#"Added Venue",
+				                  {{"Ticker", Order.Ascending}, {"Date", Order.Ascending}}),
+				
+				    // Membership is resolved after the fill-forward, so a carried row is
+				    // classified by its own date rather than inheriting the previous session's.
+				    // A ticker with no Membership row in series_windows.csv belongs to its
+				    // file's lineage on every date. Outside a Membership window it is
+				    // Unclassified: the row stays in the table but leaves the basket.
+				    Membership = Table.Buffer(
+				                   Table.SelectRows(SeriesWindows, each [WindowType] = "Membership")),
+				
+				    #"Added MemberLineage" = Table.AddColumn(#"Sorted", "MemberLineage", each
+				        let
+				            w = Table.SelectRows(Membership, (m) => m[Ticker] = [Ticker])
+				        in
+				            if Table.IsEmpty(w) then [Lineage]
+				            else if List.AnyTrue(List.Transform(Table.ToRecords(w), (m) =>
+				                        (m[ValidFrom] = null or [Date] >= m[ValidFrom])
+				                    and (m[ValidTo]   = null or [Date] <= m[ValidTo])))
+				            then [Lineage]
+				            else "Unclassified",
+				        type text)
+				in
+				    #"Added MemberLineage"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

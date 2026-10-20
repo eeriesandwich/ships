@@ -1,0 +1,197 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "27f58a5acd258a2ac362",
+  "position": {
+    "x": 10,
+    "y": 0,
+    "z": 0,
+    "height": 503.33333333333337,
+    "width": 880,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Lineage"
+                    }
+                  },
+                  "Property": "Lineage"
+                }
+              },
+              "queryRef": "Lineage.Lineage",
+              "nativeQueryRef": "Lineage",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "QuarterNumber"
+                }
+              },
+              "queryRef": "Date.QuarterNumber",
+              "nativeQueryRef": "QuarterNumber"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seasonal Deviation MDE"
+                }
+              },
+              "queryRef": "_Measures.Seasonal Deviation MDE",
+              "nativeQueryRef": "Seasonal Deviation MDE"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seasonal Deviation"
+                }
+              },
+              "queryRef": "_Measures.Seasonal Deviation",
+              "nativeQueryRef": "Seasonal Deviation"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "error": [
+        {
+          "properties": {
+            "errorRange": {
+              "kind": "ErrorRange",
+              "explicit": {
+                "isRelative": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "false"
+                    }
+                  }
+                },
+                "lowerBound": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Seasonal Deviation t Lower"
+                    }
+                  }
+                },
+                "upperBound": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Seasonal Deviation t Upper"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "_Measures.Seasonal Deviation",
+            "highlightMatching": 1
+          }
+        },
+        {
+          "properties": {
+            "enabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Seasonal Deviation"
+          }
+        }
+      ],
+      "y1AxisReferenceLine": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Null effect'"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "1"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

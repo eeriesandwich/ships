@@ -1,0 +1,12 @@
+EVALUATE
+SUMMARIZECOLUMNS (
+    FreightSeries[Series],
+    'Date'[QuarterNumber],
+    "Mean",     [Freight Quarter Change],
+    "SD",       [Freight Quarter Change SD],
+    "N",        [Freight Quarter Change N],
+    "t Lower",  [Freight Quarter Change t Lower],
+    "t Upper",  [Freight Quarter Change t Upper],
+    "MDE 80%",  [Freight Quarter Change MDE]
+)
+ORDER BY FreightSeries[Series], 'Date'[QuarterNumber]

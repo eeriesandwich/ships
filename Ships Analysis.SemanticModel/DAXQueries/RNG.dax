@@ -1,0 +1,8 @@
+EVALUATE ROW (
+    "Rows",       COUNTROWS ( Resample ),
+    "Iterations", DISTINCTCOUNT ( Resample[Iteration] ),
+    "Min U",      MIN ( Resample[U] ),
+    "Max U",      MAX ( Resample[U] ),
+    "Mean U",     AVERAGE ( Resample[U] ),
+    "Sum U",      SUM ( Resample[U] )
+)

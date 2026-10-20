@@ -1,0 +1,10 @@
+EVALUATE
+VAR Idx = LOOKUPVALUE ( 'Date'[SessionIndex], 'Date'[Date], DATE ( 2024, 2, 9 ) )
+RETURN ROW (
+    "Sessions",              COUNTROWS ( Sessions ),
+    "US sessions",           COUNTROWS ( FILTER ( Sessions, Sessions[IsUSSession] ) ),
+    "Trading days in Date",  COUNTROWS ( FILTER ( 'Date', 'Date'[IsTradingDay] ) ),
+    "5 sessions after 9 Feb 2024", LOOKUPVALUE ( 'Date'[Date], 'Date'[SessionIndex], Idx + 5 ),
+    "ISO week of 1 Jan 2021", LOOKUPVALUE ( 'Date'[ISOWeek], 'Date'[Date], DATE ( 2021, 1, 1 ) ),
+    "ISO year of 1 Jan 2021", LOOKUPVALUE ( 'Date'[ISOYear], 'Date'[Date], DATE ( 2021, 1, 1 ) )
+)

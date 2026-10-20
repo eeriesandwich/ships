@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "70a8be9ae1763e9e265a",
+  "position": {
+    "x": 0,
+    "y": 746,
+    "z": 2,
+    "height": 254,
+    "width": 1920,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "This page tracks the within-year cumulative seasonal path of equity returns for each lineage. The value at any quarter is the average log return accumulated by that point relative to the year’s own mean. Lines return to zero at Q4 by construction, so the shape in between is the signal.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Under both toggle states the DryBulk line peaks in Q1 and declines into Q4 drag, which aligns with the physical dry bulk pattern of Q1 freight weakness feeding equity declines as rate prints come in. Tanker runs with Q4 drag in both states too, which does not mirror the Q4 strength visible in BDTI freight. The absence of a Q4 lift in tanker equity reads as market efficiency: the Q4 freight strength is expected and already priced in before it arrives.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The Events toggle filters sector-wide directional events out of the sample, around 65 of the 141 catalogued. Constituent-level corporate items such as mergers and listings stay in, as do non-directional policy annotations, since neither carries a systematic bias at the portfolio level. Both lineage shapes hold under both toggle states, which makes the conclusions robust to event-day treatment.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

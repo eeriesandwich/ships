@@ -1,0 +1,751 @@
+table _Measures
+	lineageTag: 53520548-515a-48d3-ad3c-af4ea6964bdf
+
+	measure Constituents = MAX ( LineagePortfolio[Constituents] )
+		formatString: 0
+		displayFolder: Composition
+		lineageTag: 8e1c3e03-f78c-4a96-8eaf-a56dd073170d
+
+	measure 'Constituents Traded' = MAX ( LineagePortfolio[ConstituentsTraded] )
+		formatString: 0
+		displayFolder: Composition
+		lineageTag: 554c80af-ab7f-45b4-8e4a-8f9d0137285b
+
+	measure 'Portfolio Return' =
+			
+			VAR MinN     = [MinConstituents Value]
+			VAR Basis    = SELECTEDVALUE ( ReturnBasis[Basis], "Total" )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			RETURN
+			    CALCULATE (
+			        SWITCH ( Basis,
+			            "Price", AVERAGE ( LineagePortfolio[PortfolioPriceReturn] ),
+			            "Local", AVERAGE ( LineagePortfolio[PortfolioLocalReturn] ),
+			            AVERAGE ( LineagePortfolio[PortfolioReturn] )
+			        ),
+			        KEEPFILTERS ( LineagePortfolio[ConstituentsTraded] >= MinN ),
+			        KEEPFILTERS ( LineagePortfolio[USVenueOpen] = TRUE () ),
+			        KEEPFILTERS ( NOT ( ExcludeE && LineagePortfolio[IsEventDay] ) )
+			    )
+		formatString: 0.0000%;-0.0000%;0.0000%
+		displayFolder: Base
+		lineageTag: 9fb51a5a-250f-4fad-af26-143a458cf048
+
+	measure 'Freight Level Deviation' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR Q        = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( freight, 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            ),
+			            "@qmean",
+			                CALCULATE (
+			                    AVERAGE ( freight[Close] ),
+			                    KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			                ),
+			            "@ymean",
+			                CALCULATE (
+			                    AVERAGE ( freight[Close] ),
+			                    ALLEXCEPT ( 'Date', 'Date'[Year] ),
+			                    KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			                )
+			        ),
+			        NOT ISBLANK ( [@qmean] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR CompleteQ =
+			    FILTER (
+			        Panel,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    SWITCH (
+			        Mode,
+			        "Points", AVERAGEX ( CompleteQ, [@qmean] - [@ymean] ),
+			        AVERAGEX ( CompleteQ, DIVIDE ( [@qmean] - [@ymean], [@ymean] ) )
+			    )
+		displayFolder: Freight
+		lineageTag: 0a8f3d3c-1887-40c5-9a73-8b25e9d07924
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR Q        = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY  = 'Date'[Year]
+			            VAR curQ  = 'Date'[QuarterNumber]
+			            VAR prevY = IF ( curQ = 1, curY - 1, curY )
+			            VAR prevQ = IF ( curQ = 1, 4, curQ - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[QuarterNumber] = prevQ ),
+			                    [@last]
+			                )
+			    )
+			VAR Complete =
+			    FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Complete, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Complete, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR CompleteQ =
+			    FILTER (
+			        Complete,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    SWITCH (
+			        Mode,
+			        "Points", AVERAGEX ( CompleteQ, [@last] - [@prev] ),
+			        AVERAGEX ( CompleteQ, DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) ) )
+			    )
+		displayFolder: Freight
+		lineageTag: 966ca255-dbf8-4a60-a472-4c7ee3dfbf97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change, within-year' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR Q        = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY  = 'Date'[Year]
+			            VAR curQ  = 'Date'[QuarterNumber]
+			            VAR prevY = IF ( curQ = 1, curY - 1, curY )
+			            VAR prevQ = IF ( curQ = 1, 4, curQ - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[QuarterNumber] = prevQ ),
+			                    [@last]
+			                )
+			    )
+			VAR PanelWithChange =
+			    ADDCOLUMNS (
+			        FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) ),
+			        "@chg",
+			            SWITCH (
+			                Mode,
+			                "Points", [@last] - [@prev],
+			                DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) )
+			            )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( PanelWithChange, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( PanelWithChange, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            PanelWithChange,
+			            'Date'[QuarterNumber] = Q
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@chg] - AVERAGEX ( FILTER ( PanelWithChange, 'Date'[Year] = y ), [@chg] )
+			    )
+			RETURN
+			    AVERAGEX ( Dev, [@dev] )
+		displayFolder: Freight
+		lineageTag: af20f24a-a21d-4163-89fd-7f6b306cc953
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change N' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR Q        = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY  = 'Date'[Year]
+			            VAR curQ  = 'Date'[QuarterNumber]
+			            VAR prevY = IF ( curQ = 1, curY - 1, curY )
+			            VAR prevQ = IF ( curQ = 1, 4, curQ - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[QuarterNumber] = prevQ ),
+			                    [@last]
+			                )
+			    )
+			VAR Complete =
+			    FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Complete, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Complete, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR CompleteQ =
+			    FILTER (
+			        Complete,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    COUNTROWS ( CompleteQ )
+		formatString: 0
+		displayFolder: Freight
+		lineageTag: 238334f1-3962-4307-be8c-5083e0a7fe31
+
+	measure 'Freight Quarter Change SD' =
+			
+			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
+			VAR Q        = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR ExcludeE = SELECTEDVALUE ( IncludeEvents[Option], "Include" ) = "Exclude"
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( freight, 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date'[QuarterNumber] ),
+			            KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			        ),
+			        "@last",
+			            CALCULATE (
+			                LASTNONBLANKVALUE ( 'Date'[Date], MAX ( freight[Close] ) ),
+			                KEEPFILTERS ( NOT ( ExcludeE && freight[IsEventDay] ) )
+			            )
+			    )
+			VAR PanelWithPrev =
+			    ADDCOLUMNS (
+			        Panel,
+			        "@prev",
+			            VAR curY  = 'Date'[Year]
+			            VAR curQ  = 'Date'[QuarterNumber]
+			            VAR prevY = IF ( curQ = 1, curY - 1, curY )
+			            VAR prevQ = IF ( curQ = 1, 4, curQ - 1 )
+			            RETURN
+			                MAXX (
+			                    FILTER ( Panel, 'Date'[Year] = prevY && 'Date'[QuarterNumber] = prevQ ),
+			                    [@last]
+			                )
+			    )
+			VAR Complete =
+			    FILTER ( PanelWithPrev, NOT ISBLANK ( [@prev] ) && NOT ISBLANK ( [@last] ) )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Complete, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Complete, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR CompleteQ =
+			    FILTER (
+			        Complete,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    STDEVX.S (
+			        CompleteQ,
+			        SWITCH (
+			            Mode,
+			            "Points", [@last] - [@prev],
+			            DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) )
+			        )
+			    )
+		displayFolder: Freight
+		lineageTag: 210788dd-ded1-4711-9888-890de2c8b068
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change t Lower' = ```
+			
+			VAR m  = [Freight Quarter Change]
+			VAR sd = [Freight Quarter Change SD]
+			VAR n  = [Freight Quarter Change N]
+			RETURN IF ( n > 1, m - T.INV.2T ( 0.05, n - 1 ) * sd / SQRT ( n ) )
+			
+			```
+		displayFolder: Freight
+		lineageTag: 3c9b8bd4-0b9c-427e-98bd-5a7a86a3fdcc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change t Upper' =
+			
+			VAR m  = [Freight Quarter Change]
+			VAR sd = [Freight Quarter Change SD]
+			VAR n  = [Freight Quarter Change N]
+			RETURN IF ( n > 1, m + T.INV.2T ( 0.05, n - 1 ) * sd / SQRT ( n ) )
+		displayFolder: Freight
+		lineageTag: 1eef6323-6cc2-476d-8f92-99df6169d5b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change MDE' =
+			
+			VAR sd = [Freight Quarter Change SD]
+			VAR n  = [Freight Quarter Change N]
+			RETURN IF ( n > 1, ( T.INV ( 0.975, n - 1 ) + T.INV ( 0.80, n - 1 ) ) * sd / SQRT ( n ) )
+		displayFolder: Freight
+		lineageTag: ee2c2dfe-d1f7-4844-a32d-84c0c712ee2f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MT Mediated Share' =
+			
+			SELECTEDVALUE ( MediatorTest[mediated_share] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: e4dd9289-8a28-4701-83fb-809c8e7f86db
+
+	measure 'MT CI Lower' =
+			
+			SELECTEDVALUE ( MediatorTest[boot_lo] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: a875d7bc-f06c-4070-91bd-f712c334116d
+
+	measure 'MT CI Upper' =
+			
+			SELECTEDVALUE ( MediatorTest[boot_hi] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: d44f3bf4-8a6f-46c7-8d3c-97e5d97c9fd2
+
+	measure 'MT Decision' =
+			
+			SELECTEDVALUE ( MediatorTest[decision] )
+		displayFolder: MediatorTest
+		lineageTag: 8815b71f-b949-4ed8-b281-37bf3075adaf
+
+	measure 'MT Raw Alpha' = ```
+			
+			SELECTEDVALUE ( MediatorTest[raw_alpha] )
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: 52cf645f-41a2-4450-bf11-f1bf21a74e43
+
+	measure 'MT Direct Alpha' = ```
+			
+			SELECTEDVALUE ( MediatorTest[direct_alpha] )
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: f06bd9d9-a2e3-42c9-ba60-c45c27906568
+
+	measure 'MT Beta' = ```
+			
+			SELECTEDVALUE ( MediatorTest[beta] )
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: 5c1784e5-76f5-4745-bdec-d82f88a54f57
+
+	measure 'MT Delta Focus' =
+			
+			SELECTEDVALUE ( MediatorTest[delta_focus] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: MediatorTest
+		lineageTag: 5fd144eb-afb3-42b7-a6a2-3d7c7eda7e5a
+
+	measure 'MT Years' =
+			
+			SELECTEDVALUE ( MediatorTest[n_years] )
+		formatString: 0
+		displayFolder: MediatorTest
+		lineageTag: 833ca484-60e7-4d9b-8c81-5929c59c918c
+
+	measure 'MT Window' =
+			
+			SELECTEDVALUE ( MediatorTest[window] )
+		displayFolder: MediatorTest
+		lineageTag: 10e55014-fb5d-43fc-80df-9b6b466d4299
+
+	measure 'MT Note' =
+			
+			SELECTEDVALUE ( MediatorTest[note] )
+		displayFolder: MediatorTest
+		lineageTag: 5e11cde7-ca32-4733-ac34-46f23b60f04f
+
+	measure 'MT Mediated Component' = SELECTEDVALUE(MediatorTest[mediated_component])
+		displayFolder: MediatorTest
+		lineageTag: 63493e8d-4c27-46e7-a648-b54661a94136
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quarter Return' =
+			
+			VAR MinCov = [MinQuarterCoverage Value]
+			VAR USDays =
+			    CALCULATE ( COUNTROWS ( 'Date' ), NOT ISBLANK ( 'Date'[USSessionIndex] ) )
+			VAR GatedDays =
+			    FILTER (
+			        ADDCOLUMNS ( VALUES ( 'Date'[Date] ), "@r", [Portfolio Return] ),
+			        NOT ISBLANK ( [@r] )
+			    )
+			VAR NGated = COUNTROWS ( GatedDays )
+			RETURN
+			    IF (
+			        USDays > 0 && NGated >= MinCov * USDays,
+			        SUMX ( GatedDays, LN ( 1 + [@r] ) )
+			    )
+		displayFolder: Seasonality
+		lineageTag: d5203ce6-2373-4b75-b537-9e426c90fd8a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Mean' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR CompleteQ =
+			    FILTER (
+			        Panel,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    AVERAGEX ( CompleteQ, [@q] )
+		displayFolder: Seasonality
+		lineageTag: a080b371-acd4-4275-be08-35741f562df2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            Panel,
+			            'Date'[QuarterNumber] = Q
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@q] - AVERAGEX ( FILTER ( Panel, 'Date'[Year] = y ), [@q] )
+			    )
+			RETURN
+			    AVERAGEX ( Dev, [@dev] )
+		displayFolder: Seasonality
+		lineageTag: b2f9c4f4-b75b-4b6b-bd02-264a535b2960
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Years Used' =
+			
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			RETURN
+			    COUNTROWS ( FullYears )
+		formatString: 0
+		displayFolder: Seasonality
+		lineageTag: 68cd15c9-7eba-4624-b8b2-3642cd018695
+
+	measure 'Seasonal Deviation N' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    FILTER (
+			        Panel,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    COUNTROWS ( Dev )
+		formatString: 0
+		displayFolder: Seasonality/Intervals
+		lineageTag: b60ec728-b1f4-414f-9c44-190e5aa7117d
+
+	measure 'Seasonal Deviation SD' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            Panel,
+			            'Date'[QuarterNumber] = Q
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@q] - AVERAGEX ( FILTER ( Panel, 'Date'[Year] = y ), [@q] )
+			    )
+			RETURN
+			    STDEVX.S ( Dev, [@dev] )
+		displayFolder: Seasonality/Intervals
+		lineageTag: 4bd1c7e2-2a7a-422f-8468-ba967f85d49b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation t Lower' =
+			
+			VAR N    = [Seasonal Deviation N]
+			VAR Mean = [Seasonal Deviation]
+			VAR SD   = [Seasonal Deviation SD]
+			RETURN
+			    IF (
+			        N > 1,
+			        Mean - T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
+			    )
+		displayFolder: Seasonality/Intervals
+		lineageTag: 9936a58e-23e8-4cfc-a389-1ff1c61cbc7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation t Upper' =
+			
+			VAR N    = [Seasonal Deviation N]
+			VAR Mean = [Seasonal Deviation]
+			VAR SD   = [Seasonal Deviation SD]
+			RETURN
+			    IF (
+			        N > 1,
+			        Mean + T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
+			    )
+		displayFolder: Seasonality/Intervals
+		lineageTag: 3adb8616-fb6d-4a3e-882d-6af1d6e2987f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation MDE' =
+			
+			VAR N  = [Seasonal Deviation N]
+			VAR SD = [Seasonal Deviation SD]
+			RETURN
+			    IF (
+			        N > 1,
+			        ( T.INV.2T ( 0.05, N - 1 ) + T.INV ( 0.80, N - 1 ) ) * DIVIDE ( SD, SQRT ( N ) )
+			    )
+		displayFolder: Seasonality/Intervals
+		lineageTag: 0cb304f3-3f66-44fd-9b08-2a7e28169427
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation Cumulative' =
+			
+			VAR CurrentQ = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( CurrentQ ),
+			        SUMX (
+			            FILTER (
+			                CALCULATETABLE (
+			                    VALUES ( 'Date'[QuarterNumber] ),
+			                    REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			                ),
+			                'Date'[QuarterNumber] <= CurrentQ
+			            ),
+			            VAR Q = 'Date'[QuarterNumber]
+			            RETURN CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = Q )
+			        )
+			    )
+		displayFolder: Seasonality
+		lineageTag: f24595b4-97c7-45b1-93ce-91369f858e31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Freight Quarter Change Cumulative' =
+			
+			VAR CurrentQ = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( CurrentQ ),
+			        SUMX (
+			            FILTER (
+			                CALCULATETABLE (
+			                    VALUES ( 'Date'[QuarterNumber] ),
+			                    REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			                ),
+			                'Date'[QuarterNumber] <= CurrentQ
+			            ),
+			            VAR Q = 'Date'[QuarterNumber]
+			            RETURN CALCULATE ( [Freight Quarter Change, within-year], 'Date'[QuarterNumber] = Q )
+			        )
+			    )
+		displayFolder: Seasonality
+		lineageTag: 096aac8e-1595-44c9-bdd2-670a4cdcd5ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: cef04a35-9a8e-46cb-95d6-2d92ac206273
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = User
+
+	partition _Measures = calculated
+		mode: import
+		source = { BLANK () }
+
+	annotation PBI_Id = e5324f218e374d0b81fc6155324a16d6
+
