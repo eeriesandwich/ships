@@ -486,7 +486,7 @@ table _Measures
 			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
 			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
 			            ),
-			            "@q", CALCULATE ( [Quarter Return] )
+			            "@q", CALCULATE ( [Residual Quarter Return] )
 			        ),
 			        NOT ISBLANK ( [@q] )
 			    )
@@ -521,7 +521,7 @@ table _Measures
 			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
 			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
 			            ),
-			            "@q", CALCULATE ( [Quarter Return] )
+			            "@q", CALCULATE ( [Residual Quarter Return] )
 			        ),
 			        NOT ISBLANK ( [@q] )
 			    )
@@ -559,7 +559,7 @@ table _Measures
 			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
 			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
 			            ),
-			            "@q", CALCULATE ( [Quarter Return] )
+			            "@q", CALCULATE ( [Residual Quarter Return] )
 			        ),
 			        NOT ISBLANK ( [@q] )
 			    )
@@ -587,7 +587,7 @@ table _Measures
 			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
 			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
 			            ),
-			            "@q", CALCULATE ( [Quarter Return] )
+			            "@q", CALCULATE ( [Residual Quarter Return] )
 			        ),
 			        NOT ISBLANK ( [@q] )
 			    )
@@ -621,7 +621,7 @@ table _Measures
 			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
 			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
 			            ),
-			            "@q", CALCULATE ( [Quarter Return] )
+			            "@q", CALCULATE ( [Residual Quarter Return] )
 			        ),
 			        NOT ISBLANK ( [@q] )
 			    )
@@ -953,34 +953,6 @@ table _Measures
 		displayFolder: Freight
 		lineageTag: 2d8e18d2-53c6-4595-903d-16018d5f7330
 
-	measure 'Equity Contrast Tanker Panel' =
-			
-			VAR Years =
-			    CALCULATETABLE (
-			        VALUES ( 'Date'[Year] ),
-			        REMOVEFILTERS ( 'Date'[QuarterNumber] ),
-			        Lineage[Lineage] = "Tanker"
-			    )
-			VAR WithContrast =
-			    ADDCOLUMNS (
-			        Years,
-			        "@c",
-			            VAR y = 'Date'[Year]
-			            VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
-			            VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
-			            VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
-			            VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
-			            RETURN
-			                IF (
-			                    NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
-			                    ( q4 + q1 - q2 - q3 ) / 2
-			                )
-			    )
-			RETURN
-			    FILTER ( WithContrast, NOT ISBLANK ( [@c] ) )
-		displayFolder: Seasonality/Confirmatory
-		lineageTag: fafe0c1a-80e8-4159-a8f9-053572e3a814
-
 	measure 'Equity Contrast Tanker SD' =
 			
 			VAR Years =
@@ -995,10 +967,10 @@ table _Measures
 			            Years,
 			            "@c",
 			                VAR y = 'Date'[Year]
-			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
-			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
-			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
-			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                VAR q1 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
 			                RETURN
 			                    IF (
 			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
@@ -1027,10 +999,10 @@ table _Measures
 			            Years,
 			            "@c",
 			                VAR y = 'Date'[Year]
-			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
-			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
-			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
-			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                VAR q1 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
 			                RETURN
 			                    IF (
 			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
@@ -1059,10 +1031,10 @@ table _Measures
 			            Years,
 			            "@c",
 			                VAR y = 'Date'[Year]
-			                VAR q1 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
-			                VAR q2 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
-			                VAR q3 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
-			                VAR q4 = CALCULATE ( [Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
+			                VAR q1 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "Tanker" )
+			                VAR q2 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 2, Lineage[Lineage] = "Tanker" )
+			                VAR q3 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 3, Lineage[Lineage] = "Tanker" )
+			                VAR q4 = CALCULATE ( [Residual Quarter Return], 'Date'[Year] = y, 'Date'[QuarterNumber] = 4, Lineage[Lineage] = "Tanker" )
 			                RETURN
 			                    IF (
 			                        NOT ( ISBLANK ( q1 ) || ISBLANK ( q2 ) || ISBLANK ( q3 ) || ISBLANK ( q4 ) ),
@@ -1093,29 +1065,183 @@ table _Measures
 			VAR N = [Equity Contrast Tanker N]
 			VAR T = [Equity Contrast Tanker t]
 			RETURN IF ( N > 1, 1 - T.DIST ( T, N - 1, TRUE () ) )
+		formatString: 0.0000
 		displayFolder: Seasonality/Confirmatory
 		lineageTag: 458597e4-fe90-4f05-967c-0efa7cce49c8
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Equity Contrast DryBulk Q1 t one-sided' =
+	measure 'Equity Contrast DryBulk Q1 t' =
 			
 			VAR M  = CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 			VAR SD = CALCULATE ( [Seasonal Deviation SD], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 			VAR N  = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.00
 		displayFolder: Seasonality/Confirmatory
 		lineageTag: 2a2c0187-fd6c-4743-adb9-d32d732c6ace
 
 	measure 'Equity Contrast DryBulk Q1 p one-sided' =
 			
 			VAR N = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
-			VAR T = [Equity Contrast DryBulk Q1 t one-sided]
+			VAR T = [Equity Contrast DryBulk Q1 t]
 			RETURN IF ( N > 1, T.DIST ( T, N - 1, TRUE () ) )
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.000
 		displayFolder: Seasonality/Confirmatory
 		lineageTag: cfacc3eb-a534-4b46-8f9d-7ce21c8bdcaa
+
+	measure 'Equity Contrast DryBulk Q1 Point' =
+			
+			CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: b398e927-0055-431d-a16b-63464d8acb41
+
+	measure 'Equity Contrast DryBulk Q1 N' =
+			
+			CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
+		formatString: 0
+		displayFolder: Seasonality/Confirmatory
+		lineageTag: f8ee46ee-2d87-4f13-a9f8-33c0e4fc078c
+
+	measure 'Market Factor Quarter Return' =
+			
+			VAR MarketTickers = CALCULATETABLE ( VALUES ( Factor[Ticker] ), Factor[FactorKind] = "Market" )
+			VAR Days = VALUES ( 'Date'[Date] )
+			RETURN
+			    AVERAGEX (
+			        MarketTickers,
+			        VAR t = Factor[Ticker]
+			        VAR DailyRows =
+			            CALCULATETABLE (
+			                FILTER (
+			                    ADDCOLUMNS ( Days, "@r", CALCULATE ( SUM ( ControlFactors[FactorReturn] ) ) ),
+			                    NOT ISBLANK ( [@r] )
+			                ),
+			                ControlFactors[Ticker] = t
+			            )
+			        RETURN SUMX ( DailyRows, LN ( 1 + [@r] ) )
+			    )
+		displayFolder: Factors
+		lineageTag: 6c294fd6-684f-42ac-a29a-4a7ca13a2a8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sector Factor Quarter Return' =
+			
+			VAR L = SELECTEDVALUE ( Lineage[Lineage] )
+			VAR SectorTickers =
+			    CALCULATETABLE (
+			        VALUES ( Factor[Ticker] ),
+			        Factor[FactorKind] = "Sector",
+			        Factor[SectorLineage] = L
+			    )
+			VAR Days = VALUES ( 'Date'[Date] )
+			RETURN
+			    AVERAGEX (
+			        SectorTickers,
+			        VAR t = Factor[Ticker]
+			        VAR DailyRows =
+			            CALCULATETABLE (
+			                FILTER (
+			                    ADDCOLUMNS ( Days, "@r", CALCULATE ( SUM ( ControlFactors[FactorReturn] ) ) ),
+			                    NOT ISBLANK ( [@r] )
+			                ),
+			                ControlFactors[Ticker] = t
+			            )
+			        RETURN SUMX ( DailyRows, LN ( 1 + [@r] ) )
+			    )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Factors
+		lineageTag: d571f87b-215c-44c6-88c1-ed80baa67bfc
+
+	measure 'Beta Sector' =
+			
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date' )
+			        ),
+			        "@y",  CALCULATE ( [Quarter Return] ),
+			        "@xm", CALCULATE ( [Market Factor Quarter Return] ),
+			        "@xs", CALCULATE ( [Sector Factor Quarter Return] ),
+			        "@d1", IF ( 'Date'[QuarterNumber] = 1, 1, 0 ),
+			        "@d2", IF ( 'Date'[QuarterNumber] = 2, 1, 0 ),
+			        "@d3", IF ( 'Date'[QuarterNumber] = 3, 1, 0 )
+			    )
+			VAR Clean =
+			    FILTER (
+			        Panel,
+			        NOT ISBLANK ( [@y] ) && NOT ISBLANK ( [@xm] ) && NOT ISBLANK ( [@xs] )
+			    )
+			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@xs], [@d1], [@d2], [@d3] )
+			RETURN MINX ( Betas, [Slope2] )
+		formatString: 0.00
+		displayFolder: Controls
+		lineageTag: 2d82feaf-a2ef-48e6-8c57-09284f4a9c25
+
+	measure 'Beta Market' =
+			
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date' )
+			        ),
+			        "@y",  CALCULATE ( [Quarter Return] ),
+			        "@xm", CALCULATE ( [Market Factor Quarter Return] ),
+			        "@xs", CALCULATE ( [Sector Factor Quarter Return] ),
+			        "@d1", IF ( 'Date'[QuarterNumber] = 1, 1, 0 ),
+			        "@d2", IF ( 'Date'[QuarterNumber] = 2, 1, 0 ),
+			        "@d3", IF ( 'Date'[QuarterNumber] = 3, 1, 0 )
+			    )
+			VAR Clean =
+			    FILTER (
+			        Panel,
+			        NOT ISBLANK ( [@y] ) && NOT ISBLANK ( [@xm] ) && NOT ISBLANK ( [@xs] )
+			    )
+			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@xs], [@d1], [@d2], [@d3] )
+			RETURN MINX ( Betas, [Slope1] )
+		formatString: 0.00
+		displayFolder: Controls
+		lineageTag: c0b5c5bd-1418-4369-af14-da1fe3a3b3f5
+
+	measure 'Beta Market Only' =
+			
+			VAR Panel =
+			    ADDCOLUMNS (
+			        CALCULATETABLE (
+			            SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			            REMOVEFILTERS ( 'Date' )
+			        ),
+			        "@y",  CALCULATE ( [Quarter Return] ),
+			        "@xm", CALCULATE ( [Market Factor Quarter Return] ),
+			        "@d1", IF ( 'Date'[QuarterNumber] = 1, 1, 0 ),
+			        "@d2", IF ( 'Date'[QuarterNumber] = 2, 1, 0 ),
+			        "@d3", IF ( 'Date'[QuarterNumber] = 3, 1, 0 )
+			    )
+			VAR Clean = FILTER ( Panel, NOT ISBLANK ( [@y] ) && NOT ISBLANK ( [@xm] ) )
+			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@d1], [@d2], [@d3] )
+			RETURN MINX ( Betas, [Slope1] )
+		formatString: 0.00
+		displayFolder: Controls
+		lineageTag: cbf2b962-c61b-45f0-93dc-6e9a73a34b03
+
+	measure 'Residual Quarter Return' =
+			
+			VAR Spec = SELECTEDVALUE ( Specification[Specification], "Raw" )
+			VAR Y   = [Quarter Return]
+			VAR Xm  = [Market Factor Quarter Return]
+			VAR Xs  = [Sector Factor Quarter Return]
+			RETURN
+			    SWITCH (
+			        Spec,
+			        "Market-adjusted",             Y - [Beta Market Only] * Xm,
+			        "Market and sector adjusted",  Y - [Beta Market] * Xm - [Beta Sector] * Xs,
+			        Y
+			    )
+		formatString: 0.0000%;-0.0000%;0.0000%
+		displayFolder: Controls
+		lineageTag: 37a1fd0a-c2a5-4074-b802-c59b5a9f7661
 
 	column Value
 		isHidden
