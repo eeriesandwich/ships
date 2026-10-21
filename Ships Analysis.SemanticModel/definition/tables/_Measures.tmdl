@@ -608,7 +608,7 @@ table _Measures
 			RETURN
 			    COUNTROWS ( Dev )
 		formatString: 0
-		displayFolder: Seasonality/Intervals
+		displayFolder: Seasonality\Intervals
 		lineageTag: b60ec728-b1f4-414f-9c44-190e5aa7117d
 
 	measure 'Seasonal Deviation SD' =
@@ -646,7 +646,7 @@ table _Measures
 			    )
 			RETURN
 			    STDEVX.S ( Dev, [@dev] )
-		displayFolder: Seasonality/Intervals
+		displayFolder: Seasonality\Intervals
 		lineageTag: 4bd1c7e2-2a7a-422f-8468-ba967f85d49b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -661,7 +661,7 @@ table _Measures
 			        N > 1,
 			        Mean - T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
-		displayFolder: Seasonality/Intervals
+		displayFolder: Seasonality\Intervals
 		lineageTag: 9936a58e-23e8-4cfc-a389-1ff1c61cbc7e
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -676,7 +676,7 @@ table _Measures
 			        N > 1,
 			        Mean + T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
-		displayFolder: Seasonality/Intervals
+		displayFolder: Seasonality\Intervals
 		lineageTag: 3adb8616-fb6d-4a3e-882d-6af1d6e2987f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -690,7 +690,7 @@ table _Measures
 			        N > 1,
 			        ( T.INV.2T ( 0.05, N - 1 ) + T.INV ( 0.80, N - 1 ) ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
-		displayFolder: Seasonality/Intervals
+		displayFolder: Seasonality\Intervals
 		lineageTag: 0cb304f3-3f66-44fd-9b08-2a7e28169427
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -982,7 +982,7 @@ table _Measures
 			RETURN
 			    STDEVX.S ( Panel, [@c] )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: 9136786e-62a7-4db5-9c4f-7951639531f5
 
 	measure 'Equity Contrast Tanker Point' =
@@ -1014,7 +1014,7 @@ table _Measures
 			RETURN
 			    AVERAGEX ( Panel, [@c] )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: a574cc62-46b4-4fd1-91de-7d67c83053f2
 
 	measure 'Equity Contrast Tanker N' =
@@ -1046,7 +1046,7 @@ table _Measures
 			RETURN
 			    COUNTROWS ( Panel )
 		formatString: 0
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: 7fec9516-80c2-4396-abd6-e29bcc9da0d2
 
 	measure 'Equity Contrast Tanker t' =
@@ -1055,7 +1055,7 @@ table _Measures
 			VAR SD = [Equity Contrast Tanker SD]
 			VAR N  = [Equity Contrast Tanker N]
 			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: d9724c2a-484e-4219-8de0-5c696413f135
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -1066,7 +1066,7 @@ table _Measures
 			VAR T = [Equity Contrast Tanker t]
 			RETURN IF ( N > 1, 1 - T.DIST ( T, N - 1, TRUE () ) )
 		formatString: 0.0000
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: 458597e4-fe90-4f05-967c-0efa7cce49c8
 
 	measure 'Equity Contrast DryBulk Q1 t' =
@@ -1076,7 +1076,7 @@ table _Measures
 			VAR N  = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
 		formatString: 0.00
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: 2a2c0187-fd6c-4743-adb9-d32d732c6ace
 
 	measure 'Equity Contrast DryBulk Q1 p one-sided' =
@@ -1085,21 +1085,21 @@ table _Measures
 			VAR T = [Equity Contrast DryBulk Q1 t]
 			RETURN IF ( N > 1, T.DIST ( T, N - 1, TRUE () ) )
 		formatString: 0.000
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: cfacc3eb-a534-4b46-8f9d-7ce21c8bdcaa
 
 	measure 'Equity Contrast DryBulk Q1 Point' =
 			
 			CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: b398e927-0055-431d-a16b-63464d8acb41
 
 	measure 'Equity Contrast DryBulk Q1 N' =
 			
 			CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 		formatString: 0
-		displayFolder: Seasonality/Confirmatory
+		displayFolder: Seasonality\Confirmatory
 		lineageTag: f8ee46ee-2d87-4f13-a9f8-33c0e4fc078c
 
 	measure 'Market Factor Quarter Return' =
@@ -1242,6 +1242,46 @@ table _Measures
 		formatString: 0.0000%;-0.0000%;0.0000%
 		displayFolder: Controls
 		lineageTag: 37a1fd0a-c2a5-4074-b802-c59b5a9f7661
+
+	measure 'Quarter Return (Total)' =
+			
+			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Total" )
+		displayFolder: Base\Decomposition
+		lineageTag: 350088f8-2d8c-47d3-9c73-6571955a49c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quarter Return (Price)' =
+			
+			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Price" )
+		displayFolder: Base\Decomposition
+		lineageTag: ada27eff-cc81-4a92-9a2f-7e13ce83ee97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quarter Return (Local)' =
+			
+			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Local" )
+		displayFolder: Base\Decomposition
+		lineageTag: 044c4248-d43e-40df-8fc7-85519902b4e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Payout Effect' =
+			
+			[Quarter Return (Total)] - [Quarter Return (Price)]
+		displayFolder: Base\Decomposition
+		lineageTag: 43f936f3-4dc0-412d-a9a4-91258b732f8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'FX Effect' =
+			
+			[Quarter Return (Total)] - [Quarter Return (Local)]
+		displayFolder: Base\Decomposition
+		lineageTag: 8ba28900-2f3e-4091-b43a-20b875f51789
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Value
 		isHidden
