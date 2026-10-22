@@ -4,10 +4,10 @@
   "position": {
     "x": 712,
     "y": 0,
-    "z": 2001,
+    "z": 2000,
     "height": 80,
     "width": 196,
-    "tabOrder": 2001
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -103,23 +103,5 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b1c3f0bb0ef0dec166bc",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "IncludeEvents"
-              }
-            },
-            "Property": "Option"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

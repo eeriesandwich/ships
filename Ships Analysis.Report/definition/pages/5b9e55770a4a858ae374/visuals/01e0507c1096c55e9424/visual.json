@@ -3,9 +3,9 @@
   "name": "01e0507c1096c55e9424",
   "position": {
     "x": 0,
-    "y": 504,
+    "y": 662,
     "z": 1000,
-    "height": 390,
+    "height": 418,
     "width": 1920,
     "tabOrder": 1000
   },
@@ -254,34 +254,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "01625c959b8e74fd7d21",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Freight Quarter Change, within-year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5ceef1fcb65636cd3a65",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Date"
-              }
-            },
-            "Property": "QuarterNumber"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

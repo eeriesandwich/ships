@@ -1,0 +1,88 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7bcca160c41b1cf57d89",
+  "position": {
+    "x": 65.33331298828125,
+    "y": 171.333251953125,
+    "z": 1000,
+    "height": 248,
+    "width": 762,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Equity Contrast DryBulk Q1 Point"
+                }
+              },
+              "queryRef": "_Measures.Equity Contrast DryBulk Q1 Point",
+              "nativeQueryRef": "Equity Contrast DryBulk Q1 Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Equity Contrast DryBulk Q1 t"
+                }
+              },
+              "queryRef": "_Measures.Equity Contrast DryBulk Q1 t one-sided",
+              "nativeQueryRef": "Equity Contrast DryBulk Q1 t"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Equity Contrast DryBulk Q1 Point"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "referenceLabelLayout": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'below'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

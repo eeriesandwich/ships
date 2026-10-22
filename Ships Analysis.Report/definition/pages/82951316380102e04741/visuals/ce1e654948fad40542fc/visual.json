@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ce1e654948fad40542fc",
+  "position": {
+    "x": 0,
+    "y": 10,
+    "z": 0,
+    "height": 468,
+    "width": 960,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Beta Market"
+                }
+              },
+              "queryRef": "_Measures.Beta Market",
+              "nativeQueryRef": "Beta Market"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Beta Market Only"
+                }
+              },
+              "queryRef": "_Measures.Beta Market Only",
+              "nativeQueryRef": "Beta Market Only"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Beta Sector"
+                }
+              },
+              "queryRef": "_Measures.Beta Sector",
+              "nativeQueryRef": "Beta Sector"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Lineage"
+                    }
+                  },
+                  "Property": "Lineage"
+                }
+              },
+              "queryRef": "Lineage.Lineage",
+              "nativeQueryRef": "Lineage"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "84fb1ec0aa7ca216c6e0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Beta Market"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "92315037fb964f3a2f6b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Beta Market Only"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6dd123d46722a34d3eb9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Beta Sector"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f99e19dbcf433443e3b6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Lineage"
+              }
+            },
+            "Property": "Lineage"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

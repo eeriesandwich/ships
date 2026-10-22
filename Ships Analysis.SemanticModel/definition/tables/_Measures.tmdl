@@ -1283,6 +1283,124 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Seasonal Deviation Latest Year' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Residual Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            Panel,
+			            'Date'[QuarterNumber] = Q
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@q] - AVERAGEX ( FILTER ( Panel, 'Date'[Year] = y ), [@q] )
+			    )
+			VAR LatestY = MAXX ( Dev, 'Date'[Year] )
+			RETURN
+			    MAXX ( FILTER ( Dev, 'Date'[Year] = LatestY ), [@dev] )
+		displayFolder: Seasonality\YoY
+		lineageTag: 4aad8fbf-7be0-4238-9238-b4b1b4f0de7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonal Deviation YoY' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Residual Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    ADDCOLUMNS (
+			        FILTER (
+			            Panel,
+			            'Date'[QuarterNumber] = Q
+			                && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			        ),
+			        "@dev",
+			            VAR y = 'Date'[Year]
+			            RETURN [@q] - AVERAGEX ( FILTER ( Panel, 'Date'[Year] = y ), [@q] )
+			    )
+			VAR LatestY     = MAXX ( Dev, 'Date'[Year] )
+			VAR LatestDev   = MAXX ( FILTER ( Dev, 'Date'[Year] = LatestY ), [@dev] )
+			VAR OtherDevAvg = AVERAGEX ( FILTER ( Dev, 'Date'[Year] <> LatestY ), [@dev] )
+			RETURN
+			    LatestDev - OtherDevAvg
+		displayFolder: Seasonality\YoY
+		lineageTag: 0ef1850b-4f23-4614-b83b-6d5013005a91
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Latest Year Used' =
+			
+			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            CALCULATETABLE (
+			                SUMMARIZE ( 'Date', 'Date'[Year], 'Date'[QuarterNumber] ),
+			                REMOVEFILTERS ( 'Date'[QuarterNumber] )
+			            ),
+			            "@q", CALCULATE ( [Residual Quarter Return] )
+			        ),
+			        NOT ISBLANK ( [@q] )
+			    )
+			VAR FullYears =
+			    FILTER (
+			        ADDCOLUMNS (
+			            DISTINCT ( SELECTCOLUMNS ( Panel, "Y", 'Date'[Year] ) ),
+			            "@n", VAR y = [Y] RETURN COUNTROWS ( FILTER ( Panel, 'Date'[Year] = y ) )
+			        ),
+			        [@n] = 4
+			    )
+			VAR Dev =
+			    FILTER (
+			        Panel,
+			        'Date'[QuarterNumber] = Q
+			            && 'Date'[Year] IN SELECTCOLUMNS ( FullYears, "Y", [Y] )
+			    )
+			RETURN
+			    MAXX ( Dev, 'Date'[Year] )
+		formatString: 0
+		displayFolder: Seasonality\YoY
+		lineageTag: 43fd1bc0-a8bd-4db9-9680-fe67b8841c97
+
 	column Value
 		isHidden
 		formatString: 0

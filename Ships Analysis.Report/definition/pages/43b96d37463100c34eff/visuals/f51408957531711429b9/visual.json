@@ -3,9 +3,9 @@
   "name": "f51408957531711429b9",
   "position": {
     "x": 0,
-    "y": 142,
+    "y": 0,
     "z": 0,
-    "height": 938,
+    "height": 1080,
     "width": 1920,
     "tabOrder": 0
   },
@@ -171,107 +171,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "751fcc6ef5ceb12e358c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "EventDate"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "66da1a56585150842c4f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "EventName"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e38291b4964d4cf24520",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "Lineage"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "daeccc6c1ba6d84d5ece",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "daa315b19462fde9c2c9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "Direction"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "12b8744d1b4605bb9f78",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "Horizon"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f4cdee02d325f23e617f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "events"
-              }
-            },
-            "Property": "Rationale"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

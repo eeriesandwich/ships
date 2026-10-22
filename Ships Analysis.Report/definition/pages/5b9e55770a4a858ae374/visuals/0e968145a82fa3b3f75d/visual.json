@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 904,
-    "z": 1002,
+    "z": 3000,
     "height": 176,
     "width": 1920,
-    "tabOrder": 1002
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,31 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "What this page shows",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "16pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "The within-year seasonal arc of three freight indices: BDTI (dirty crude tankers), BDI (dry bulk composite) and BCI (Capesize). Each line’s value at a given quarter is the average cumulative within-year change by that point in the year, averaged across all complete years in the sample window. All lines return to zero at Q4 by construction, so the shape in between is the physical seasonality.",
-                    "textStyle": {
-                      "fontSize": "16pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "BDTI falls through Q1 to Q3 and recovers sharply in Q4, with the Q4 bar in the forest plot excluding zero even after event exclusion. That is the structural Q4 tanker-rate strength associated with winter crude demand. BDI shows a milder arc with a Q4 drag, and BCI shows a mid-year peak reflecting the Brazilian iron-ore shipping season. The event-day toggle leaves these shapes largely intact, which indicates the freight seasonality is driven by the underlying cargo cycle rather than by one-off macro shocks.",
-                    "textStyle": {
-                      "fontSize": "16pt"
-                    }
+                    "value": ""
                   }
                 ]
               }

@@ -365,51 +365,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0d067860e1f2d7cdb5da",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Date"
-              }
-            },
-            "Property": "QuarterNumber"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "64edad0a4ba4b63a3db9",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Seasonal Deviation Cumulative"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ec1da049a3a89863c543",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Lineage"
-              }
-            },
-            "Property": "Lineage"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
