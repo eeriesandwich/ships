@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3cb830842bc741e03eaf",
+  "position": {
+    "x": 926.19791105846878,
+    "y": 844.60428556046077,
+    "z": 9,
+    "height": 231.54947776461719,
+    "width": 923.992677936901,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seasonal Deviation Latest Year"
+                }
+              },
+              "queryRef": "_Measures.Seasonal Deviation Latest Year",
+              "nativeQueryRef": "Seasonal Deviation Latest Year"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Seasonal Deviation YoY"
+                }
+              },
+              "queryRef": "_Measures.Seasonal Deviation YoY",
+              "nativeQueryRef": "Seasonal Deviation YoY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Latest Year Used"
+                }
+              },
+              "queryRef": "_Measures.Latest Year Used",
+              "nativeQueryRef": "Latest Year Used"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Seasonal Deviation Latest Year"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Latest Year Used"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3046253bc177fb53bf24",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Seasonal Deviation Latest Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "34718d946b454d44cc6e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Seasonal Deviation YoY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0daf5aa28f6472405ab4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Latest Year Used"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

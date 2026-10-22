@@ -1319,10 +1319,9 @@ table _Measures
 			VAR LatestY = MAXX ( Dev, 'Date'[Year] )
 			RETURN
 			    MAXX ( FILTER ( Dev, 'Date'[Year] = LatestY ), [@dev] )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\YoY
 		lineageTag: 4aad8fbf-7be0-4238-9238-b4b1b4f0de7e
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Seasonal Deviation YoY' =
 			
@@ -1362,10 +1361,9 @@ table _Measures
 			VAR OtherDevAvg = AVERAGEX ( FILTER ( Dev, 'Date'[Year] <> LatestY ), [@dev] )
 			RETURN
 			    LatestDev - OtherDevAvg
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\YoY
 		lineageTag: 0ef1850b-4f23-4614-b83b-6d5013005a91
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Latest Year Used' =
 			
@@ -1400,6 +1398,26 @@ table _Measures
 		formatString: 0
 		displayFolder: Seasonality\YoY
 		lineageTag: 43fd1bc0-a8bd-4db9-9680-fe67b8841c97
+
+	measure 'ES Event Count' = COUNTROWS ( EventStudy )
+		formatString: 0
+		displayFolder: Events
+		lineageTag: 8ff7cbe9-1606-4657-b3fe-1ab691703e1f
+
+	measure 'ES CAR' = AVERAGE ( EventStudy[car] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Events
+		lineageTag: b1fdcbc8-6808-4843-9718-9c80e509e791
+
+	measure 'ES Significant Share' =
+			
+			DIVIDE (
+			    COUNTROWS ( FILTER ( EventStudy, EventStudy[p_two_sided] < 0.05 ) ),
+			    COUNTROWS ( EventStudy )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Events
+		lineageTag: 6c32709f-b2d4-413a-8891-b9a7ed9a5dc2
 
 	column Value
 		isHidden

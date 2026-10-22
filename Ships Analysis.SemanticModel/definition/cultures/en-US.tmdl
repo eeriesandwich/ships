@@ -16166,16 +16166,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.491
 			          }
-			        },
-			        {
-			          "Seasonal Dev": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },

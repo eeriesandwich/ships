@@ -1,0 +1,195 @@
+table EventStudy
+	lineageTag: 4a463267-073d-4d7f-a49d-dfec3cc41461
+
+	column event_id
+		dataType: string
+		lineageTag: 7ae4aefc-505e-433e-9016-efbd16be3f13
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb33a642-6917-46e0-8cc2-ffd05dc55331
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column event_name
+		dataType: string
+		lineageTag: d459b2ec-ad59-4725-99dd-5d4a94e5a98f
+		summarizeBy: none
+		sourceColumn: event_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column lineage
+		dataType: string
+		lineageTag: 737a3671-7e72-4ab6-8b91-64ddef97149f
+		summarizeBy: none
+		sourceColumn: lineage
+
+		annotation SummarizationSetBy = Automatic
+
+	column horizon
+		dataType: string
+		lineageTag: 585c1e05-8a9d-4870-a311-52334f4dc7ea
+		summarizeBy: none
+		sourceColumn: horizon
+
+		annotation SummarizationSetBy = Automatic
+
+	column horizon_days
+		dataType: int64
+		formatString: 0
+		lineageTag: a1471f17-6b25-4501-b0c1-bd7e49d2afca
+		summarizeBy: none
+		sourceColumn: horizon_days
+
+		annotation SummarizationSetBy = User
+
+	column n_estimation
+		dataType: int64
+		formatString: 0
+		lineageTag: aa13ba4a-c87c-4eac-9196-ad85005c9e53
+		summarizeBy: none
+		sourceColumn: n_estimation
+
+		annotation SummarizationSetBy = User
+
+	column alpha
+		dataType: double
+		lineageTag: 3ae37c8a-208a-4a36-8132-e3f6794c30c3
+		summarizeBy: sum
+		sourceColumn: alpha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column beta
+		dataType: double
+		lineageTag: cffce6b1-8704-43f4-95fb-5cc392386c56
+		summarizeBy: none
+		sourceColumn: beta
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sigma_epsilon
+		dataType: double
+		lineageTag: 3699772b-b6af-4694-a614-d22d1a3e1961
+		summarizeBy: sum
+		sourceColumn: sigma_epsilon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column r_squared
+		dataType: double
+		lineageTag: f0a4498a-6a6e-4e3b-9654-e19b1015e06d
+		summarizeBy: none
+		sourceColumn: r_squared
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column car
+		dataType: double
+		lineageTag: 10a580a6-ccea-49f3-a9fd-98ff70694c81
+		summarizeBy: none
+		sourceColumn: car
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column se_car
+		dataType: double
+		lineageTag: 6be8c9ba-42d3-4650-97fd-0f02834f3c1a
+		summarizeBy: none
+		sourceColumn: se_car
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column t_stat
+		dataType: double
+		lineageTag: 31dd30b9-b42c-4673-8715-30e44b0915f2
+		summarizeBy: none
+		sourceColumn: t_stat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column p_two_sided
+		dataType: double
+		lineageTag: 63803d86-dbf3-4ca3-bc93-6dbc98b4871f
+		summarizeBy: none
+		sourceColumn: p_two_sided
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column direction
+		dataType: string
+		lineageTag: 9bb59e56-ac4f-4fe2-bbe3-b8d323e74dd1
+		summarizeBy: none
+		sourceColumn: direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 89ebbaba-afb5-4f7d-90e9-fd763da4c7eb
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EventStudy = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\checks\event_study_2026-10-22.csv"),
+				        [Delimiter=",", Columns=null, Encoding=65001, QuoteStyle=QuoteStyle.Csv]
+				    ),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"event_id", type text},
+				        {"event_date", type date},
+				        {"event_name", type text},
+				        {"lineage", type text},
+				        {"horizon", type text},
+				        {"horizon_days", Int64.Type},
+				        {"n_estimation", Int64.Type},
+				        {"alpha", type number},
+				        {"beta", type number},
+				        {"sigma_epsilon", type number},
+				        {"r_squared", type number},
+				        {"car", type number},
+				        {"se_car", type number},
+				        {"t_stat", type number},
+				        {"p_two_sided", type number},
+				        {"direction", type text},
+				        {"category", type text}
+				    })
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

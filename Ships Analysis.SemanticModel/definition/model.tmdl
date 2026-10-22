@@ -49,7 +49,7 @@ queryGroup 'FACTORS Transform\Helper Queries'
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["tanker","Sample File","Parameter1","Transform Sample File","Transform File","drybulk","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","freight","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","fx","Sample File (4)","Parameter4","Transform File (4)","Transform Sample File (4)","FactorPrices","Sample File (5)","Parameter5","Transform Sample File (5)","Transform File (5)","fleet","Date","FXDaily","LineagePortfolio","ControlFactors","SeriesWindows","events","Sessions","TankerDaily","DryBulkDaily","Factor","Lineage","FreightSeries","Company","EventDay","Resample","MediatorTest"]
+annotation PBI_QueryOrder = ["tanker","Sample File","Parameter1","Transform Sample File","Transform File","drybulk","Sample File (2)","Parameter2","Transform Sample File (2)","Transform File (2)","freight","Sample File (3)","Parameter3","Transform Sample File (3)","Transform File (3)","fx","Sample File (4)","Parameter4","Transform File (4)","Transform Sample File (4)","FactorPrices","Sample File (5)","Parameter5","Transform Sample File (5)","Transform File (5)","fleet","Date","FXDaily","LineagePortfolio","ControlFactors","SeriesWindows","events","Sessions","TankerDaily","DryBulkDaily","Factor","Lineage","FreightSeries","Company","EventDay","Resample","MediatorTest","EventStudy"]
 
 annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
@@ -76,6 +76,7 @@ ref table ReturnBasis
 ref table MinQuarterCoverage
 ref table MediatorTest
 ref table IncludeEvents
+ref table EventStudy
 
 ref cultureInfo en-US
 

@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1704,
-        "y": 0
+        "x": 5396.211938547277,
+        "y": 4.0330433023522243
       },
       "nodes": [
         {
@@ -62,13 +62,13 @@
         },
         {
           "location": {
-            "x": 2556,
-            "y": 86
+            "x": 5684.8162628467771,
+            "y": 1352.8625455444487
           },
           "nodeIndex": "LineagePortfolio",
           "nodeLineageTag": "dbae8397-31a2-42c1-8033-b8465716b254",
           "size": {
-            "height": 128,
+            "height": 300,
             "width": 234
           },
           "zIndex": 18
@@ -300,6 +300,19 @@
           "nodeIndex": "IncludeEvents",
           "size": {
             "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5376.5330938760872,
+            "y": 676.43127277222436
+          },
+          "nodeIndex": "EventStudy",
+          "nodeLineageTag": "4a463267-073d-4d7f-a49d-dfec3cc41461",
+          "size": {
+            "height": 300,
             "width": 234
           },
           "zIndex": 0

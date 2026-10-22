@@ -151,18 +151,27 @@ table MediatorTest
 
 		annotation SummarizationSetBy = User
 
+	column events
+		dataType: string
+		lineageTag: 6ba396c5-042c-4e9d-9d53-6ce474ff2e62
+		summarizeBy: none
+		sourceColumn: events
+
+		annotation SummarizationSetBy = Automatic
+
 	partition MediatorTest = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(
-				        File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\checks\mediator_test_2026-10-19.csv"),
+				        File.Contents("C:\Users\Joan Casaramona\Documents\Ships\data\checks\mediator_test_2026-10-20.csv"),
 				        [Delimiter=",", Columns=null, Encoding=65001, QuoteStyle=QuoteStyle.Csv]
 				    ),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    Typed = Table.TransformColumnTypes(Promoted, {
 				        {"label", type text},
 				        {"focus_q", Int64.Type},
+				        {"events", type text},
 				        {"window", type text},
 				        {"n_years", Int64.Type},
 				        {"raw_alpha", type number},
@@ -192,8 +201,6 @@ table MediatorTest
 				    )
 				in
 				    AddSortOrder
-
-	changedProperty = Name
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,0 +1,59 @@
+event_id,event_date,event_name,lineage,horizon,horizon_days,n_estimation,alpha,beta,sigma_epsilon,r_squared,car,se_car,t_stat,p_two_sided,direction,category
+EV008,2014-11-27,OPEC declines to cut production at its 166th Ordinary Meeting,DryBulk,Quarter,63,497,-0.000126,1.217286,0.020215,0.160571,-0.382762,0.160454,-2.385488,0.017432,Mixed,Macro
+EV010,2016-08-31,Hanjin Shipping enters court receivership,DryBulk,Quarter,63,494,-0.005424,1.461421,0.031649,0.172234,0.646186,0.251205,2.572348,0.010393,Negative,Macro
+EV010,2016-08-31,Hanjin Shipping enters court receivership,Tanker,Quarter,63,496,-0.000823,1.106567,0.021136,0.211031,-0.07159,0.167761,-0.426736,0.669757,Negative,Macro
+EV013,2019-09-14,Attack on Abqaiq and Khurais halts Saudi production,Tanker,Month,21,494,-0.000147,1.194415,0.017807,0.249605,0.285453,0.0816,3.498183,0.000511,Mixed,Geopolitical
+EV014,2019-10-01,Refiners build compliant fuel stocks ahead of IMO 2020,Tanker,Quarter,63,494,-0.000104,1.206016,0.017972,0.25082,0.310278,0.142649,2.175113,0.030097,Positive,Freight
+EV015,2020-03-06,OPEC plus cooperation collapses,Tanker,Week,5,491,0.000191,1.287317,0.020681,0.212482,0.466852,0.046244,10.095429,0.0,Positive,Macro
+EV015,2020-03-06,OPEC plus cooperation collapses,DryBulk,Week,5,492,-0.001208,1.471873,0.019045,0.294424,0.134948,0.042585,3.16889,0.001626,Negative,Macro
+EV016,2020-03-11,WHO characterises COVID-19 as a pandemic,Tanker,Quarter,63,491,0.000126,1.32917,0.020748,0.22978,-0.146844,0.16468,-0.891692,0.372996,Mixed,Macro
+EV016,2020-03-11,WHO characterises COVID-19 as a pandemic,DryBulk,Quarter,63,492,-0.001382,1.515123,0.019065,0.315289,-0.078498,0.151323,-0.518743,0.604174,Negative,Macro
+EV017,2020-04-20,WTI front-month settles below zero,Tanker,Month,21,489,0.000912,0.893189,0.027399,0.176195,-0.224175,0.125557,-1.785442,0.074812,Positive,Macro
+EV020,2021-10-01,Chinese power rationing and coal price spike,DryBulk,Quarter,63,494,0.000933,1.189282,0.025601,0.333769,-0.32049,0.203202,-1.577199,0.115392,Positive,Supply
+EV024,2015-11-05,Fundao tailings dam fails at Samarco,DryBulk,Quarter,63,496,-0.00262,1.208566,0.019815,0.20855,-0.922887,0.157274,-5.86802,0.0,Negative,Supply
+EV025,2019-01-10,Fire at the Cape Lambert A iron ore terminal,DryBulk,Month,21,498,0.000228,1.545601,0.023998,0.185211,-0.314881,0.109972,-2.863281,0.00437,Negative,Supply
+EV026,2019-01-29,Vale announces decommissioning of all upstream tailings dams,DryBulk,Quarter,63,497,2.1e-05,1.49272,0.023925,0.189769,-0.022663,0.189896,-0.119343,0.905052,Negative,Supply
+EV027,2019-03-25,Vale reports cumulative suspensions of about 92.8 Mtpa,DryBulk,Quarter,63,496,-0.00108,1.498564,0.023603,0.200455,0.101484,0.187343,0.541701,0.588269,Negative,Supply
+EV028,2019-03-18,Cyclone Veronica halts Pilbara iron ore loading,DryBulk,Month,21,496,-0.000944,1.498318,0.023628,0.199513,0.056479,0.108278,0.52161,0.602175,Negative,Supply
+EV029,2019-03-29,Rio Tinto declares force majeure on Pilbara shipments,DryBulk,Quarter,63,497,-0.001159,1.499267,0.023485,0.202267,0.175486,0.186407,0.941416,0.346951,Negative,Supply
+EV030,2022-01-01,Indonesia bans coal exports,DryBulk,Month,21,491,0.000326,1.221297,0.027305,0.322846,0.050085,0.125127,0.400275,0.689129,Mixed,Supply
+EV031,2022-07-22,Black Sea Grain Initiative signed,DryBulk,Quarter,63,492,0.002427,0.976899,0.02794,0.119678,-0.294271,0.221769,-1.326926,0.185151,Mixed,Supply
+EV032,2023-07-17,Russia withdraws from the Black Sea Grain Initiative,DryBulk,Quarter,63,493,0.000284,0.963021,0.025646,0.160942,0.021936,0.20356,0.107763,0.914227,Mixed,Geopolitical
+EV034,2021-03-23,Ever Given blocks the Suez Canal,Tanker,Week,5,489,-0.000401,0.843704,0.030789,0.152169,-0.04599,0.068847,-0.668009,0.504444,Mixed,Freight
+EV034,2021-03-23,Ever Given blocks the Suez Canal,DryBulk,Week,5,490,8.9e-05,1.224188,0.023228,0.399587,-0.111189,0.051938,-2.140787,0.032786,Mixed,Freight
+EV036,2019-06-13,Tankers attacked in the Gulf of Oman,Tanker,Month,21,494,-0.000216,1.086186,0.017338,0.206061,0.126605,0.079452,1.593472,0.111697,Positive,Geopolitical
+EV037,2019-09-25,OFAC sanctions COSCO Shipping Tanker (Dalian),Tanker,Month,21,494,-5.7e-05,1.206774,0.017928,0.251552,0.29317,0.082156,3.56847,0.000394,Positive,Geopolitical
+EV038,2022-02-24,Russia invades Ukraine,DryBulk,Quarter,63,491,0.001236,1.222005,0.027548,0.322281,0.269079,0.218657,1.230598,0.219065,Mixed,Geopolitical
+EV041,2023-11-19,Houthi forces seize the Galaxy Leader,Tanker,Week,5,492,0.002097,0.554054,0.025542,0.06129,-0.005648,0.057114,-0.098889,0.921267,Positive,Geopolitical
+EV041,2023-11-19,Houthi forces seize the Galaxy Leader,DryBulk,Week,5,492,0.000486,0.882632,0.02291,0.171181,0.0582,0.051228,1.136107,0.256467,Mixed,Geopolitical
+EV042,2023-12-15,Maersk suspends Red Sea transits,DryBulk,Quarter,63,493,0.000808,0.863263,0.022632,0.166776,0.144068,0.179636,0.802,0.422941,Mixed,Geopolitical
+EV043,2025-06-13,Israel-Iran conflict raises the Hormuz risk premium,Tanker,Month,21,488,5e-06,0.64461,0.020329,0.080868,-0.030114,0.093159,-0.323255,0.746642,Positive,Geopolitical
+EV044,2025-10-22,OFAC designates Rosneft and Lukoil,Tanker,Month,21,486,-0.000298,0.600383,0.020574,0.066421,0.120274,0.094282,1.275679,0.202681,Positive,Geopolitical
+EV051,2025-10-14,USTR Section 301 port fees on Chinese-built and operated vessels,Tanker,Month,21,485,-0.000246,0.601384,0.020885,0.065351,0.12891,0.095708,1.34691,0.178641,Mixed,Regulatory
+EV051,2025-10-14,USTR Section 301 port fees on Chinese-built and operated vessels,DryBulk,Month,21,492,-7.1e-05,0.806776,0.016529,0.171616,0.04893,0.075747,0.645964,0.518605,Mixed,Regulatory
+EV057,2011-11-30,Frontline announces the Frontline 2012 restructuring,Tanker,Quarter,63,499,-0.00209,1.149188,0.014517,0.572731,0.322864,0.115226,2.802003,0.005277,Mixed,Corporate
+EV059,2014-09-16,DHT closes the Samco Shipholding acquisition,Tanker,Quarter,63,500,-0.000283,1.164044,0.016153,0.214147,0.187747,0.128211,1.464354,0.143728,Mixed,Corporate
+EV060,2015-11-30,Frontline 2012 merges back into Frontline,Tanker,Quarter,63,498,0.000569,0.942642,0.019868,0.138,-0.3579,0.157698,-2.269524,0.023665,Mixed,Corporate
+EV061,2017-01-29,Frontline bids for DHT; DHT adopts a rights plan,Tanker,Month,21,494,-0.001454,1.23708,0.019538,0.27112,0.032059,0.089532,0.358076,0.72044,Mixed,Corporate
+EV062,2017-05-07,"DHT rejects Frontline, which abandons the approach",Tanker,Quarter,63,494,-0.001437,1.333332,0.018509,0.310925,-0.071714,0.146911,-0.48815,0.625661,Mixed,Corporate
+EV063,2017-06-27,DHT completes the BW Group VLCC acquisition,Tanker,Quarter,63,495,-0.001813,1.304599,0.018448,0.298828,0.040856,0.146424,0.279023,0.780344,Mixed,Corporate
+EV064,2017-09-01,Scorpio Tankers closes the Navig8 Product Tankers merger,Tanker,Quarter,63,494,-0.002064,1.33044,0.017995,0.290768,0.070077,0.142832,0.490629,0.623907,Mixed,Corporate
+EV065,2017-11-27,Teekay Tankers closes the Tanker Investments merger,Tanker,Quarter,63,493,-0.002344,1.471551,0.017184,0.30035,-0.122399,0.13639,-0.897419,0.369935,Mixed,Corporate
+EV066,2018-06-12,Euronav completes the Gener8 Maritime merger,Tanker,Quarter,63,493,-0.001693,1.146475,0.015473,0.220819,-0.025389,0.122814,-0.206726,0.836309,Mixed,Corporate
+EV068,2019-09-27,Scorpio Tankers closes the Trafigura product tanker acquisition,Tanker,Quarter,63,494,-0.000115,1.204738,0.017918,0.251484,0.304122,0.14222,2.138399,0.032976,Mixed,Corporate
+EV070,2022-04-07,Frontline and Euronav announce a combination term sheet,Tanker,Month,21,495,-0.001305,0.737319,0.027702,0.079306,0.126102,0.126946,0.993347,0.321028,Mixed,Corporate
+EV071,2022-07-11,Frontline and Euronav sign a definitive combination agreement,Tanker,Month,21,496,0.000534,0.847893,0.024631,0.115025,0.210677,0.112876,1.866456,0.06257,Mixed,Corporate
+EV073,2023-01-09,Frontline terminates the combination agreement with Euronav,Tanker,Month,21,495,0.001924,0.623957,0.02565,0.073326,0.070334,0.117541,0.598379,0.549862,Mixed,Corporate
+EV074,2023-10-09,CMB buys Frontline's Euronav stake; 24 VLCCs move to Frontline,Tanker,Quarter,63,494,0.001719,0.561854,0.02552,0.062065,0.006334,0.202558,0.03127,0.975067,Mixed,Corporate
+EV075,2024-02-14,CMB launches a mandatory takeover bid for Euronav,Tanker,Month,21,490,0.002347,0.452048,0.02489,0.042035,-0.046434,0.114058,-0.407104,0.68411,Positive,Corporate
+EV079,2025-03-04,CMB.TECH acquires 40.8 percent of Golden Ocean from Hemen,DryBulk,Month,21,494,-0.000574,0.828392,0.015815,0.137259,-0.012408,0.072473,-0.171214,0.864126,Mixed,Corporate
+EV079,2025-03-04,CMB.TECH acquires 40.8 percent of Golden Ocean from Hemen,Tanker,Month,21,491,-0.000443,0.5848,0.02025,0.046293,0.010529,0.092799,0.113464,0.909709,Mixed,Corporate
+EV080,2025-05-28,CMB.TECH and Golden Ocean sign a definitive merger agreement,DryBulk,Month,21,495,-0.000524,0.846195,0.016122,0.199125,0.018587,0.073879,0.251587,0.801465,Positive,Corporate
+EV080,2025-05-28,CMB.TECH and Golden Ocean sign a definitive merger agreement,Tanker,Month,21,489,-0.000181,0.65153,0.020342,0.082601,-0.052989,0.093218,-0.568449,0.569992,Mixed,Corporate
+EV089,2014-07-11,Star Bulk closes the Oceanbulk merger,DryBulk,Quarter,63,499,1.8e-05,0.99414,0.021027,0.113983,-0.192057,0.1669,-1.150734,0.250395,Mixed,Corporate
+EV091,2015-07-17,Genco completes the Baltic Trading combination,DryBulk,Quarter,63,497,-0.001573,1.231251,0.02023,0.164182,-0.146322,0.160567,-0.911286,0.362588,Mixed,Corporate
+EV095,2016-11-15,"Genco raises USD 125m of preferred, converting to common",DryBulk,Quarter,63,492,-0.004444,1.48076,0.03242,0.166541,0.333277,0.257323,1.295169,0.195872,Negative,Corporate
+EV099,2021-02-17,Golden Ocean buys 18 vessels with a USD 338m placement,DryBulk,Quarter,63,491,-0.000742,1.248329,0.022272,0.425869,0.31215,0.176776,1.765792,0.078055,Mixed,Corporate
+EV103,2024-04-09,Star Bulk completes the Eagle Bulk merger,DryBulk,Quarter,63,494,5.7e-05,0.852385,0.021326,0.161179,0.022332,0.169269,0.131934,0.895091,Mixed,Corporate
+EV115,2023-12-22,Euronav agrees to acquire CMB.TECH NV from CMB,Tanker,Quarter,63,492,0.002127,0.500367,0.025047,0.051556,-0.083482,0.198807,-0.419912,0.674734,Mixed,Corporate
+EV116,2024-02-08,Euronav completes the CMB.TECH NV acquisition,Tanker,Quarter,63,490,0.00237,0.44881,0.024921,0.041776,-0.048192,0.197805,-0.243634,0.807617,Mixed,Corporate
