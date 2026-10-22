@@ -1,16 +1,19 @@
 table _Measures
 	lineageTag: 53520548-515a-48d3-ad3c-af4ea6964bdf
 
+	/// Count of active constituents in the lineage on the current date, before trading-day gating.
 	measure Constituents = MAX ( LineagePortfolio[Constituents] )
 		formatString: 0
 		displayFolder: Composition
 		lineageTag: 8e1c3e03-f78c-4a96-8eaf-a56dd073170d
 
+	/// Count of active constituents that actually traded on the current US session, used by the MinConstituents gate.
 	measure 'Constituents Traded' = MAX ( LineagePortfolio[ConstituentsTraded] )
 		formatString: 0
 		displayFolder: Composition
 		lineageTag: 554c80af-ab7f-45b4-8e4a-8f9d0137285b
 
+	/// Daily equal-weighted log return of the lineage's constituents in USD, dividend-adjusted. Gated by MinConstituents, USVenueOpen and the Events toggle. Switches between Total, Price and Local via ReturnBasis.
 	measure 'Portfolio Return' =
 			
 			VAR MinN     = [MinConstituents Value]
@@ -31,6 +34,7 @@ table _Measures
 		displayFolder: Base
 		lineageTag: 9fb51a5a-250f-4fad-af26-143a458cf048
 
+	/// Average deviation of the quarter's mean freight close from the year's annual mean close, over complete years. Percent for BDTI and BDI, points for BCI.
 	measure 'Freight Level Deviation' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -83,6 +87,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Average close-to-close change in the freight index per quarter, over complete years. Respects the Events toggle.
 	measure 'Freight Quarter Change' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -142,6 +147,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Freight Quarter Change minus the year's own four-quarter mean, averaged across years.
 	measure 'Freight Quarter Change, within-year' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -210,6 +216,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Count of complete years used by the Freight Quarter Change intervals. Helper.
 	measure 'Freight Quarter Change N' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -261,9 +268,11 @@ table _Measures
 			RETURN
 			    COUNTROWS ( CompleteQ )
 		formatString: 0
-		displayFolder: Freight
+		displayFolder: Freight\Intervals
+		isHidden
 		lineageTag: 238334f1-3962-4307-be8c-5083e0a7fe31
 
+	/// Standard deviation of per-year freight quarter changes. Helper.
 	measure 'Freight Quarter Change SD' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -321,11 +330,13 @@ table _Measures
 			            DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) )
 			        )
 			    )
-		displayFolder: Freight
+		isHidden
+		displayFolder: Freight\Intervals
 		lineageTag: 210788dd-ded1-4711-9888-890de2c8b068
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Lower bound of the 95% t-interval around the mean Freight Quarter Change.
 	measure 'Freight Quarter Change t Lower' = ```
 			
 			VAR m  = [Freight Quarter Change]
@@ -334,57 +345,63 @@ table _Measures
 			RETURN IF ( n > 1, m - T.INV.2T ( 0.05, n - 1 ) * sd / SQRT ( n ) )
 			
 			```
-		displayFolder: Freight
+		displayFolder: Freight\Intervals
 		lineageTag: 3c9b8bd4-0b9c-427e-98bd-5a7a86a3fdcc
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Upper bound of the 95% t-interval around the mean Freight Quarter Change.
 	measure 'Freight Quarter Change t Upper' =
 			
 			VAR m  = [Freight Quarter Change]
 			VAR sd = [Freight Quarter Change SD]
 			VAR n  = [Freight Quarter Change N]
 			RETURN IF ( n > 1, m + T.INV.2T ( 0.05, n - 1 ) * sd / SQRT ( n ) )
-		displayFolder: Freight
+		displayFolder: Freight\Intervals
 		lineageTag: 1eef6323-6cc2-476d-8f92-99df6169d5b5
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Minimum detectable effect at 80% power and 5% two-sided alpha for the Freight Quarter Change.
 	measure 'Freight Quarter Change MDE' =
 			
 			VAR sd = [Freight Quarter Change SD]
 			VAR n  = [Freight Quarter Change N]
 			RETURN IF ( n > 1, ( T.INV ( 0.975, n - 1 ) + T.INV ( 0.80, n - 1 ) ) * sd / SQRT ( n ) )
-		displayFolder: Freight
+		displayFolder: Freight\Intervals
 		lineageTag: ee2c2dfe-d1f7-4844-a32d-84c0c712ee2f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Share of the seasonal coefficient attributed to the control factor, from the pre-computed mediator test.
 	measure 'MT Mediated Share' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[mediated_share] ), MediatorTest[events] = EvScope )
+		formatString: 0.0000
 		displayFolder: MediatorTest
 		lineageTag: e4dd9289-8a28-4701-83fb-809c8e7f86db
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// 95% bootstrap lower bound on the mediated share.
 	measure 'MT CI Lower' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[boot_lo] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.0000
 		displayFolder: MediatorTest
 		lineageTag: a875d7bc-f06c-4070-91bd-f712c334116d
 
+	/// 95% bootstrap upper bound on the mediated share.
 	measure 'MT CI Upper' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[boot_hi] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.0000
 		displayFolder: MediatorTest
 		lineageTag: d44f3bf4-8a6f-46c7-8d3c-97e5d97c9fd2
 
+	/// Decision rule outcome: sector_valid, sector_over_controlled, or spans_threshold.
 	measure 'MT Decision' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
@@ -392,69 +409,81 @@ table _Measures
 		displayFolder: MediatorTest
 		lineageTag: 8815b71f-b949-4ed8-b281-37bf3075adaf
 
+	/// Raw seasonal coefficient on the focus quarter from the univariate regression.
 	measure 'MT Raw Alpha' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[raw_alpha] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: MediatorTest
 		lineageTag: 52cf645f-41a2-4450-bf11-f1bf21a74e43
 
+	/// Direct seasonal coefficient on the focus quarter after controlling for the factor.
 	measure 'MT Direct Alpha' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[direct_alpha] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: MediatorTest
 		lineageTag: f06bd9d9-a2e3-42c9-ba60-c45c27906568
 
+	/// Regression slope of freight on the control factor.
 	measure 'MT Beta' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[beta] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.00
 		displayFolder: MediatorTest
 		lineageTag: 5c1784e5-76f5-4745-bdec-d82f88a54f57
 
+	/// The factor's own seasonal offset in the focus quarter.
 	measure 'MT Delta Focus' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[delta_focus] ), MediatorTest[events] = EvScope )
-		formatString: 0.0%;-0.0%;0.0%
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: MediatorTest
 		lineageTag: 5fd144eb-afb3-42b7-a6a2-3d7c7eda7e5a
 
+	/// Years used by the mediator fit. Helper.
 	measure 'MT Years' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[n_years] ), MediatorTest[events] = EvScope )
 		formatString: 0
+		isHidden
 		displayFolder: MediatorTest
 		lineageTag: 833ca484-60e7-4d9b-8c81-5929c59c918c
 
+	/// Sample window label for the mediator fit. Helper.
 	measure 'MT Window' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[window] ), MediatorTest[events] = EvScope )
+		isHidden
 		displayFolder: MediatorTest
 		lineageTag: 10e55014-fb5d-43fc-80df-9b6b466d4299
 
+	/// Analyst note on the mediator row. Helper.
 	measure 'MT Note' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[note] ), MediatorTest[events] = EvScope )
+		isHidden
 		displayFolder: MediatorTest
 		lineageTag: 5e11cde7-ca32-4733-ac34-46f23b60f04f
 
+	/// Beta times delta, the piece of the seasonal coefficient attributed to the factor.
 	measure 'MT Mediated Component' =
 			
 			VAR EvScope = SELECTEDVALUE ( IncludeEvents[Option], "Include" )
 			RETURN CALCULATE ( SELECTEDVALUE ( MediatorTest[mediated_component] ), MediatorTest[events] = EvScope )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: MediatorTest
 		lineageTag: 63493e8d-4c27-46e7-a648-b54661a94136
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Sum of daily log Portfolio Return within the current quarter, gated by MinQuarterCoverage.
 	measure 'Quarter Return' =
 			
 			VAR MinCov = [MinQuarterCoverage Value]
@@ -471,11 +500,12 @@ table _Measures
 			        USDays > 0 && NGated >= MinCov * USDays,
 			        SUMX ( GatedDays, LN ( 1 + [@r] ) )
 			    )
-		displayFolder: Seasonality
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Base
 		lineageTag: d5203ce6-2373-4b75-b537-9e426c90fd8a
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Average equity Residual Quarter Return across years for the current quarter.
 	measure 'Seasonal Mean' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -506,11 +536,12 @@ table _Measures
 			    )
 			RETURN
 			    AVERAGEX ( CompleteQ, [@q] )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality
 		lineageTag: a080b371-acd4-4275-be08-35741f562df2
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Average within-year deviation of equity Residual Quarter Return from the year's own four-quarter mean, over complete years in the current Specification.
 	measure 'Seasonal Deviation' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -550,6 +581,7 @@ table _Measures
 		displayFolder: Seasonality
 		lineageTag: b2f9c4f4-b75b-4b6b-bd02-264a535b2960
 
+	/// Count of complete years in the current lineage used by the Seasonal Deviation panel.
 	measure 'Years Used' =
 			
 			VAR Panel =
@@ -577,6 +609,7 @@ table _Measures
 		displayFolder: Seasonality
 		lineageTag: 68cd15c9-7eba-4624-b8b2-3642cd018695
 
+	/// Years available for the current quarter after full-year gating. Helper.
 	measure 'Seasonal Deviation N' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -608,9 +641,11 @@ table _Measures
 			RETURN
 			    COUNTROWS ( Dev )
 		formatString: 0
+		isHidden
 		displayFolder: Seasonality\Intervals
 		lineageTag: b60ec728-b1f4-414f-9c44-190e5aa7117d
 
+	/// Standard deviation of per-year within-year deviations for the current quarter. Helper.
 	measure 'Seasonal Deviation SD' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -646,11 +681,13 @@ table _Measures
 			    )
 			RETURN
 			    STDEVX.S ( Dev, [@dev] )
+		isHidden
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\Intervals
 		lineageTag: 4bd1c7e2-2a7a-422f-8468-ba967f85d49b
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Lower bound of the 95% t-interval around Seasonal Deviation.
 	measure 'Seasonal Deviation t Lower' =
 			
 			VAR N    = [Seasonal Deviation N]
@@ -661,11 +698,12 @@ table _Measures
 			        N > 1,
 			        Mean - T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\Intervals
 		lineageTag: 9936a58e-23e8-4cfc-a389-1ff1c61cbc7e
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Upper bound of the 95% t-interval around Seasonal Deviation.
 	measure 'Seasonal Deviation t Upper' =
 			
 			VAR N    = [Seasonal Deviation N]
@@ -676,11 +714,12 @@ table _Measures
 			        N > 1,
 			        Mean + T.INV.2T ( 0.05, N - 1 ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\Intervals
 		lineageTag: 3adb8616-fb6d-4a3e-882d-6af1d6e2987f
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Minimum detectable effect for Seasonal Deviation at 80% power and 5% two-sided alpha.
 	measure 'Seasonal Deviation MDE' =
 			
 			VAR N  = [Seasonal Deviation N]
@@ -690,11 +729,12 @@ table _Measures
 			        N > 1,
 			        ( T.INV.2T ( 0.05, N - 1 ) + T.INV ( 0.80, N - 1 ) ) * DIVIDE ( SD, SQRT ( N ) )
 			    )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality\Intervals
 		lineageTag: 0cb304f3-3f66-44fd-9b08-2a7e28169427
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Running sum of within-year Seasonal Deviations from Q1 to the current quarter.
 	measure 'Seasonal Deviation Cumulative' =
 			
 			VAR CurrentQ = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -713,11 +753,12 @@ table _Measures
 			            RETURN CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = Q )
 			        )
 			    )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Seasonality
 		lineageTag: f24595b4-97c7-45b1-93ce-91369f858e31
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Running sum of within-year Freight Quarter Change deviations from Q1 to the current quarter.
 	measure 'Freight Quarter Change Cumulative' =
 			
 			VAR CurrentQ = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -736,11 +777,12 @@ table _Measures
 			            RETURN CALCULATE ( [Freight Quarter Change, within-year], 'Date'[QuarterNumber] = Q )
 			        )
 			    )
-		displayFolder: Seasonality
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Freight
 		lineageTag: 096aac8e-1595-44c9-bdd2-670a4cdcd5ed
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Sum of daily log Portfolio Return within the current month.
 	measure 'Monthly Return' =
 			
 			VAR MinCov = [MinQuarterCoverage Value]
@@ -758,9 +800,10 @@ table _Measures
 			        SUMX ( GatedDays, LN ( 1 + [@r] ) )
 			    )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Seasonality
+		displayFolder: Seasonality\Monthly
 		lineageTag: a5d0ace8-1780-453c-9fe0-6d97157e6752
 
+	/// Average within-year deviation of Monthly Return from the year's own twelve-month mean.
 	measure 'Monthly Deviation' =
 			
 			VAR M = SELECTEDVALUE ( 'Date'[MonthNumber] )
@@ -796,11 +839,12 @@ table _Measures
 			    )
 			RETURN
 			    AVERAGEX ( Dev, [@dev] )
-		displayFolder: Seasonality
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Seasonality\Monthly
 		lineageTag: 7acfdb3d-5801-4318-9afc-c0640ce0d882
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Count of years with all twelve months present. Helper.
 	measure 'Monthly Years Used' =
 			
 			VAR Panel =
@@ -825,9 +869,11 @@ table _Measures
 			RETURN
 			    COUNTROWS ( FullYears )
 		formatString: 0
-		displayFolder: Seasonality
+		isHidden
+		displayFolder: Seasonality\Monthly
 		lineageTag: bfec3de1-a373-494c-8cf6-0430fff646b9
 
+	/// Average close-to-close change in the freight index per month, over complete years.
 	measure 'Freight Monthly Change' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -883,9 +929,10 @@ table _Measures
 			        AVERAGEX ( CompleteM, DIVIDE ( [@last] - [@prev], ABS ( [@prev] ) ) )
 			    )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Freight
+		displayFolder: Freight\Monthly
 		lineageTag: 89dd16eb-4eaf-4c17-be8b-4e0a46e933d9
 
+	/// Freight Monthly Change minus the year's own twelve-month mean, averaged across years.
 	measure 'Freight Monthly Deviation' =
 			
 			VAR Mode     = SELECTEDVALUE ( FreightSeries[ChangeMode] )
@@ -950,9 +997,10 @@ table _Measures
 			RETURN
 			    AVERAGEX ( Dev, [@dev] )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Freight
+		displayFolder: Freight\Monthly
 		lineageTag: 2d8e18d2-53c6-4595-903d-16018d5f7330
 
+	/// Standard deviation of per-year Tanker contrasts. Helper.
 	measure 'Equity Contrast Tanker SD' =
 			
 			VAR Years =
@@ -982,9 +1030,11 @@ table _Measures
 			RETURN
 			    STDEVX.S ( Panel, [@c] )
 		formatString: 0.00%;-0.00%;0.00%
+		isHidden
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: 9136786e-62a7-4db5-9c4f-7951639531f5
 
+	/// Pre-registered Tanker (Q4+Q1) minus (Q2+Q3) seasonal contrast, point estimate under current Specification.
 	measure 'Equity Contrast Tanker Point' =
 			
 			VAR Years =
@@ -1017,6 +1067,7 @@ table _Measures
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: a574cc62-46b4-4fd1-91de-7d67c83053f2
 
+	/// Count of years available for the Tanker contrast. Helper.
 	measure 'Equity Contrast Tanker N' =
 			
 			VAR Years =
@@ -1046,20 +1097,23 @@ table _Measures
 			RETURN
 			    COUNTROWS ( Panel )
 		formatString: 0
+		isHidden
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: 7fec9516-80c2-4396-abd6-e29bcc9da0d2
 
+	/// t-statistic for the Tanker (Q4+Q1) vs (Q2+Q3) contrast.
 	measure 'Equity Contrast Tanker t' =
 			
 			VAR M  = [Equity Contrast Tanker Point]
 			VAR SD = [Equity Contrast Tanker SD]
 			VAR N  = [Equity Contrast Tanker N]
 			RETURN IF ( N > 1, M / ( SD / SQRT ( N ) ) )
+		formatString: 0.00
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: d9724c2a-484e-4219-8de0-5c696413f135
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// One-sided upper-tail p-value for the Tanker contrast (hypothesis: positive).
 	measure 'Equity Contrast Tanker p one-sided' =
 			
 			VAR N = [Equity Contrast Tanker N]
@@ -1069,6 +1123,7 @@ table _Measures
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: 458597e4-fe90-4f05-967c-0efa7cce49c8
 
+	/// t-statistic for the DryBulk Q1 one-sided negative test.
 	measure 'Equity Contrast DryBulk Q1 t' =
 			
 			VAR M  = CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
@@ -1079,15 +1134,17 @@ table _Measures
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: 2a2c0187-fd6c-4743-adb9-d32d732c6ace
 
+	/// One-sided lower-tail p-value for the DryBulk Q1 test (hypothesis: negative).
 	measure 'Equity Contrast DryBulk Q1 p one-sided' =
 			
 			VAR N = CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 			VAR T = [Equity Contrast DryBulk Q1 t]
 			RETURN IF ( N > 1, T.DIST ( T, N - 1, TRUE () ) )
-		formatString: 0.000
+		formatString: 0.0000
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: cfacc3eb-a534-4b46-8f9d-7ce21c8bdcaa
 
+	/// Pre-registered DryBulk Q1 Seasonal Deviation under current Specification. Hypothesis: negative.
 	measure 'Equity Contrast DryBulk Q1 Point' =
 			
 			CALCULATE ( [Seasonal Deviation], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
@@ -1095,13 +1152,16 @@ table _Measures
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: b398e927-0055-431d-a16b-63464d8acb41
 
+	/// Count of years used by the DryBulk Q1 test. Helper.
 	measure 'Equity Contrast DryBulk Q1 N' =
 			
 			CALCULATE ( [Seasonal Deviation N], 'Date'[QuarterNumber] = 1, Lineage[Lineage] = "DryBulk" )
 		formatString: 0
+		isHidden
 		displayFolder: Seasonality\Confirmatory
 		lineageTag: f8ee46ee-2d87-4f13-a9f8-33c0e4fc078c
 
+	/// Sum of daily factor log returns within the current quarter for Factor[FactorKind] = Market.
 	measure 'Market Factor Quarter Return' =
 			
 			VAR MarketTickers = CALCULATETABLE ( VALUES ( Factor[Ticker] ), Factor[FactorKind] = "Market" )
@@ -1120,11 +1180,12 @@ table _Measures
 			            )
 			        RETURN SUMX ( DailyRows, LN ( 1 + [@r] ) )
 			    )
-		displayFolder: Factors
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Controls\Factors
 		lineageTag: 6c294fd6-684f-42ac-a29a-4a7ca13a2a8f
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Sum of daily factor log returns within the current quarter for Factor[FactorKind] = Sector, equal-weighted across tickers matching the current lineage.
 	measure 'Sector Factor Quarter Return' =
 			
 			VAR L = SELECTEDVALUE ( Lineage[Lineage] )
@@ -1150,9 +1211,10 @@ table _Measures
 			        RETURN SUMX ( DailyRows, LN ( 1 + [@r] ) )
 			    )
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: Factors
+		displayFolder: Controls\Factors
 		lineageTag: d571f87b-215c-44c6-88c1-ed80baa67bfc
 
+	/// Market-model slope on the sector factor from the quarterly OLS fit, by lineage. Used under Market and sector adjusted.
 	measure 'Beta Sector' =
 			
 			VAR Panel =
@@ -1176,9 +1238,10 @@ table _Measures
 			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@xs], [@d1], [@d2], [@d3] )
 			RETURN MINX ( Betas, [Slope2] )
 		formatString: 0.00
-		displayFolder: Controls
+		displayFolder: Controls\Betas
 		lineageTag: 2d82feaf-a2ef-48e6-8c57-09284f4a9c25
 
+	/// Market-model slope on the market factor from the quarterly OLS fit with quarter dummies and the sector factor, by lineage.
 	measure 'Beta Market' =
 			
 			VAR Panel =
@@ -1202,9 +1265,10 @@ table _Measures
 			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@xs], [@d1], [@d2], [@d3] )
 			RETURN MINX ( Betas, [Slope1] )
 		formatString: 0.00
-		displayFolder: Controls
+		displayFolder: Controls\Betas
 		lineageTag: c0b5c5bd-1418-4369-af14-da1fe3a3b3f5
 
+	/// Market-model slope on the market factor from the quarterly OLS fit with quarter dummies only, by lineage. Used under Market-adjusted.
 	measure 'Beta Market Only' =
 			
 			VAR Panel =
@@ -1223,9 +1287,10 @@ table _Measures
 			VAR Betas = LINESTX ( Clean, [@y], [@xm], [@d1], [@d2], [@d3] )
 			RETURN MINX ( Betas, [Slope1] )
 		formatString: 0.00
-		displayFolder: Controls
+		displayFolder: Controls\Betas
 		lineageTag: cbf2b962-c61b-45f0-93dc-6e9a73a34b03
 
+	/// Quarter Return minus the fitted market and sector contributions under the current Specification. Equals Quarter Return under Raw.
 	measure 'Residual Quarter Return' =
 			
 			VAR Spec = SELECTEDVALUE ( Specification[Specification], "Raw" )
@@ -1243,46 +1308,52 @@ table _Measures
 		displayFolder: Controls
 		lineageTag: 37a1fd0a-c2a5-4074-b802-c59b5a9f7661
 
+	/// Quarter Return under ReturnBasis = Total (USD, dividend-adjusted).
 	measure 'Quarter Return (Total)' =
 			
 			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Total" )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Base\Decomposition
 		lineageTag: 350088f8-2d8c-47d3-9c73-6571955a49c0
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Quarter Return under ReturnBasis = Price (USD, no dividend adjustment).
 	measure 'Quarter Return (Price)' =
 			
 			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Price" )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Base\Decomposition
 		lineageTag: ada27eff-cc81-4a92-9a2f-7e13ce83ee97
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Quarter Return under ReturnBasis = Local (dividend-adjusted, local currency, strips FX).
 	measure 'Quarter Return (Local)' =
 			
 			CALCULATE ( [Quarter Return], REMOVEFILTERS ( ReturnBasis ), ReturnBasis[Basis] = "Local" )
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Base\Decomposition
 		lineageTag: 044c4248-d43e-40df-8fc7-85519902b4e4
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Quarter Return (Total) minus Quarter Return (Price). The dividend contribution to the quarterly return.
 	measure 'Payout Effect' =
 			
 			[Quarter Return (Total)] - [Quarter Return (Price)]
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Base\Decomposition
 		lineageTag: 43f936f3-4dc0-412d-a9a4-91258b732f8f
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Quarter Return (Total) minus Quarter Return (Local). The FX contribution to the USD return.
 	measure 'FX Effect' =
 			
 			[Quarter Return (Total)] - [Quarter Return (Local)]
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Base\Decomposition
 		lineageTag: 8ba28900-2f3e-4091-b43a-20b875f51789
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Within-year deviation for the most recent year in the panel for the current quarter.
 	measure 'Seasonal Deviation Latest Year' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -1323,6 +1394,7 @@ table _Measures
 		displayFolder: Seasonality\YoY
 		lineageTag: 4aad8fbf-7be0-4238-9238-b4b1b4f0de7e
 
+	/// Latest year's deviation minus the mean of all other years' deviations for the current quarter.
 	measure 'Seasonal Deviation YoY' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -1365,6 +1437,7 @@ table _Measures
 		displayFolder: Seasonality\YoY
 		lineageTag: 0ef1850b-4f23-4614-b83b-6d5013005a91
 
+	/// The year used by the Latest Year deviation measure.
 	measure 'Latest Year Used' =
 			
 			VAR Q = SELECTEDVALUE ( 'Date'[QuarterNumber] )
@@ -1399,29 +1472,143 @@ table _Measures
 		displayFolder: Seasonality\YoY
 		lineageTag: 43fd1bc0-a8bd-4db9-9680-fe67b8841c97
 
+	/// Count of events in the EventStudy table under current filters.
 	measure 'ES Event Count' = COUNTROWS ( EventStudy )
 		formatString: 0
 		displayFolder: Events
 		lineageTag: 8ff7cbe9-1606-4657-b3fe-1ab691703e1f
 
+	/// Average cumulative abnormal return across events in context.
 	measure 'ES CAR' = AVERAGE ( EventStudy[car] )
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Events
 		lineageTag: b1fdcbc8-6808-4843-9718-9c80e509e791
 
+	/// Share of events in context with two-sided p-value below 0.05.
 	measure 'ES Significant Share' =
 			
 			DIVIDE (
 			    COUNTROWS ( FILTER ( EventStudy, EventStudy[p_two_sided] < 0.05 ) ),
 			    COUNTROWS ( EventStudy )
 			)
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Events
 		lineageTag: 6c32709f-b2d4-413a-8891-b9a7ed9a5dc2
 
+	/// Pearson correlation between daily freight change and lagged Portfolio Return across US sessions, at the current LagDays value.
+	measure 'Freight-Equity Correlation (Daily)' =
+			
+			VAR LagN = SELECTEDVALUE ( LagDays[Lag], 0 )
+			VAR Sessions =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[USSessionIndex] ),
+			        NOT ISBLANK ( 'Date'[USSessionIndex] )
+			    )
+			VAR Panel =
+			    FILTER (
+			        ADDCOLUMNS (
+			            Sessions,
+			            "@f",
+			                VAR S = 'Date'[USSessionIndex]
+			                VAR D = CALCULATE ( MAX ( 'Date'[Date] ), 'Date'[USSessionIndex] = S )
+			                RETURN
+			                    CALCULATE (
+			                        DIVIDE ( MAX ( freight[Close] ) - MAX ( freight[PrevClose] ), MAX ( freight[PrevClose] ) ),
+			                        'Date'[Date] = D
+			                    ),
+			            "@e",
+			                VAR S = 'Date'[USSessionIndex]
+			                VAR LaggedDate =
+			                    CALCULATE (
+			                        MAX ( 'Date'[Date] ),
+			                        'Date'[USSessionIndex] = S + LagN
+			                    )
+			                RETURN CALCULATE ( [Portfolio Return], 'Date'[Date] = LaggedDate )
+			        ),
+			        NOT ISBLANK ( [@f] ) && NOT ISBLANK ( [@e] )
+			    )
+			VAR N   = COUNTROWS ( Panel )
+			VAR SX  = SUMX ( Panel, [@f] )
+			VAR SY  = SUMX ( Panel, [@e] )
+			VAR SXY = SUMX ( Panel, [@f] * [@e] )
+			VAR SXX = SUMX ( Panel, [@f] * [@f] )
+			VAR SYY = SUMX ( Panel, [@e] * [@e] )
+			VAR Num = N * SXY - SX * SY
+			VAR Den = SQRT ( ( N * SXX - SX * SX ) * ( N * SYY - SY * SY ) )
+			RETURN
+			    DIVIDE ( Num, Den )
+		formatString: 0.0000
+		displayFolder: Lag
+		lineageTag: c6c5c099-4775-4f5c-91cd-070b295e6d33
+
+	/// Pearson correlation between weekly freight change and lagged Portfolio Return across ISO weeks, at the current LagWeeks value.
+	measure 'Freight-Equity Correlation (Weekly)' =
+			
+			VAR LagN = SELECTEDVALUE ( LagWeeks[LagWeeks], 0 )
+			VAR Weeks =
+			    CALCULATETABLE (
+			        SUMMARIZE ( 'Date', 'Date'[ISOYear], 'Date'[ISOWeek] )
+			    )
+			VAR Base =
+			    ADDCOLUMNS (
+			        Weeks,
+			        "@wix", 'Date'[ISOYear] * 54 + 'Date'[ISOWeek],
+			        "@f",
+			            VAR Y = 'Date'[ISOYear]
+			            VAR W = 'Date'[ISOWeek]
+			            RETURN
+			                CALCULATE (
+			                    SUMX (
+			                        FILTER (
+			                            freight,
+			                            freight[Close] > 0 && freight[PrevClose] > 0
+			                        ),
+			                        LN ( freight[Close] ) - LN ( freight[PrevClose] )
+			                    ),
+			                    'Date'[ISOYear] = Y,
+			                    'Date'[ISOWeek] = W
+			                ),
+			        "@e",
+			            VAR Y = 'Date'[ISOYear]
+			            VAR W = 'Date'[ISOWeek]
+			            RETURN
+			                CALCULATE (
+			                    SUMX (
+			                        FILTER (
+			                            ADDCOLUMNS ( VALUES ( 'Date'[Date] ), "@r", [Portfolio Return] ),
+			                            NOT ISBLANK ( [@r] ) && [@r] > -0.99
+			                        ),
+			                        LN ( 1 + [@r] )
+			                    ),
+			                    'Date'[ISOYear] = Y,
+			                    'Date'[ISOWeek] = W
+			                )
+			    )
+			VAR Clean = FILTER ( Base, NOT ISBLANK ( [@f] ) && NOT ISBLANK ( [@e] ) )
+			VAR WithLag =
+			    ADDCOLUMNS (
+			        Clean,
+			        "@elag",
+			            VAR MyIx = [@wix]
+			            RETURN MAXX ( FILTER ( Clean, [@wix] = MyIx + LagN ), [@e] )
+			    )
+			VAR Final = FILTER ( WithLag, NOT ISBLANK ( [@elag] ) )
+			VAR N   = COUNTROWS ( Final )
+			VAR SX  = SUMX ( Final, [@f] )
+			VAR SY  = SUMX ( Final, [@elag] )
+			VAR SXY = SUMX ( Final, [@f] * [@elag] )
+			VAR SXX = SUMX ( Final, [@f] * [@f] )
+			VAR SYY = SUMX ( Final, [@elag] * [@elag] )
+			VAR Num = N * SXY - SX * SY
+			VAR Den = SQRT ( ( N * SXX - SX * SX ) * ( N * SYY - SY * SY ) )
+			RETURN
+			    DIVIDE ( Num, Den )
+		displayFolder: Lag
+		lineageTag: 4775837e-5a06-4f30-8555-6072f250f719
+
+
 	column Value
-		isHidden
-		formatString: 0
+		formatString: 0.0000
 		lineageTag: cef04a35-9a8e-46cb-95d6-2d92ac206273
 		summarizeBy: none
 		isNameInferred

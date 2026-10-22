@@ -1,0 +1,27 @@
+table LagWeeks
+	lineageTag: 048f1e55-e52b-4fb2-9106-b6d0a6d153b2
+
+	column LagWeeks
+		formatString: 0
+		lineageTag: 4dabb106-6899-4c7a-9c39-806d5fc9986d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [LagWeeks]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition LagWeeks = calculated
+		mode: import
+		source =
+				
+				DATATABLE (
+				    "LagWeeks", INTEGER,
+				    {
+				        {-8}, {-7}, {-6}, {-5}, {-4}, {-3}, {-2}, {-1},
+				        {0},
+				        {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}
+				    }
+				)
+
+	annotation PBI_Id = aa9477da18624b3a82916bc00fd7018f
+

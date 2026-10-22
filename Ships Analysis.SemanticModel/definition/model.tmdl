@@ -77,6 +77,7 @@ ref table MinQuarterCoverage
 ref table MediatorTest
 ref table IncludeEvents
 ref table EventStudy
+ref table LagWeeks
 
 ref cultureInfo en-US
 
